@@ -67,11 +67,12 @@ const Header = (props) => {
   }
   return (
     <div>
-      <div className="bg-[#23292e] flex items-center justify-between flex-wrap gap-4 md:sticky top-0 z-40 md:px-6 px-2 h-16 relative">
+      <div className="bg-[#13BFA1] flex items-center justify-between flex-wrap gap-4 md:sticky top-0 z-40 md:px-6 px-2 h-16 relative">
 
         <div className='flex items-center space-x-4'>
           <div className='xl:w-60 flex justify-start items-center'>
-            <img onClick={() => navigate("/app/dashboard")} src='/images/logo.png' alt='logo' className='xl:w-52 w-36 cursor-pointer' />
+            {/* <img onClick={() => navigate("/app/dashboard")} src='/images/logo.png' alt='logo' className='xl:w-52 w-36 cursor-pointer' /> */}
+            <p className='text-white'>Morning Quotes Admin</p>
           </div>
 
           <button ref={myRef}
@@ -81,12 +82,7 @@ const Header = (props) => {
             <MdOutlineMenu size={24} />
           </button>
 
-          <div className='xl:flex items-center hidden'>
-            <div className='bg-[#16191c] rounded-md flex items-center overflow-hidden ml-4 w-96'>
-              <div className='text-white text-xs w-24 font-semibold px-4 p-1 bg-[#434343]'>Upcoming Fixtures</div>
-             
-            </div>
-          </div>
+        
 
         </div>
         <div className='flex items-center md:space-x-6'>
@@ -102,13 +98,13 @@ const Header = (props) => {
           }
 
 
-          <div className=' items-center space-x-3 text-white md:flex hidden'>
+          {/* <div className=' items-center space-x-3 text-white md:flex hidden'>
             <div className='flex items-center text-[#f9cf14] text-[0.8125rem] font-bold'><BsExclamationCircleFill className='mr-2' /> Rules</div>
             <div className='flex items-center'>
               <h1 className='text-[.8125rem] '>pts :</h1>
               <p className='text-[.8125rem] font-semibold'>13,2131,2145,64</p>
             </div>
-          </div>
+          </div> */}
 
 
           <div className=' text-white cursor-pointer hover:text-white/60 transition duration-150 md:relative  '>
@@ -123,7 +119,7 @@ const Header = (props) => {
               </div>
               {clickedOutside ?
                 <div className='animate__animated animate__fadeIn animate__faster absolute md:top-10 top-16 mt-0.5  right-0  shadow-2xl  bg-white  py-2 md:rounded-none rounded-md md:w-48 w-[96%] md:mx-0 mr-[2%] ml-[2%] text-sm text-slate-800 border transition duration-150 z-40'>
-                  <div className='py-2'>
+                  {/* <div className='py-2'>
                     <div className='bg-[#f5f5f5] border-[2px] border-[#ddd] h-[39px] flex justify-center items-center mx-2  md:hidden  '>
                       <p className='text-[12px]'>pts: </p> <p className='text-[12px] font-[600] px-[2px]'>7,99,200.50</p>
                     </div>
@@ -132,7 +128,7 @@ const Header = (props) => {
                     <div onClick={() =>  props.setOpenModal(!props.openModal)}
                       className='text-xs p-2 px-6 w-full flex hover:bg-gray-100 transition hover:text-blue-700 '><BiLockOpen size={16} className="mr-2" /> Change password</div>
                     <div className='text-xs p-2 px-6 w-full flex hover:bg-gray-100 transition hover:text-blue-700 '> <BiCreditCard size={16} className="mr-2" /> Self Deposite</div>
-                  </div>
+                  </div> */}
                   <button onClick={() => onClickMenutwo("/login")} className='px-6  py-2 hover:bg-slate-100 w-full flex items-center border-t text-xs text-red-700'> <BiPowerOff className='mr-3' size={16} /> Logout</button>
                 </div>
 

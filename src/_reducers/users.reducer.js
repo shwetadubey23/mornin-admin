@@ -952,7 +952,25 @@ export function users(state = {}, action) {
         ...state,
         error: action.error
       };
-
+      case userConstants.FILE_UPLOAD_STATUS_REQUEST:
+        return {
+          ...state,
+          loading: true
+        };
+      case userConstants.FILE_UPLOAD_STATUS_SUCCESS:
+        return {
+          ...state,
+          loading: false,
+          imageUploadSuccess: true,
+          // filesDetails: action.uploadImage.filesDetails
+        };
+  
+      case userConstants.FILE_UPLOAD_STATUS_FAILURE:
+        return {
+          ...state,
+          imageUploadClearSuccess: true,
+          filesDetails: null
+        };
     case userConstants.GETALL_USER_NOTIFY_REQUEST:
       return {
         ...state,

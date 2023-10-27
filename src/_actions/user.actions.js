@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { userConstants } from '../_constants';
 import { userService } from '../_services';
 import { alertActions } from './';
@@ -7,7 +8,8 @@ export const userActions = {
     logout,
     marketAnalysisDashboard,
     childListActiveUser,
-    activeSport
+    activeSport,
+    uploadImage,
    
 };
 
@@ -24,7 +26,7 @@ function login(data, props) {
                     console.log("useruseruser09122022:", user);
 
                     dispatch(alertActions.success("Login Successfully."));
-                    props.history.push(`/app/marketAnyalsis`)
+                    props.history.push(`/app/dashboard`)
                     // history.push({ pathname: '#/app/mainpage' });
                     // window.location.reload();
                     console.log("props.history  ",props.history);
@@ -65,6 +67,40 @@ function marketAnalysisDashboard(data) {
     function request() { return { type: userConstants.MARKET_ANALYSIS_DASHBORD_REQUEST } }
     function success(users) { return { type: userConstants.MARKET_ANALYSIS_DASHBORD_SUCCESS, users } }
     function failure(error) { return { type: userConstants.MARKET_ANALYSIS_DASHBORD_FAILURE, error } }
+}
+
+
+function uploadImage(data){
+    return dispatch => {
+        dispatch(request());
+        userService.uploadImage(data)
+        .then(
+            uploadImage => {
+                toast("Image Uploaded Successfully");
+                dispatch(success(uploadImage));
+            },
+            error =>{
+                dispatch(alertActions.error(error));
+                dispatch(failure(error))
+            }
+
+        )
+    };
+    function request(){
+        return{
+            type:userConstants.FILE_UPLOAD_STATUS_REQUEST
+        }
+    }
+    function success(uploadImage) {
+        return {
+            type:userConstants.FILE_UPLOAD_STATUS_SUCCESS , uploadImage
+        }
+    }
+    function failure(error) {
+        return {
+            type: userConstants.FILE_UPLOAD_STATUS_FAILURE, error
+        }
+    }
 }
 
 function childListActiveUser(data) {

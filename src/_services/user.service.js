@@ -7,7 +7,8 @@ export const userService = {
     login,
     logout,
     childListActiveUser,
-    activeSport
+    activeSport,
+    uploadImage,
     // creditdata,
 
 
@@ -104,7 +105,7 @@ function login(data) {
         headers: header,
         body: JSON.stringify(data)
     }
-    return fetch(CONST.BACKEND_URL + `/login/auth`, requestOptions)
+    return fetch(CONST.BACKEND_URL + `/login`, requestOptions)
         .then(handleResponse)
         .then(user => {
             let userObj = {
@@ -116,6 +117,33 @@ function login(data) {
             if (user) {
                 localStorage.setItem('user', JSON.stringify(user));
             }
+            return userObj;
+        });
+}
+
+function uploadImage(filedata) {
+    console.log('filedatafiledatafiledatafiledatafiledata', filedata);
+
+    let header = new Headers({
+        "Authorization": authHeader().Authorization
+    });
+    var data = new FormData();
+    data.append('image', filedata);
+    console.log('datadatadatadatadatadatadatadatadata', data);
+
+
+    const requestOptions = {
+        method: "POST",
+        headers: header,
+        body: data
+    }
+    return fetch(CONST.BACKEND_URL + `/uploadImage`, requestOptions)
+        .then(handleResponse)
+        .then(res => {
+            let userObj = {
+                filesDetails: res.data
+            }
+            // console.log("servive_uploadImage", userObj);
             return userObj;
         });
 }

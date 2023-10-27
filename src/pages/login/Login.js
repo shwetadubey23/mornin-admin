@@ -31,7 +31,7 @@ class Login extends Component {
     if (this.handleValidationLogin()) {
       // console.log("After hello validation");
       let data = {
-        userId: this.state.fieldslogin.userId,
+        username: this.state.fieldslogin.username,
         password: this.state.fieldslogin.password,
         // number: this.state.fieldslogin.number,
       }
@@ -58,9 +58,9 @@ class Login extends Component {
     let formIsValid = true;
 
     //User Name
-    if (!fieldslogin["userId"]) {
+    if (!fieldslogin["username"]) {
       formIsValid = false;
-      errorslogin["userId"] = "User Name Cannot Be Blank.";
+      errorslogin["username"] = "User Name Cannot Be Blank.";
     }
     //password
     if (!fieldslogin["password"]) {
@@ -99,11 +99,11 @@ class Login extends Component {
               <p className="text-sm text-[#6c757d] font-light">Enter your user name and password</p>
             </div>
             <div className="xl:w-5/12 lg:w-7/12 md:w-8/12 md:px-0 px-6 mx-auto space-y-4">
-              <input type="text" name="userId" id="userId" value={this.state.fieldslogin.userId} className="w-full bg-[#2e3439] p-3 py-4 rounded-lg block    border-none focus:outline-none text-sm" placeholder="Enter Username"
+              <input type="text" name="username" id="username" value={this.state.fieldslogin.username} className="w-full bg-[#2e3439] p-3 py-4 rounded-lg block    border-none focus:outline-none text-sm" placeholder="Enter Username"
                 onChange={this.inputChange} />
-              {this.state.errorslogin && this.state.errorslogin["userId"] ?
+              {this.state.errorslogin && this.state.errorslogin["username"] ?
                 <div className="text-red-500 text-left text-sm">
-                  {this.state.errorslogin["userId"]}
+                  {this.state.errorslogin["username"]}
                 </div>
                 : null}
               <input type="password" name="password" id="password" value={this.state.fieldslogin.password} className="w-full bg-[#2e3439] p-3 py-4 rounded-lg block    border-none focus:outline-none text-sm"
@@ -117,7 +117,7 @@ class Login extends Component {
               <p className="text-xs  text-[#6c757d] font-light">This site is protected by reCAPTCHA and the Google<b className="text-[#f9cf14] font-normal cursor-pointer"> Privacy policy</b> and <b className="text-[#f9cf14] cursor-pointer font-normal">Terms of service</b> apply.</p>
               <div className="pt-10 space-y-4 text-[#6c757d] text-sm font-light">
                 <p className="capitalize "> © Copyright 2021. All Rights Reserved.</p>
-                <p>The website is operated by Ecofun Services NV registered in Curaçao under the registration number 152307, with address at Heelsumstraat 51, Curaçao, authorized by Antillephone under license number 8048/JAZ2020 - 025. The transactions are processed by Ecofun Services NV which own and operates world777.com.</p>
+                {/* <p>The website is operated by Ecofun Services NV registered in Curaçao under the registration number 152307, with address at Heelsumstraat 51, Curaçao, authorized by Antillephone under license number 8048/JAZ2020 - 025. The transactions are processed by Ecofun Services NV which own and operates world777.com.</p> */}
               </div>
             </div>
           </div>

@@ -22,11 +22,11 @@ export default function App() {
      <HashRouter>
       {/* <div className="bg-[#2cabb5] h-1 w-[25%]"></div> */}
       <Switch>
-        <Route exact path="/" render={() => <Redirect to="/app/marketAnyalsis" />} />
+        <Route exact path="/" render={() => <Redirect to="/app/dashboard" />} />
         <Route
           exact
           path="/app"
-          render={() => <Redirect to="/app/marketAnyalsis" />}
+          render={() => <Redirect to="/app/dashboard" />}
         />
         <PrivateRoute path="/app" component={withRouter(Layout)} />
         <PublicRoute path="/login" component={withRouter(Login)} />

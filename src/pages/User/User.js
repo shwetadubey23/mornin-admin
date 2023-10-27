@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {  creditWithdrawActions } from '../../_actions';
+// import {  creditWithdrawActions } from '../../_actions';
 import ReactPaginate from 'react-paginate';
 import { isMobile } from "react-device-detect";
 import CreditActivityModal from './Components/CreditActivityModal/CreditActivityModal';
@@ -57,7 +57,7 @@ class AdminList extends React.Component {
     // this.props.dispatch(creditWithdrawActions.childListActiveUserCredit(data2));
 
     let dataUser = { "id": "", "index": this.state.index, "noOfRecords": this.state.noOfRecords }
-    this.props.dispatch(creditWithdrawActions.childListUser(dataUser));
+    // this.props.dispatch(creditWithdrawActions.childListUser(dataUser));
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -207,7 +207,7 @@ class AdminList extends React.Component {
         "userid": this.state.rowDataDetails.userId,
         "type": 5
       }
-      this.props.dispatch(creditWithdrawActions.accountHistory(data));
+      // this.props.dispatch(creditWithdrawActions.accountHistory(data));
     }
     this.setState({ creditType: data, fieldsCreditActivity: {}, errorsCreditActivity: {} });
   }
@@ -232,7 +232,7 @@ class AdminList extends React.Component {
 
       console.log("!@#$1234::", data);
 
-      this.props.dispatch(creditWithdrawActions.accountHistory(data));
+      // this.props.dispatch(creditWithdrawActions.accountHistory(data));
     }
 
     console.log("QQQQQQ::", data);
@@ -358,7 +358,7 @@ class AdminList extends React.Component {
 
   handleCreditWithdrawOpenModal = (data) => {
     // this.props.dispatch(creditWithdrawActions.creditdata({ "userId": data.userId }));
-    this.props.dispatch(creditWithdrawActions.depositwithdrawdata({ "userId": data.userId }));
+    // this.props.dispatch(creditWithdrawActions.depositwithdrawdata({ "userId": data.userId }));
     this.setState({ creditWithdrawOpenModal: true, rowDataDetails: data })
   }
 
@@ -368,7 +368,7 @@ class AdminList extends React.Component {
 
   handleDepositCreditOpenModal = (data) => {
     // this.props.dispatch(creditWithdrawActions.creditdata({ "userId": data.userId }));
-    this.props.dispatch(creditWithdrawActions.depositwithdrawdata({ "userId": data.userId }));
+    // this.props.dispatch(creditWithdrawActions.depositwithdrawdata({ "userId": data.userId }));
     this.setState({ depositCredit: true, rowDataDetails: data })
   }
 
@@ -382,7 +382,7 @@ class AdminList extends React.Component {
     // let reqData = { "noOfRecords": 25, "index": 0, "toDate": "00:00:0000", "fromDate": "00:00:0000", "userid": "b137e7a95", "type": 4 }
     // this.props.dispatch(creditWithdrawActions.accountHistory(reqData));
     if (this.state.moreDetailsType === 'PROFILE') {
-      this.props.dispatch(creditWithdrawActions.childProfile({ "userId": data.userId }));
+      // this.props.dispatch(creditWithdrawActions.childProfile({ "userId": data.userId }));
     }
 
 
@@ -405,7 +405,7 @@ class AdminList extends React.Component {
 
       console.log("reqData____::", reqData);
       let eventData = { "id": "", "index": this.state.index, "noOfRecords": this.state.noOfRecords }
-      this.props.dispatch(creditWithdrawActions.withdrawChipsPnl(reqData, eventData));
+      // this.props.dispatch(creditWithdrawActions.withdrawChipsPnl(reqData, eventData));
     }
   }
 
@@ -452,7 +452,7 @@ class AdminList extends React.Component {
       let eventData = { "id": "", "index": this.state.index, "noOfRecords": this.state.noOfRecords }
 
       console.log("RENDER_____reqData__depositCreditSubmit::", reqData);
-      this.props.dispatch(creditWithdrawActions.depositChipsPnl(reqData, eventData));
+      // this.props.dispatch(creditWithdrawActions.depositChipsPnl(reqData, eventData));
     }
   }
 
@@ -517,7 +517,7 @@ class AdminList extends React.Component {
 
     console.log("datatatattatata", data);
 
-    this.props.dispatch(creditWithdrawActions.creditdata({ "userId": data.userId }));
+    // this.props.dispatch(creditWithdrawActions.creditdata({ "userId": data.userId }));
 
     this.setState({ creditActivityOpenModal: true, rowDataDetails: data })
   }
@@ -541,9 +541,9 @@ class AdminList extends React.Component {
       // console.log("RENDER_____this.state.creditType:", this.state.creditType);
 
       if (this.state.creditType === 'DEPOSIT') {
-        this.props.dispatch(creditWithdrawActions.depositCredit(reqData, eventData));
+        // this.props.dispatch(creditWithdrawActions.depositCredit(reqData, eventData));
       } else {
-        this.props.dispatch(creditWithdrawActions.createCreditWithdraw(reqData, eventData));
+        // this.props.dispatch(creditWithdrawActions.createCreditWithdraw(reqData, eventData));
       }
 
     }
@@ -596,7 +596,7 @@ class AdminList extends React.Component {
         let eventData = { "id": "", "index": this.state.index, "noOfRecords": this.state.noOfRecords }
         // this.props.dispatch(creditWithdrawActions.childListActiveUserCredit(data2));
 
-        this.props.dispatch(creditWithdrawActions.changePassword(reqData, eventData));
+        // this.props.dispatch(creditWithdrawActions.changePassword(reqData, eventData));
       }
     }
 
@@ -617,7 +617,7 @@ class AdminList extends React.Component {
         }
 
         let eventData = { "id": "", "index": this.state.index, "noOfRecords": this.state.noOfRecords }
-        this.props.dispatch(creditWithdrawActions.updateBetAccountStatus(reqData, eventData));
+        // this.props.dispatch(creditWithdrawActions.updateBetAccountStatus(reqData, eventData));
       }
     }
 
@@ -635,7 +635,7 @@ class AdminList extends React.Component {
         }
         console.log("updateUser______:::", updateUser);
         let eventData = { "id": "", "index": this.state.index, "noOfRecords": this.state.noOfRecords }
-        this.props.dispatch(creditWithdrawActions.updateUserInfo(updateUser, eventData));
+        // this.props.dispatch(creditWithdrawActions.updateUserInfo(updateUser, eventData));
       }
     }
 
@@ -830,7 +830,7 @@ class AdminList extends React.Component {
     console.log("entries??", data);
 
     let data2 = { "id": "", "index": 0, "noOfRecords": data }
-    this.props.dispatch(creditWithdrawActions.childListUser(data2));
+    // this.props.dispatch(creditWithdrawActions.childListUser(data2));
     this.setState({ showEntries: data, noOfRecords: data });
   };
 
@@ -839,7 +839,7 @@ class AdminList extends React.Component {
     console.log("data  ", data);
     this.setState({ index: data.selected });
     let data2 = { "id": "", "index": data.selected, "noOfRecords": this.state.noOfRecords }
-    this.props.dispatch(creditWithdrawActions.childListUser(data2));
+    // this.props.dispatch(creditWithdrawActions.childListUser(data2));
   }
 
   render() {

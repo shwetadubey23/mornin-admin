@@ -1,0 +1,310 @@
+
+@url="https://morning.jamsara.com"
+@token= Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTAyZDlhMjVkNTQ0NTNiYzQyOWU1ZmEiLCJjaHVuayI6MSwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjk4MzgzMjY3LCJleHAiOjIuMTc2NzgyMzM2MDAxNjk4NGUrMjF9.E5LDOQSPdIrbzcE3wXazYh6I8yS_YydVgH9T1MSyWLg
+
+
+###############
+POST https://morning.jamsara.com/api/dadmin/login HTTP/1.1
+Content-type: application/json
+# Authorization: {{token}}
+
+{
+   "username":"admin",
+   "password":"123456" 
+}
+ 
+
+###  
+POST https://morning.jamsara.com/api/dadmin/createImage HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+{
+   "name": "Best Wishes",
+   "image": "wishes.png"
+}
+
+###  
+POST https://morning.jamsara.com/api/dadmin/getImageList HTTP/1.1
+Content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTAyZDlhMjVkNTQ0NTNiYzQyOWU1ZmEiLCJjaHVuayI6MSwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjk4MzgzMjY3LCJleHAiOjIuMTc2NzgyMzM2MDAxNjk4NGUrMjF9.E5LDOQSPdIrbzcE3wXazYh6I8yS_YydVgH9T1MSyWLg
+
+{
+    "keyWord": "",
+    "pageNo": 1,
+    "size": 10
+}
+
+
+    
+###  
+POST https://morning.jamsara.com/api/dadmin/getAllImage HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+
+
+###  
+POST https://morning.jamsara.com/api/dadmin/updateImage HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+{
+    "name": "User11",
+    "image": "wishes.png"
+
+}
+
+### 
+POST https://morning.jamsara.com/api/dadmin/deleteImage HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+{
+  "id": "653a2a2c24e1bcb575dc84d2"
+
+}
+
+###  
+POST https://morning.jamsara.com/api/dadmin/updateImageStatus HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+{
+   "id":  "653a2a2c24e1bcb575dc84d2"
+}
+
+
+###   
+POST https://morning.jamsara.com/api/dadmin/createMessageSubCategory HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+
+{
+   "name": "Best Wishes"
+}
+
+###  
+POST https://morning.jamsara.com/api/dadmin/getMessageSubCategoryList HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+{
+
+   "keyWord": "",
+    "pageNo": 1,
+    "size": 10
+}
+
+
+###   
+POST https://morning.jamsara.com/api/dadmin/getAllMessageSubCategory HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+
+
+###  
+POST https://morning.jamsara.com/api/dadmin/updateMessageSubCategory HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+{
+    "id": "653a2cc444ce87b75b286a30",
+   "name": "update moment"
+}
+
+
+###  
+POST https://morning.jamsara.com/api/dadmin/deleteMessageSubCategory HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+{  
+
+   "id": "653a2cc444ce87b75b286a30"
+    
+}
+
+###  
+POST https://morning.jamsara.com/api/dadmin/updateMessageSubCategoryStatus HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+{
+    "id": "64c7848b0f36f0ae27ab9102"
+}
+
+
+###  
+POST https://morning.jamsara.com/api/dadmin/createMessage HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+{
+  "messageSubCategoryId": "653a2cc444ce87b75b286a30",
+  "message": "sdvgrfg"
+}
+
+###  
+POST https://morning.jamsara.com/api/dadmin/updateMessage HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+{
+  "id": "653a2f3f2d176fba88ed4b9d",
+  "messageSubCategory": "653a2cc444ce87b75b286a30",
+  "message": "done"
+
+
+}
+
+
+# ###  
+# POST https://morning.jamsara.com/api/dadmin/getAllMessage HTTP/1.1
+# Content-type: application/json
+# Authorization: {{token}}
+
+
+###   
+POST https://morning.jamsara.com/api/dadmin/getMessageList HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+
+{
+    "keyWord": "",
+    "pageNo": 1,
+    "size": 10
+}
+
+
+###  
+POST https://morning.jamsara.com/api/dadmin/deleteMessgae HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+{
+  "id": "653a2f3f2d176fba88ed4b9d"
+}
+
+
+###  
+POST https://morning.jamsara.com/api/dadmin/createQuotesSubCategory HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+{
+  "name": "Good Ouotes"
+}
+
+###  
+POST https://morning.jamsara.com/api/dadmin/getQuotesSubCategoryList HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+{
+  
+   "keyWord": "",
+    "pageNo": 1,
+    "size": 10
+}
+
+###  
+POST https://morning.jamsara.com/api/dadmin/getAllQuotesSubCategory HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+
+
+###  
+POST https://morning.jamsara.com/api/dadmin/updateQuotesSubCategory HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+{
+  "name": "653a399c5939c2c2ddbbea70"
+}
+
+###  
+POST https://morning.jamsara.com/api/dadmin/deleteQuotesSubCategory HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+{
+  "id": "653a399c5939c2c2ddbbea70"
+}
+
+###  
+POST https://morning.jamsara.com/api/dadmin/updateQuotesSubCategoryStatus HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+{
+  "id": "653a3b199fbf57c3f71dc7ac"
+}
+
+
+
+
+###  
+POST https://morning.jamsara.com/api/dadmin/createQuotes HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+{
+    "quotesSubCategoryId": "48617070792051756f746573",
+    "quotes": "move"
+
+}
+
+# ###  
+# POST https://morning.jamsara.com/api/dadmin/getAllQuotes HTTP/1.1
+# Content-type: application/json
+# Authorization: {{token}}
+
+
+###  
+POST https://morning.jamsara.com/api/dadmin/getQuotesList HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+{
+   "keyWord": "",
+    "pageNo": 1,
+    "size": 10
+}
+
+
+###  
+POST https://morning.jamsara.com/api/dadmin/updateQuotes HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+{ 
+    "id": "653a3225035684bd127f8664",
+    "quotesSubCategoryId": "48617070792051756f746573",
+    "quotes": "test"
+}
+
+
+###  
+POST https://morning.jamsara.com/api/dadmin/deleteQuotes HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+{
+  "id": "653a3225035684bd127f8664"
+}
+
+
+###  
+POST https://morning.jamsara.com/api/dadmin/updateQuotesStatus HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+{
+  "id": "653a373536efb4c064302a61"
+}
+
