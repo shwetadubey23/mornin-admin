@@ -9,6 +9,7 @@ export default function CreateAddCategoryModal(props) {
     errorsBanner,
     createBannerSubmit,
   } = props;
+  console.log('filesDetailsfilesDetailsfilesDetailsfilesDetails', filesDetails)
   return (
 
     <div className={addBannerCreateModal ? "fixed w-full top-0 left-0 h-full inset-0 z-40 overflow-hidden mt-0 flex justify-center items-center overflow-y-auto bg-black/40 md:p-0 p-1" : "hidden"} style={{ marginTop: '0rem', }}  >

@@ -112,7 +112,7 @@ function createQuotesCategory(data) {
                     dispatch(alertActions.success("Quotes Add Successfully."));
                     dispatch(success(users));
                     dispatch(this.getQuotesCategoryList(reqData));
-                    dispatch(this.uploadImageClear());
+                    // dispatch(this.uploadImageClear());
 
 
                 },
@@ -143,7 +143,7 @@ function createQuotes(data) {
                     dispatch(alertActions.success("Quotes Add Successfully."));
                     dispatch(success(users));
                     dispatch(this.getQuotesList(reqData));
-                    dispatch(this.uploadImageClear());
+                    // dispatch(this.uploadImageClear());
 
 
                 },
@@ -204,7 +204,7 @@ function updateQuotesCategory(data) {
                     dispatch(alertActions.success("Quotes Update Successfully."));
                     dispatch(success(users));
                     dispatch(this.getQuotesCategoryList(reqData));
-                    dispatch(this.uploadImageClear());
+                    // dispatch(this.uploadImageClear());
 
                 },
                 error => {
@@ -233,7 +233,7 @@ function updateQuotes(data) {
                     dispatch(alertActions.success("Quotes Update Successfully."));
                     dispatch(success(users));
                     dispatch(this.getQuotesList(reqData));
-                    dispatch(this.uploadImageClear());
+                    // dispatch(this.uploadImageClear());
 
                 },
                 error => {
@@ -447,7 +447,7 @@ function getQuotesList(data) {
                 users => {
                     // console.log("getQuotesList $$$$ action:", users);
                     dispatch(success(users));
-                    dispatch(this.uploadImageClear());
+                    // dispatch(this.uploadImageClear());
                 },
                 error => {
                     dispatch(alertActions.error(error));
@@ -468,7 +468,7 @@ function getMessageCategoryList(data) {
                 users => {
                     // console.log("getMessageCategoryList $$$$ action:", users);
                     dispatch(success(users));
-                    dispatch(this.uploadImageClear());
+                    // dispatch(this.uploadImageClear());
                 },
                 error => {
                     dispatch(alertActions.error(error));

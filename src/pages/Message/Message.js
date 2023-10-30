@@ -229,11 +229,6 @@ class Message extends Component {
 
   createMessageSubmit = () => {
 
-    // let { users } = this.props;
-    // let { filesDetails,
-    //   //  filesDetailsVideo
-    // } = users;
-    // console.log('filesDetailsfilesDetails__________', filesDetails);
     if (this.handleValidationAddMessage()) {
       let reqData = {
         "message": this.state.fieldsMessage.message,
@@ -249,10 +244,6 @@ class Message extends Component {
 
  
   updateMessageSubmit = () => {
-    let { users } = this.props;
-    let { filesDetails } = users;
-    console.log('filesDetailsfilesDetailsfilesDetailsfilesDetailsfilesDetails::::???', filesDetails);
-
     if (this.handleValidationUpdateMessage()) {
       let reqData = {
         "id": this.state.fieldsMessageUpdate.id,
@@ -422,7 +413,7 @@ class Message extends Component {
 
 
                                       {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.MessageCategoryId && element.MessageCategoryId.name ? element.MessageCategoryId.name : "-"}</td> */}
-                                      <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.messageSubCategoryId ? element.messageSubCategoryId : "-"}</td>
+                                      <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.messageSubCategoryId && element.messageSubCategoryId.name ? element.messageSubCategoryId.name : "-"}</td>
 
                                       <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.message ? element.message : "-"}</td>
 

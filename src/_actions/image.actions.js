@@ -77,7 +77,7 @@ function createImage(data) {
                     dispatch(alertActions.success("Image Add Successfully."));
                     dispatch(success(users));
                     dispatch(this.getImageList(reqData));
-                    dispatch(this.uploadImageClear());
+                    // dispatch(this.uploadImageClear());
 
 
                 },
@@ -108,7 +108,7 @@ function createPTPackage(data) {
                     dispatch(alertActions.success("Package Add Successfully."));
                     dispatch(success(users));
                     dispatch(this.getPTPackageList(reqData));
-                    dispatch(this.uploadImageClear());
+                    // dispatch(this.uploadImageClear());
 
 
                 },
@@ -195,10 +195,10 @@ function updateImage(data) {
 
                 users => {
                     // toast("Password Updated successfully.")
-                    dispatch(alertActions.success("Banner Update Successfully."));
+                    dispatch(alertActions.success("Image Update Successfully."));
                     dispatch(success(users));
                     dispatch(this.getImageList(reqData));
-                    dispatch(this.uploadImageClear());
+                    // dispatch(this.uploadImageClear());
 
                 },
                 error => {

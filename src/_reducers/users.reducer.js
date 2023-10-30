@@ -962,7 +962,7 @@ export function users(state = {}, action) {
           ...state,
           loading: false,
           imageUploadSuccess: true,
-          // filesDetails: action.uploadImage.filesDetails
+          filesDetails: action.uploadImage.filesDetails
         };
   
       case userConstants.FILE_UPLOAD_STATUS_FAILURE:
