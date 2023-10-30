@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { imageActions, userActions, } from '../../_actions';
+import { messageActions, userActions, } from '../../_actions';
 import Loader from '../../components/Loader/Loader';
 import moment from 'moment'
 import ReactPaginate from 'react-paginate';
@@ -13,6 +13,7 @@ import { isMobile } from "react-device-detect";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import { BiSearch } from "react-icons/bi";
+import { RiDeleteBinLine } from "react-icons/ri";
 import { MdAdd,MdOutlineEdit } from "react-icons/md";
 
 
@@ -23,10 +24,10 @@ class Quotes extends Component {
       isVideo: false,
       isVideoUpdate: false,
       massageRowData: {},
-      fieldsBanner: {},
-      errorsBanner: {},
-      fieldsBannerUpdate: {},
-      errorsBannerMassage: {},
+      fieldsQuotes: {},
+      errorsQuotes: {},
+      fieldsQuotesUpdate: {},
+      errorsQuotesMassage: {},
       fieldsUserPasswordUpdate: {},
       errorsUpdatePassword: {},
       creditpasswordOpenModal: false,
@@ -34,9 +35,9 @@ class Quotes extends Component {
       type: null,
       gameType: null,
       rankType: null,
-      addBannerCreateModal: false,
+      addQuotesCreateModal: false,
       moreDetailsCreateModal: false,
-      UpdateBannerCreateModal: false,
+      UpdateQuotesCreateModal: false,
       loginToThisAccountModal: false,
       offset: 0,
       size: 10,
@@ -55,8 +56,8 @@ class Quotes extends Component {
       "pageNo": this.state.pageNo,
       "size": this.state.size
     }
-    // this.props.dispatch(imageActions.getImageList(temp))
-    // this.props.dispatch(imageActions.getAllBannerCategory())
+    this.props.dispatch(messageActions.getQuotesList(temp))
+    this.props.dispatch(messageActions.getAllQuotesCategory())
 
 
 
@@ -65,19 +66,19 @@ class Quotes extends Component {
 
     // console.log("STATIC______nextProps.Massage.addUserSuccess", nextProps.massage.addUserSuccess);
 
-    if (nextProps.image.addUserSuccess) {
+    if (nextProps.message.addUserSuccess) {
       return {
         ...nextProps,
         updatePwdformData: {
           "id": "",
           "password": ""
         },
-        fieldsBanner: {},
-        errorsBanner: {},
+        fieldsQuotes: {},
+        errorsQuotes: {},
         fieldsUserPasswordUpdate: {},
         errorsUpdatePassword: {},
-        addBannerCreateModal: false,
-        UpdateBannerCreateModal: false,
+        addQuotesCreateModal: false,
+        UpdateQuotesCreateModal: false,
         moreDetailsCreateModal: false,
         creditpasswordOpenModal: false,
         type: null,
@@ -112,7 +113,7 @@ class Quotes extends Component {
       "pageNo": data.selected + 1,
       "size": this.state.size
     }
-    this.props.dispatch(imageActions.getImageList(datatemp));
+    this.props.dispatch(messageActions.getQuotesList(datatemp));
   }
   handleSearch = (event) => {
     // // console.log("666666666666666", event.target.value);
@@ -124,9 +125,9 @@ class Quotes extends Component {
       "pageNo": 1,
       "size": this.state.size
     }
-    this.props.dispatch(imageActions.getImageList(data));
+    this.props.dispatch(messageActions.getQuotesList(data));
   }
-  disableBannerCategory = (data) => {
+  disableQuotesCategory = (data) => {
     let datatemp = {
       "id": data.id,
     }
@@ -139,11 +140,11 @@ class Quotes extends Component {
 
 
       title: 'Confirm to Change Status of User?',
-      message: `Are you sure about  ${data.name}?`,
+      message: `Are you sure about  ${data.quotes}?`,
       buttons: [
         {
           label: 'Yes',
-          onClick: () => this.props.dispatch(imageActions.disableBannerCategory(datatemp, paginationdata))
+          onClick: () => this.props.dispatch(messageActions.disableQuotes(datatemp, paginationdata))
         },
         {
           label: 'No'
@@ -151,7 +152,7 @@ class Quotes extends Component {
       ]
     });
   }
-  deleteBannerCategory = (data) => {
+  deleteQuotesCategory = (data) => {
     let datatemp = {
       "id": data.id,
     }
@@ -164,11 +165,11 @@ class Quotes extends Component {
     confirmAlert({
 
       title: 'Confirm to Delete?',
-      message: `Are you sure to delete ${data.name}?`,
+      message: `Are you sure to delete ${data.quotes}?`,
       buttons: [
         {
           label: 'Yes',
-          onClick: () => this.props.dispatch(imageActions.deleteBannerCategory(datatemp, paginationData))
+          onClick: () => this.props.dispatch(messageActions.deleteQuotes(datatemp, paginationData))
         },
         {
           label: 'No'
@@ -188,69 +189,74 @@ class Quotes extends Component {
     this.setState({ moreDetailsCreateModal: false });
   }
 
- 
+  handleOpenCreateModalUpdatePassword = (data) => {
+    this.setState({ UpdateQuotesCreateModal: true, fieldsQuotesUpdate: data });
+  }
+  handleUpdatePasswordHideModal = () => {
+    this.setState({ UpdateQuotesCreateModal: false });
+  }
 
-  handleAddBannerHideModal = () => {
-    this.setState({ addBannerCreateModal: false , fieldsBanner:{}, errorsBanner:{}  });
+  handleAddQuotesHideModal = () => {
+    this.setState({ addQuotesCreateModal: false , fieldsQuotes:{}, errorsQuotes:{}  });
     // this.setState({ appsettingUpdateModal: false });
   }
 
   handleOpenCreateModal = () => {
-    this.setState({ addBannerCreateModal: true,  });
+    this.setState({ addQuotesCreateModal: true,  });
   }
-  inputAddBannerChange = (e) => {
+  inputAddQuotesChange = (e) => {
     e.preventDefault();
     let { name, value } = e.target;
-    let fieldsBanner = this.state.fieldsBanner;
-    let errorsBanner = this.state.errorsBanner;
-    fieldsBanner[name] = value;
+    let fieldsQuotes = this.state.fieldsQuotes;
+    let errorsQuotes = this.state.errorsQuotes;
+    fieldsQuotes[name] = value;
     // console.log(name, value);
-    errorsBanner[name] = "";
-    this.setState({ fieldsBanner, errorsBanner });
+    errorsQuotes[name] = "";
+    this.setState({ fieldsQuotes, errorsQuotes });
   }
-  inputChangeUpdateBanner = (e) => {
+  inputChangeUpdateQuotes = (e) => {
     e.preventDefault();
     let { name, value } = e.target;
-    let fieldsBannerUpdate = this.state.fieldsBannerUpdate;
-    let errorsBannerMassage = this.state.errorsBannerMassage;
-    fieldsBannerUpdate[name] = value;
-    errorsBannerMassage[name] = "";
+    let fieldsQuotesUpdate = this.state.fieldsQuotesUpdate;
+    let errorsQuotesMassage = this.state.errorsQuotesMassage;
+    fieldsQuotesUpdate[name] = value;
+    errorsQuotesMassage[name] = "";
     // console.log(name, value);
-    this.setState({ fieldsBannerUpdate, errorsBannerMassage });
+    this.setState({ fieldsQuotesUpdate, errorsQuotesMassage });
   }
 
-  createBannerSubmit = () => {
+  createQuotesSubmit = () => {
 
     // let { users } = this.props;
     // let { filesDetails,
     //   //  filesDetailsVideo
     // } = users;
     // console.log('filesDetailsfilesDetails__________', filesDetails);
-    if (this.handleValidationAddBanner()) {
+    if (this.handleValidationAddQuotes()) {
       let reqData = {
-        "flag": this.state.fieldsBanner.flag,
-        "name": this.state.fieldsBanner.name,
+        "quotesSubCategoryId": this.state.fieldsQuotes.quotesSubCategoryId,
+        "quotes": this.state.fieldsQuotes.quotes,
         // "image": this.state && this.state.imageName ? this.state.imageName : null,
 
       }
       // console.log("createRestoCategory>>>>>>>>>>>>>>>>>>>>>>>>>>>>", reqData);
-      this.props.dispatch(imageActions.createBannerCategory(reqData));
+      this.props.dispatch(messageActions.createQuotes(reqData));
     }
 
   }
 
  
-  updateBannerSubmit = () => {
+  updateQuotesSubmit = () => {
     let { users } = this.props;
     let { filesDetails } = users;
     console.log('filesDetailsfilesDetailsfilesDetailsfilesDetailsfilesDetails::::???', filesDetails);
 
-    if (this.handleValidationUpdateBanner()) {
+    if (this.handleValidationUpdateQuotes()) {
       let reqData = {
-        "id": this.state.fieldsBannerUpdate.id,
-        "flag": this.state.fieldsBannerUpdate.flag,
-        "name": this.state.fieldsBannerUpdate.name,
-        // "image": this.state && this.state.imageName ? this.state.imageName : this.state.fieldsBannerUpdate.image,
+        "id": this.state.fieldsQuotesUpdate.id,
+        "quotesSubCategoryId": this.state.fieldsQuotesUpdate.quotesSubCategoryId,
+        "quotes": this.state.fieldsQuotesUpdate.quotes,
+        // "image": this.state && this.state.imageName ? this.state.imageName : this.state.fieldsQuotesUpdate.image,
       }
       let paginationData = {
         "keyWord": this.state.keyWord,
@@ -260,55 +266,55 @@ class Quotes extends Component {
 
       // console.log("update>>>>>>>>>>>>>>>>>>>>>>>000000000", reqData);
 
-      this.props.dispatch(imageActions.updateBannerCategory(reqData, paginationData));
+      this.props.dispatch(messageActions.updateQuotes(reqData, paginationData));
     }
 
   }
 
-  handleValidationUpdateBanner = () => {
-    let fieldsBannerUpdate = this.state.fieldsBannerUpdate;
-    let errorsBannerMassage = {};
+  handleValidationUpdateQuotes = () => {
+    let fieldsQuotesUpdate = this.state.fieldsQuotesUpdate;
+    let errorsQuotesMassage = {};
     let formIsValid = true;
 
-    //flag
-    if (!fieldsBannerUpdate["flag"] || fieldsBannerUpdate["flag"] === "") {
+    //quotesSubCategoryId
+    if (!fieldsQuotesUpdate["quotesSubCategoryId"] || fieldsQuotesUpdate["quotesSubCategoryId"] === "") {
       formIsValid = false;
-      errorsBannerMassage["flag"] = "Cannot be empty";
+      errorsQuotesMassage["quotesSubCategoryId"] = "Cannot be empty";
     }
 
 
     //name
-    if (!fieldsBannerUpdate["name"] || fieldsBannerUpdate["name"] === "") {
+    if (!fieldsQuotesUpdate["quotes"] || fieldsQuotesUpdate["quotes"] === "") {
       formIsValid = false;
-      errorsBannerMassage["name"] = "Cannot be empty";
+      errorsQuotesMassage["quotes"] = "Cannot be empty";
     }
 
 
-    this.setState({ errorsBannerMassage: errorsBannerMassage });
+    this.setState({ errorsQuotesMassage: errorsQuotesMassage });
     return formIsValid;
   }
 
-  handleValidationAddBanner = () => {
-    let fieldsBanner = this.state.fieldsBanner;
-    let errorsBanner = {};
+  handleValidationAddQuotes = () => {
+    let fieldsQuotes = this.state.fieldsQuotes;
+    let errorsQuotes = {};
     let formIsValid = true;
 
-    //bannerCategoryId
-    if (!fieldsBanner["flag"] || fieldsBanner["flag"] === "") {
+    //QuotesCategoryId
+    if (!fieldsQuotes["quotesSubCategoryId"] || fieldsQuotes["quotesSubCategoryId"] === "") {
       formIsValid = false;
-      errorsBanner["flag"] = "Cannot be empty flag";
+      errorsQuotes["quotesSubCategoryId"] = "Cannot be empty quotesSubCategoryId";
     }
     //name
-    if (!fieldsBanner["name"] || fieldsBanner["name"] === "") {
+    if (!fieldsQuotes["quotes"] || fieldsQuotes["quotes"] === "") {
       formIsValid = false;
-      errorsBanner["name"] = "Cannot be empty name";
+      errorsQuotes["quotes"] = "Cannot be empty quotes";
     }
 
 
 
 
-    console.log('errorsMassageerrorsMassageerrorsMassageerrorsMassage', errorsBanner);
-    this.setState({ errorsBanner: errorsBanner });
+    console.log('errorsMassageerrorsMassageerrorsMassageerrorsMassage', errorsQuotes);
+    this.setState({ errorsQuotes: errorsQuotes });
     return formIsValid;
   }
 
@@ -334,24 +340,22 @@ class Quotes extends Component {
 
   render() {
 
-    let { image, users } = this.props;
-    let {  loading, allBannerCat,bannerCarItems,
-      bannerCatTotal, } = image;
+    let { message, users } = this.props;
+    let {  loading, AllQuotes,Quotes,Quotestotal
+      } = message;
     let { filesDetails } = users;
-    // let { allMassage } = Massage;
-    console.log("RENDER111111111111111", bannerCarItems, bannerCatTotal);
-    // // console.log('this.state.imageName', this.state.imageName);
+    console.log("QuotesQuotesQuotes", AllQuotes);
 
 
     return (
 
       <>
-        {/* <div>
+        <div>
         <Loader
             active={loading}
             text = "Please wait....."
           />
-        </div> */}
+        </div>
 
         <div className="flex flex-col flex-1 overflow-hidden overflow-x-auto overflow-y-auto">
           <main className="relative flex-1">
@@ -405,15 +409,16 @@ class Quotes extends Component {
                             </thead>
 
                             <tbody>
+                              {/* {JSON.stringify(Quotes)} */}
                               {
-                                bannerCarItems && bannerCarItems.length > 0 ?
-                                  bannerCarItems.map((element, index) => (<React.Fragment key={element.id}>
+                                Quotes && Quotes.length > 0 ?
+                                  Quotes.map((element, index) => (<React.Fragment key={element.id}>
                                     <tr key={element.id} className="bg-white border-b border-black border-opacity-10 ">
                                       <td className="px-6 py-3 text-sm font-medium text-gray-600 whitespace-nowrap">
                                         {this.state.offset + index + 1}</td>
 
 
-                                      {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.bannerCategoryId && element.bannerCategoryId.name ? element.bannerCategoryId.name : "-"}</td> */}
+                                      {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.QuotesCategoryId && element.QuotesCategoryId.name ? element.QuotesCategoryId.name : "-"}</td> */}
                                       <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.quotesSubCategoryId ? element.quotesSubCategoryId : "-"}</td>
 
                                       <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.quotes ? element.quotes : "-"}</td>
@@ -450,7 +455,7 @@ class Quotes extends Component {
                                       {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap ">
                                         <div class="flex justify-center">
                                           <label class="flex items-center cursor-pointer targetablepx-4 tooltip">
-                                            <div class="relative" onClick={() => this.disableBannerCategory(element)}>
+                                            <div class="relative" onClick={() => this.disableQuotesCategory(element)}>
                                               <input type="checkbox" id="toggleB" class="sr-only" />
                                               <div class="block bg-gray-600 w-10 h-6 rounded-full"></div>
                                               <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition"></div>
@@ -463,11 +468,11 @@ class Quotes extends Component {
                                       <td className="px-2 py-3 text-sm text-gray-600 whitespace-nowrap">
                                         <span className="flex justify-center pl-1">
                                           {element.isDisable === false ?
-                                            <div class="targetablepx-4 tooltip px-3 py-1 font-medium tracking-wider text-blue-100 bg-green-700 border rounded-md shadow-sm hover:shadow-lg hover:bg-green-400 cursor-pointer" onClick={() => this.disableBannerCategory(element)}>
+                                            <div class="targetablepx-4 tooltip px-3 py-1 font-medium tracking-wider text-blue-100 bg-green-700 border rounded-md shadow-sm hover:shadow-lg hover:bg-green-400 cursor-pointer" onClick={() => this.disableQuotesCategory(element)}>
 
                                               <label>Enabled</label>
                                             </div>
-                                            : <div class="targetablepx-4 tooltip px-3 py-1 font-medium tracking-wider text-blue-100 bg-red-500 border rounded-md shadow-sm hover:shadow-lg hover:bg-green-400 cursor-pointer" onClick={() => this.disableBannerCategory(element)}>
+                                            : <div class="targetablepx-4 tooltip px-3 py-1 font-medium tracking-wider text-blue-100 bg-red-500 border rounded-md shadow-sm hover:shadow-lg hover:bg-green-400 cursor-pointer" onClick={() => this.disableQuotesCategory(element)}>
 
                                               <label>Disabled</label>
                                             </div>}
@@ -488,18 +493,18 @@ class Quotes extends Component {
 
                                           <span className="relative">
                                             <div class="targetablepx-4 tooltip p-2 rounded-full  font-medium    hover:bg-blue-100 cursor-pointer" onClick={() => this.handleOpenCreateModalUpdatePassword(element)}>
-                                              <span className='top-0 left-0 p-6 mx-auto -mt-8 text-sm text-white bg-gray-500 rounded tooltip-text'>Edit</span>
+                                              {/* <span className='top-0 left-0 p-6 mx-auto -mt-8 text-sm text-white bg-gray-500 rounded tooltip-text'>Edit</span> */}
 
-                                              <MdOutlineEdit style={{ fontSize: "1.5rem" }} />
+                                              <MdOutlineEdit style={{ fontSize: "1.5rem" }} title='Edit' />
                                             </div>
                                           </span>
 
-                                          {/* <span className="relative">
-                                            <div class="targetablepx-4 tooltip p-2 rounded-full  font-medium    hover:bg-blue-100 cursor-pointer" onClick={() => this.deleteBannerCategory(element)}>
-                                              <span className='top-0 left-0 p-6 mx-auto -mt-8 -ml-2 text-sm text-white bg-gray-500 rounded tooltip-text'>Delete</span>
-                                              <RiDeleteBinLine style={{ fontSize: "1.5rem" }} />
+                                          <span className="relative">
+                                            <div class="targetablepx-4 tooltip p-2 rounded-full  font-medium    hover:bg-blue-100 cursor-pointer" onClick={() => this.deleteQuotesCategory(element)}>
+                                              {/* <span className='top-0 left-0 p-6 mx-auto -mt-8 -ml-2 text-sm text-white bg-gray-500 rounded tooltip-text'>Delete</span> */}
+                                              <RiDeleteBinLine style={{ fontSize: "1.5rem" }} title="Delete"/>
                                             </div>
-                                          </span> */}
+                                          </span>
                                         </div>
                                       </td>
 
@@ -520,13 +525,13 @@ class Quotes extends Component {
                       isMobile ?
                         <nav className="relative z-0 flex justify-end mt-5 w-76">
                           {
-                            bannerCatTotal && bannerCatTotal > 10 ?
+                            Quotestotal && Quotestotal > 10 ?
                               <ReactPaginate
                                 previousLabel={'Prev'}
                                 nextLabel={'Next'}
                                 breakLabel={'...'}
                                 breakClassName={'break-me'}
-                                pageCount={bannerCatTotal / this.state.size}
+                                pageCount={Quotestotal / this.state.size}
                                 marginPagesDisplayed={1}
                                 pageRangeDisplayed={1}
                                 onPageChange={this.handlePageClick}
@@ -537,13 +542,13 @@ class Quotes extends Component {
                               : null}
                         </nav> : <nav className="relative z-0 flex justify-end mt-5 w-76">
                           {
-                            bannerCatTotal && bannerCatTotal > 10 ?
+                            Quotestotal && Quotestotal > 10 ?
                               <ReactPaginate
                                 previousLabel={'Previous'}
                                 nextLabel={'Next'}
                                 breakLabel={'...'}
                                 breakClassName={'break-me'}
-                                pageCount={bannerCatTotal / this.state.size}
+                                pageCount={Quotestotal / this.state.size}
                                 marginPagesDisplayed={3}
                                 pageRangeDisplayed={3}
                                 onPageChange={this.handlePageClick}
@@ -564,18 +569,18 @@ class Quotes extends Component {
         <DialogExample />
 
         <CreateAddCategoryModal
-          addBannerCreateModal={this.state.addBannerCreateModal}
-          fieldsBanner={this.state.fieldsBanner}
-          errorsBanner={this.state.errorsBanner}
-          allBannerCat={allBannerCat}
-          inputAddBannerChange={this.inputAddBannerChange}
+          addQuotesCreateModal={this.state.addQuotesCreateModal}
+          fieldsQuotes={this.state.fieldsQuotes}
+          errorsQuotes={this.state.errorsQuotes}
+          AllQuotes={AllQuotes}
+          inputAddQuotesChange={this.inputAddQuotesChange}
           handleFile={this.handleFile}
           handleFile2={this.handleFile2}
-          createBannerSubmit={this.createBannerSubmit}
+          createQuotesSubmit={this.createQuotesSubmit}
           handleSelectType={this.handleSelectType}
           handleSelectGameType={this.handleSelectGameType}
           handleSelectRankType={this.handleSelectRankType}
-          handleAddBannerHideModal={this.handleAddBannerHideModal}
+          handleAddQuotesHideModal={this.handleAddQuotesHideModal}
           inputChangeIsVideo={this.inputChangeIsVideo}
           isVideo={this.state.isVideo}
           filesDetails={filesDetails}
@@ -594,12 +599,12 @@ class Quotes extends Component {
         />
 
         <UpdateCategoryModal
-          UpdateBannerCreateModal={this.state.UpdateBannerCreateModal}
-          fieldsBannerUpdate={this.state.fieldsBannerUpdate}
-          errorsBannerMassage={this.state.errorsBannerMassage}
-          inputChangeUpdateBanner={this.inputChangeUpdateBanner}
-          updateBannerSubmit={this.updateBannerSubmit}
-          allBannerCat={allBannerCat}
+          UpdateQuotesCreateModal={this.state.UpdateQuotesCreateModal}
+          fieldsQuotesUpdate={this.state.fieldsQuotesUpdate}
+          errorsQuotesMassage={this.state.errorsQuotesMassage}
+          inputChangeUpdateQuotes={this.inputChangeUpdateQuotes}
+          updateQuotesSubmit={this.updateQuotesSubmit}
+          AllQuotes={AllQuotes}
 
           handleFile={this.handleFile}
           handleFile2={this.handleFile2}
@@ -629,9 +634,9 @@ class Quotes extends Component {
   }
 }
 function mapStateToProps(state) {
-  const { image, users, product, } = state;
+  const { message, users, product, } = state;
   return {
-    image,
+    message,
     users,
     product
     // kyc,

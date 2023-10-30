@@ -36,6 +36,21 @@ export function message(state = {}, action) {
         error: action.error
       };
 
+    case messageConstants.ADD_QUOTES_REQUEST:
+      return {
+        ...state
+      };
+    case messageConstants.ADD_QUOTES_SUCCESS:
+      return {
+        ...state,
+        addUserSuccess: true
+      };
+    case messageConstants.ADD_QUOTES_FAILURE:
+      return {
+        ...state,
+        error: action.error
+      };
+
     case messageConstants.ADD_MESSAGE_REQUEST:
       return {
         ...state
@@ -115,7 +130,7 @@ export function message(state = {}, action) {
         ...state,
         addUserSuccess: false,
         loading: false,
-        allPackage: action.users.getAllPtPackage,
+        AllQuotes: action.users.getAllQuotesCategory,
         // allrestaurentTotal: action.users.getAllrestaurent
       };
     case messageConstants.GETALL_PACKAGE_FAILURE:
@@ -154,6 +169,21 @@ export function message(state = {}, action) {
         addUserSuccess: true
       };
     case messageConstants.UPDATE_PACKAGE_FAILURE:
+      return {
+        ...state,
+        error: action.error
+      };
+
+    case messageConstants.UPDATE_QUOTES_REQUEST:
+      return {
+        ...state
+      };
+    case messageConstants.UPDATE_QUOTES_SUCCESS:
+      return {
+        ...state,
+        addUserSuccess: true
+      };
+    case messageConstants.UPDATE_QUOTES_FAILURE:
       return {
         ...state,
         error: action.error
@@ -311,6 +341,64 @@ export function message(state = {}, action) {
         loading: false,
       };
     case messageConstants.DELETE_PT_PACKAGE_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      };
+
+
+    case messageConstants.GET_QUOTES_LIST_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case messageConstants.GET_QUOTES_LIST_SUCCESS:
+      return {
+        ...state,
+        addUserSuccess: false,
+        loading: false,
+        Quotes: action.users.getQuotesList.list,
+        Quotestotal: action.users.getQuotesList.total
+      };
+    case messageConstants.GET_QUOTES_LIST_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      };
+
+    case messageConstants.DISABLE_QUOTES_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case messageConstants.DISABLE_QUOTES_SUCCESS:
+      return {
+        ...state,
+        addUserSuccess: false,
+        loading: false,
+      };
+    case messageConstants.DISABLE_QUOTES_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      };
+
+
+    case messageConstants.DELETE_QUOTES_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case messageConstants.DELETE_QUOTES_SUCCESS:
+      return {
+        ...state,
+        addUserSuccess: false,
+        loading: false,
+      };
+    case messageConstants.DELETE_QUOTES_FAILURE:
       return {
         ...state,
         loading: false,

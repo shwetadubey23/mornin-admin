@@ -257,7 +257,7 @@ class Message extends Component {
       let reqData = {
         "id": this.state.fieldsMessageUpdate.id,
         "message": this.state.fieldsMessageUpdate.message,
-        "messageSubCategoryId": this.state.fieldsMessageUpdate.messageSubCategoryId,
+        "messageSubCategory": this.state.fieldsMessageUpdate.messageSubCategory,
         // "image": this.state && this.state.imageName ? this.state.imageName : this.state.fieldsMessageUpdate.image,
       }
       let paginationData = {
@@ -286,9 +286,9 @@ class Message extends Component {
 
 
     //name
-    if (!fieldsMessageUpdate["messageSubCategoryId"] || fieldsMessageUpdate["messageSubCategoryId"] === "") {
+    if (!fieldsMessageUpdate["messageSubCategory"] || fieldsMessageUpdate["messageSubCategory"] === "") {
       formIsValid = false;
-      errorsMessageMassage["messageSubCategoryId"] = "Cannot be empty";
+      errorsMessageMassage["messageSubCategory"] = "Cannot be empty";
     }
 
 

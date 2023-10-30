@@ -360,7 +360,7 @@ function deleteQuotes(data) {
         headers: header,
         body: JSON.stringify(data)
     }
-    return fetch(CONST.BACKEND_URL + `/deleteQuotesSub`, requestOptions)
+    return fetch(CONST.BACKEND_URL + `/deleteQuotes`, requestOptions)
         .then(handleResponse)
         .then(data => {
 
@@ -383,7 +383,7 @@ function disableQuotes(data) {
         headers: header,
         body: JSON.stringify(data)
     }
-    return fetch(CONST.BACKEND_URL + `/updateQuotesSubStatus`, requestOptions)
+    return fetch(CONST.BACKEND_URL + `/updateQuotesStatus`, requestOptions)
         .then(handleResponse)
         .then(data => {
 

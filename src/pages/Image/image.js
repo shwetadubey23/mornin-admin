@@ -87,7 +87,7 @@ class Image extends Component {
 
       }
     }
-    // console.log('nextProps.users.isMatchImageUpdate', nextProps.users.filesDetails);
+    console.log('nextProps.users.isMatchImageUpdate', nextProps.users.filesDetails);
     if (nextProps.users.filesDetails) {
       return {
         ...nextProps,
@@ -233,12 +233,9 @@ class Image extends Component {
     // console.log('filesDetailsfilesDetails__________', filesDetails);
     if (this.handleValidationAddBanner()) {
       let reqData = {
-        // "flag": this.state.fieldsBanner.flag,
         "name": this.state.fieldsBanner.name,
         "image": this.state && this.state.imageName ? this.state.imageName : null,
-
       }
-      console.log("createRestoCategory>>>>>>>>>>>>>>>>>>>>>>>>>>>>", reqData);
       this.props.dispatch(imageActions.createImage(reqData));
     }
 

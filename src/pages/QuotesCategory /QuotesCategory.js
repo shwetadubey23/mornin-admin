@@ -24,10 +24,10 @@ class QuotesCategory extends Component {
       isVideo: false,
       isVideoUpdate: false,
       massageRowData: {},
-      fieldsBanner: {},
-      errorsBanner: {},
-      fieldsBannerUpdate: {},
-      errorsBannerMassage: {},
+      fieldsQuotesCategory: {},
+      errorsQuotesCategory: {},
+      fieldsQuotesCategoryUpdate: {},
+      errorsQuotesCategoryMassage: {},
       fieldsUserPasswordUpdate: {},
       errorsUpdatePassword: {},
       creditpasswordOpenModal: false,
@@ -35,9 +35,9 @@ class QuotesCategory extends Component {
       type: null,
       gameType: null,
       rankType: null,
-      addBannerCreateModal: false,
+      addQuotesCategoryCreateModal: false,
       moreDetailsCreateModal: false,
-      UpdateBannerCreateModal: false,
+      UpdateQuotesCategoryCreateModal: false,
       loginToThisAccountModal: false,
       offset: 0,
       size: 10,
@@ -72,12 +72,12 @@ class QuotesCategory extends Component {
           "id": "",
           "password": ""
         },
-        fieldsBanner: {},
-        errorsBanner: {},
+        fieldsQuotesCategory: {},
+        errorsQuotesCategory: {},
         fieldsUserPasswordUpdate: {},
         errorsUpdatePassword: {},
-        addBannerCreateModal: false,
-        UpdateBannerCreateModal: false,
+        addQuotesCategoryCreateModal: false,
+        UpdateQuotesCategoryCreateModal: false,
         moreDetailsCreateModal: false,
         creditpasswordOpenModal: false,
         type: null,
@@ -126,7 +126,7 @@ class QuotesCategory extends Component {
     }
     this.props.dispatch(messageActions.getQuotesCategoryList(data));
   }
-  disableBannerCategory = (data) => {
+  disableQuotesCategoryCategory = (data) => {
     let datatemp = {
       "id": data.id,
     }
@@ -151,7 +151,7 @@ class QuotesCategory extends Component {
       ]
     });
   }
-  deleteBannerCategory = (data) => {
+  deleteQuotesCategoryCategory = (data) => {
     let datatemp = {
       "id": data.id,
     }
@@ -188,54 +188,54 @@ class QuotesCategory extends Component {
     this.setState({ moreDetailsCreateModal: false });
   }
   handleOpenCreateModalUpdatePassword = (data) => {
-    this.setState({ UpdateBannerCreateModal: true, fieldsBannerUpdate: data });
+    this.setState({ UpdateQuotesCategoryCreateModal: true, fieldsQuotesCategoryUpdate: data });
   }
   handleUpdatePasswordHideModal = () => {
-    this.setState({ UpdateBannerCreateModal: false });
+    this.setState({ UpdateQuotesCategoryCreateModal: false });
   }
 
  
 
-  handleAddBannerHideModal = () => {
-    this.setState({ addBannerCreateModal: false , fieldsBanner:{}, errorsBanner:{}  });
+  handleAddQuotesCategoryHideModal = () => {
+    this.setState({ addQuotesCategoryCreateModal: false , fieldsQuotesCategory:{}, errorsQuotesCategory:{}  });
     // this.setState({ appsettingUpdateModal: false });
   }
 
   handleOpenCreateModal = () => {
-    this.setState({ addBannerCreateModal: true,  });
+    this.setState({ addQuotesCategoryCreateModal: true,  });
   }
-  inputAddBannerChange = (e) => {
+  inputAddQuotesCategoryChange = (e) => {
     e.preventDefault();
     let { name, value } = e.target;
-    let fieldsBanner = this.state.fieldsBanner;
-    let errorsBanner = this.state.errorsBanner;
-    fieldsBanner[name] = value;
+    let fieldsQuotesCategory = this.state.fieldsQuotesCategory;
+    let errorsQuotesCategory = this.state.errorsQuotesCategory;
+    fieldsQuotesCategory[name] = value;
     // console.log(name, value);
-    errorsBanner[name] = "";
-    this.setState({ fieldsBanner, errorsBanner });
+    errorsQuotesCategory[name] = "";
+    this.setState({ fieldsQuotesCategory, errorsQuotesCategory });
   }
-  inputChangeUpdateBanner = (e) => {
+  inputChangeUpdateQuotesCategory = (e) => {
     e.preventDefault();
     let { name, value } = e.target;
-    let fieldsBannerUpdate = this.state.fieldsBannerUpdate;
-    let errorsBannerMassage = this.state.errorsBannerMassage;
-    fieldsBannerUpdate[name] = value;
-    errorsBannerMassage[name] = "";
+    let fieldsQuotesCategoryUpdate = this.state.fieldsQuotesCategoryUpdate;
+    let errorsQuotesCategoryMassage = this.state.errorsQuotesCategoryMassage;
+    fieldsQuotesCategoryUpdate[name] = value;
+    errorsQuotesCategoryMassage[name] = "";
     // console.log(name, value);
-    this.setState({ fieldsBannerUpdate, errorsBannerMassage });
+    this.setState({ fieldsQuotesCategoryUpdate, errorsQuotesCategoryMassage });
   }
 
-  createBannerSubmit = () => {
+  createQuotesCategorySubmit = () => {
 
     // let { users } = this.props;
     // let { filesDetails,
     //   //  filesDetailsVideo
     // } = users;
     // console.log('filesDetailsfilesDetails__________', filesDetails);
-    if (this.handleValidationAddBanner()) {
+    if (this.handleValidationAddQuotesCategory()) {
       let reqData = {
-        // "flag": this.state.fieldsBanner.flag,
-        "name": this.state.fieldsBanner.name,
+        // "flag": this.state.fieldsQuotesCategory.flag,
+        "name": this.state.fieldsQuotesCategory.name,
         // "image": this.state && this.state.imageName ? this.state.imageName : null,
 
       }
@@ -246,17 +246,17 @@ class QuotesCategory extends Component {
   }
 
  
-  updateBannerSubmit = () => {
+  updateQuotesCategorySubmit = () => {
     let { users } = this.props;
     let { filesDetails } = users;
     console.log('filesDetailsfilesDetailsfilesDetailsfilesDetailsfilesDetails::::???', filesDetails);
 
-    if (this.handleValidationUpdateBanner()) {
+    if (this.handleValidationUpdateQuotesCategory()) {
       let reqData = {
-        "id": this.state.fieldsBannerUpdate.id,
-        // "flag": this.state.fieldsBannerUpdate.flag,
-        "name": this.state.fieldsBannerUpdate.name,
-        // "image": this.state && this.state.imageName ? this.state.imageName : this.state.fieldsBannerUpdate.image,
+        "id": this.state.fieldsQuotesCategoryUpdate.id,
+        // "flag": this.state.fieldsQuotesCategoryUpdate.flag,
+        "name": this.state.fieldsQuotesCategoryUpdate.name,
+        // "image": this.state && this.state.imageName ? this.state.imageName : this.state.fieldsQuotesCategoryUpdate.image,
       }
       let paginationData = {
         "keyWord": this.state.keyWord,
@@ -271,50 +271,50 @@ class QuotesCategory extends Component {
 
   }
 
-  handleValidationUpdateBanner = () => {
-    let fieldsBannerUpdate = this.state.fieldsBannerUpdate;
-    let errorsBannerMassage = {};
+  handleValidationUpdateQuotesCategory = () => {
+    let fieldsQuotesCategoryUpdate = this.state.fieldsQuotesCategoryUpdate;
+    let errorsQuotesCategoryMassage = {};
     let formIsValid = true;
 
     //flag
-    // if (!fieldsBannerUpdate["flag"] || fieldsBannerUpdate["flag"] === "") {
+    // if (!fieldsQuotesCategoryUpdate["flag"] || fieldsQuotesCategoryUpdate["flag"] === "") {
     //   formIsValid = false;
-    //   errorsBannerMassage["flag"] = "Cannot be empty";
+    //   errorsQuotesCategoryMassage["flag"] = "Cannot be empty";
     // }
 
 
     //name
-    if (!fieldsBannerUpdate["name"] || fieldsBannerUpdate["name"] === "") {
+    if (!fieldsQuotesCategoryUpdate["name"] || fieldsQuotesCategoryUpdate["name"] === "") {
       formIsValid = false;
-      errorsBannerMassage["name"] = "Cannot be empty";
+      errorsQuotesCategoryMassage["name"] = "Cannot be empty";
     }
 
 
-    this.setState({ errorsBannerMassage: errorsBannerMassage });
+    this.setState({ errorsQuotesCategoryMassage: errorsQuotesCategoryMassage });
     return formIsValid;
   }
 
-  handleValidationAddBanner = () => {
-    let fieldsBanner = this.state.fieldsBanner;
-    let errorsBanner = {};
+  handleValidationAddQuotesCategory = () => {
+    let fieldsQuotesCategory = this.state.fieldsQuotesCategory;
+    let errorsQuotesCategory = {};
     let formIsValid = true;
 
-    //bannerCategoryId
-    // if (!fieldsBanner["flag"] || fieldsBanner["flag"] === "") {
+    //QuotesCategoryCategoryId
+    // if (!fieldsQuotesCategory["flag"] || fieldsQuotesCategory["flag"] === "") {
     //   formIsValid = false;
-    //   errorsBanner["flag"] = "Cannot be empty flag";
+    //   errorsQuotesCategory["flag"] = "Cannot be empty flag";
     // }
     //name
-    if (!fieldsBanner["name"] || fieldsBanner["name"] === "") {
+    if (!fieldsQuotesCategory["name"] || fieldsQuotesCategory["name"] === "") {
       formIsValid = false;
-      errorsBanner["name"] = "Cannot be empty name";
+      errorsQuotesCategory["name"] = "Cannot be empty name";
     }
 
 
 
 
-    console.log('errorsMassageerrorsMassageerrorsMassageerrorsMassage', errorsBanner);
-    this.setState({ errorsBanner: errorsBanner });
+    console.log('errorsMassageerrorsMassageerrorsMassageerrorsMassage', errorsQuotesCategory);
+    this.setState({ errorsQuotesCategory: errorsQuotesCategory });
     return formIsValid;
   }
 
@@ -341,11 +341,11 @@ class QuotesCategory extends Component {
   render() {
 
     let { message, users } = this.props;
-    let {  loading, allBannerCat,QuotesItems,
-      bannerCatTotal, } = message;
+    let {  loading, allQuotesCategoryCat,QuotesItems,
+      QuotesCategoryCatTotal, } = message;
     let { filesDetails } = users;
     // let { allMassage } = Massage;
-    console.log("RENDER111111111111111", QuotesItems, bannerCatTotal);
+    console.log("RENDER111111111111111", QuotesItems, QuotesCategoryCatTotal);
     // // console.log('this.state.imageName', this.state.imageName);
 
 
@@ -419,7 +419,7 @@ class QuotesCategory extends Component {
                                         {this.state.offset + index + 1}</td>
 
 
-                                      {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.bannerCategoryId && element.bannerCategoryId.name ? element.bannerCategoryId.name : "-"}</td> */}
+                                      {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.QuotesCategoryCategoryId && element.QuotesCategoryCategoryId.name ? element.QuotesCategoryCategoryId.name : "-"}</td> */}
                                       <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.name ? element.name : "-"}</td>
 
                                       {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.flag ? element.flag : "-"}</td> */}
@@ -456,7 +456,7 @@ class QuotesCategory extends Component {
                                       {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap ">
                                         <div class="flex justify-center">
                                           <label class="flex items-center cursor-pointer targetablepx-4 tooltip">
-                                            <div class="relative" onClick={() => this.disableBannerCategory(element)}>
+                                            <div class="relative" onClick={() => this.disableQuotesCategoryCategory(element)}>
                                               <input type="checkbox" id="toggleB" class="sr-only" />
                                               <div class="block bg-gray-600 w-10 h-6 rounded-full"></div>
                                               <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition"></div>
@@ -469,11 +469,11 @@ class QuotesCategory extends Component {
                                       <td className="px-2 py-3 text-sm text-gray-600 whitespace-nowrap">
                                         <span className="flex justify-center pl-1">
                                           {element.isDisable === false ?
-                                            <div class="targetablepx-4 tooltip px-3 py-1 font-medium tracking-wider text-blue-100 bg-green-700 border rounded-md shadow-sm hover:shadow-lg hover:bg-green-400 cursor-pointer" onClick={() => this.disableBannerCategory(element)}>
+                                            <div class="targetablepx-4 tooltip px-3 py-1 font-medium tracking-wider text-blue-100 bg-green-700 border rounded-md shadow-sm hover:shadow-lg hover:bg-green-400 cursor-pointer" onClick={() => this.disableQuotesCategoryCategory(element)}>
 
                                               <label>Enabled</label>
                                             </div>
-                                            : <div class="targetablepx-4 tooltip px-3 py-1 font-medium tracking-wider text-blue-100 bg-red-500 border rounded-md shadow-sm hover:shadow-lg hover:bg-green-400 cursor-pointer" onClick={() => this.disableBannerCategory(element)}>
+                                            : <div class="targetablepx-4 tooltip px-3 py-1 font-medium tracking-wider text-blue-100 bg-red-500 border rounded-md shadow-sm hover:shadow-lg hover:bg-green-400 cursor-pointer" onClick={() => this.disableQuotesCategoryCategory(element)}>
 
                                               <label>Disabled</label>
                                             </div>}
@@ -501,7 +501,7 @@ class QuotesCategory extends Component {
                                           </span>
 
                                           <span className="relative">
-                                            <div class="targetablepx-4 tooltip p-2 rounded-full  font-medium    hover:bg-blue-100 cursor-pointer" onClick={() => this.deleteBannerCategory(element)}>
+                                            <div class="targetablepx-4 tooltip p-2 rounded-full  font-medium    hover:bg-blue-100 cursor-pointer" onClick={() => this.deleteQuotesCategoryCategory(element)}>
                                               {/* <span className='top-0 left-0 p-6 mx-auto -mt-8 -ml-2 text-sm text-white bg-gray-500 rounded tooltip-text'>Delete</span> */}
                                               <RiDeleteBinLine style={{ fontSize: "1.5rem" }} title='Delete'/>
                                             </div>
@@ -526,13 +526,13 @@ class QuotesCategory extends Component {
                       isMobile ?
                         <nav className="relative z-0 flex justify-end mt-5 w-76">
                           {
-                            bannerCatTotal && bannerCatTotal > 10 ?
+                            QuotesCategoryCatTotal && QuotesCategoryCatTotal > 10 ?
                               <ReactPaginate
                                 previousLabel={'Prev'}
                                 nextLabel={'Next'}
                                 breakLabel={'...'}
                                 breakClassName={'break-me'}
-                                pageCount={bannerCatTotal / this.state.size}
+                                pageCount={QuotesCategoryCatTotal / this.state.size}
                                 marginPagesDisplayed={1}
                                 pageRangeDisplayed={1}
                                 onPageChange={this.handlePageClick}
@@ -543,13 +543,13 @@ class QuotesCategory extends Component {
                               : null}
                         </nav> : <nav className="relative z-0 flex justify-end mt-5 w-76">
                           {
-                            bannerCatTotal && bannerCatTotal > 10 ?
+                            QuotesCategoryCatTotal && QuotesCategoryCatTotal > 10 ?
                               <ReactPaginate
                                 previousLabel={'Previous'}
                                 nextLabel={'Next'}
                                 breakLabel={'...'}
                                 breakClassName={'break-me'}
-                                pageCount={bannerCatTotal / this.state.size}
+                                pageCount={QuotesCategoryCatTotal / this.state.size}
                                 marginPagesDisplayed={3}
                                 pageRangeDisplayed={3}
                                 onPageChange={this.handlePageClick}
@@ -570,18 +570,18 @@ class QuotesCategory extends Component {
         <DialogExample />
 
         <CreateAddCategoryModal
-          addBannerCreateModal={this.state.addBannerCreateModal}
-          fieldsBanner={this.state.fieldsBanner}
-          errorsBanner={this.state.errorsBanner}
-          allBannerCat={allBannerCat}
-          inputAddBannerChange={this.inputAddBannerChange}
+          addQuotesCategoryCreateModal={this.state.addQuotesCategoryCreateModal}
+          fieldsQuotesCategory={this.state.fieldsQuotesCategory}
+          errorsQuotesCategory={this.state.errorsQuotesCategory}
+          allQuotesCategoryCat={allQuotesCategoryCat}
+          inputAddQuotesCategoryChange={this.inputAddQuotesCategoryChange}
           handleFile={this.handleFile}
           handleFile2={this.handleFile2}
-          createBannerSubmit={this.createBannerSubmit}
+          createQuotesCategorySubmit={this.createQuotesCategorySubmit}
           handleSelectType={this.handleSelectType}
           handleSelectGameType={this.handleSelectGameType}
           handleSelectRankType={this.handleSelectRankType}
-          handleAddBannerHideModal={this.handleAddBannerHideModal}
+          handleAddQuotesCategoryHideModal={this.handleAddQuotesCategoryHideModal}
           inputChangeIsVideo={this.inputChangeIsVideo}
           isVideo={this.state.isVideo}
           filesDetails={filesDetails}
@@ -600,12 +600,12 @@ class QuotesCategory extends Component {
         />
 
         <UpdateCategoryModal
-          UpdateBannerCreateModal={this.state.UpdateBannerCreateModal}
-          fieldsBannerUpdate={this.state.fieldsBannerUpdate}
-          errorsBannerMassage={this.state.errorsBannerMassage}
-          inputChangeUpdateBanner={this.inputChangeUpdateBanner}
-          updateBannerSubmit={this.updateBannerSubmit}
-          allBannerCat={allBannerCat}
+          UpdateQuotesCategoryCreateModal={this.state.UpdateQuotesCategoryCreateModal}
+          fieldsQuotesCategoryUpdate={this.state.fieldsQuotesCategoryUpdate}
+          errorsQuotesCategoryMassage={this.state.errorsQuotesCategoryMassage}
+          inputChangeUpdateQuotesCategory={this.inputChangeUpdateQuotesCategory}
+          updateQuotesCategorySubmit={this.updateQuotesCategorySubmit}
+          allQuotesCategoryCat={allQuotesCategoryCat}
 
           handleFile={this.handleFile}
           handleFile2={this.handleFile2}

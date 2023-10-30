@@ -31,8 +31,8 @@ export default function UpdateCategoryModal(props) {
 
         <div className="w-full">
               <label className="block text-xs font-medium text-gray-500 md:text-left" for="username">Message Category:</label>
-              <select class="form-select border-1 px-3 py-2 placeholder-blueGray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" aria-label="Default select example" onChange={inputChangeUpdateMessage} id="messageSubCategoryId" name="messageSubCategoryId"
-                value={fieldsMessageUpdate && fieldsMessageUpdate["messageSubCategoryId"] ? fieldsMessageUpdate["messageSubCategoryId"] : null} >
+              <select class="form-select border-1 px-3 py-2 placeholder-blueGray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" aria-label="Default select example" onChange={inputChangeUpdateMessage} id="messageSubCategory" name="messageSubCategory"
+                value={fieldsMessageUpdate && fieldsMessageUpdate["messageSubCategory"] ? fieldsMessageUpdate["messageSubCategory"] : null} >
                 <option selected>Please Select Message Category</option>
                 {
                   allMessage && allMessage && allMessage.length > 0 ?
@@ -41,9 +41,9 @@ export default function UpdateCategoryModal(props) {
                     )) : null
                 }
               </select>
-              {errorsUpdateMessage && errorsUpdateMessage["messageSubCategoryId"] ?
+              {errorsUpdateMessage && errorsUpdateMessage["messageSubCategory"] ?
                 <div className="text-xs text-red-600 invalid-feedback">
-                  {errorsUpdateMessage["messageSubCategoryId"]}
+                  {errorsUpdateMessage["messageSubCategory"]}
                 </div>
                 : null}
             </div>   
