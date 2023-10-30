@@ -352,12 +352,12 @@ class MessageCategory extends Component {
     return (
 
       <>
-        {/* <div>
+        <div>
         <Loader
             active={loading}
             text = "Please wait....."
           />
-        </div> */}
+        </div>
 
         <div className="flex flex-col flex-1 overflow-hidden overflow-x-auto overflow-y-auto">
           <main className="relative flex-1">

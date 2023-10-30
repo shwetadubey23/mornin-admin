@@ -425,7 +425,7 @@ function getQuotesCategoryList(data) {
                 users => {
                     // console.log("getQuotesCategoryList $$$$ action:", users);
                     dispatch(success(users));
-                    dispatch(this.uploadImageClear());
+                    // dispatch(this.uploadImageClear());
                 },
                 error => {
                     dispatch(alertActions.error(error));

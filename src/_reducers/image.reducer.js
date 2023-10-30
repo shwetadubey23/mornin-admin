@@ -43,6 +43,7 @@ export function image(state = {}, action) {
     case imageConstants.ADD_BANNER_SUCCESS:
       return {
         ...state,
+        loading: true,
         addUserSuccess: true
       };
     case imageConstants.ADD_BANNER_FAILURE:
@@ -58,6 +59,7 @@ export function image(state = {}, action) {
     case imageConstants.ADD_BANNER_CATEGORY_SUCCESS:
       return {
         ...state,
+        loading: true,
         addUserSuccess: true
       };
     case imageConstants.ADD_BANNER_CATEGORY_FAILURE:
@@ -166,6 +168,7 @@ export function image(state = {}, action) {
     case imageConstants.UPDATE_BANNER_SUCCESS:
       return {
         ...state,
+        loading: true,
         addUserSuccess: true
       };
     case imageConstants.UPDATE_BANNER_FAILURE:

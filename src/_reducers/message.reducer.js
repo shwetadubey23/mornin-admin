@@ -43,6 +43,7 @@ export function message(state = {}, action) {
     case messageConstants.ADD_QUOTES_SUCCESS:
       return {
         ...state,
+        loading: true,
         addUserSuccess: true
       };
     case messageConstants.ADD_QUOTES_FAILURE:
@@ -58,6 +59,7 @@ export function message(state = {}, action) {
     case messageConstants.ADD_MESSAGE_SUCCESS:
       return {
         ...state,
+        loading: true,
         addUserSuccess: true
       };
     case messageConstants.ADD_MESSAGE_FAILURE:
@@ -73,11 +75,13 @@ export function message(state = {}, action) {
     case messageConstants.ADD_MESSAGE_CATEGORY_SUCCESS:
       return {
         ...state,
+        loading: true,
         addUserSuccess: true
       };
     case messageConstants.ADD_MESSAGE_CATEGORY_FAILURE:
       return {
         ...state,
+        loading: true,
         error: action.error
       };
 
@@ -166,6 +170,7 @@ export function message(state = {}, action) {
     case messageConstants.UPDATE_PACKAGE_SUCCESS:
       return {
         ...state,
+        loading: true,
         addUserSuccess: true
       };
     case messageConstants.UPDATE_PACKAGE_FAILURE:
@@ -181,6 +186,7 @@ export function message(state = {}, action) {
     case messageConstants.UPDATE_QUOTES_SUCCESS:
       return {
         ...state,
+        loading: true,
         addUserSuccess: true
       };
     case messageConstants.UPDATE_QUOTES_FAILURE:
@@ -196,6 +202,7 @@ export function message(state = {}, action) {
     case messageConstants.UPDATE_MESSAGE_SUCCESS:
       return {
         ...state,
+        loading: true,
         addUserSuccess: true
       };
     case messageConstants.UPDATE_MESSAGE_FAILURE:
@@ -211,6 +218,7 @@ export function message(state = {}, action) {
     case messageConstants.UPDATE_MESSAGE_CATEGORY_SUCCESS:
       return {
         ...state,
+        loading: true,
         addUserSuccess: true
       };
     case messageConstants.UPDATE_MESSAGE_CATEGORY_FAILURE:
