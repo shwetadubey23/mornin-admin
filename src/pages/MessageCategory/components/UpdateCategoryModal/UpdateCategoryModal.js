@@ -13,7 +13,7 @@ export default function UpdateCategoryModal(props) {
     <div className={UpdateMessageCreateModal ? "fixed w-full top-0 left-0 h-full inset-0 z-40 overflow-hidden mt-0 flex justify-center items-center overflow-y-auto bg-black/40 md:p-0 p-1" : "hidden"} style={{ marginTop: '0rem', }}  >
       <div className="animate__animated animate__fadeInDown animate__faster bg-[#f8f8fb]  md:w-[32rem] w-full  mx-auto rounded shadow-lg  overflow-y-auto mt-2">
         {/*modal header*/}
-        <div className="flex items-center justify-between p-6 py-2 bg-blue-500 border-b">
+        <div className="flex items-center justify-between p-6 py-2 bg-[#22BFA1] border-b">
           <p className="text-[16px] font-medium text-white uppercase">Update Message Category</p>
           <div className="rounded-full cursor-pointer modal-close ">
             <svg onClick={() => handleAppSeetingHideModal()} className="fill-current text-white/60 hover:text-white/100 " xmlns="http://www.w3.org/2000/svg" width={18} height={18} viewBox="0 0 18 18">
@@ -104,7 +104,7 @@ export default function UpdateCategoryModal(props) {
 
             {/* btns */}
             <div className="flex justify-end py-0 space-x-4">
-              <button className="bg-blue-500  transition duration-150 text-white text-[.8125rem]  px-3 py-2 rounded-[.25rem] flex items-center hover:bg-[#f14646] " type="button"
+              <button className="bg-[#22BFA1]  transition duration-150 text-white text-[.8125rem]  px-3 py-2 rounded-[.25rem] flex items-center hover:bg-[#f14646] " type="button"
                 onClick={updateMessageSubmit}
               >Submit
                 <CgLogIn size={18} className="ml-2" />
