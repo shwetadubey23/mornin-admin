@@ -345,7 +345,7 @@ class MessageCategory extends Component {
       MessageCatTotal, } = message;
     let { filesDetails } = users;
     // let { allMassage } = Massage;
-    console.log("RENDER111111111111111", getMessageCategoryList, MessageCatTotal);
+    // console.log("RENDER111111111111111", getMessageCategoryList, MessageCatTotal);
     // // console.log('this.state.imageName', this.state.imageName);
 
 
