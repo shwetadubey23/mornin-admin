@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
 import { RiBankFill, RiFileList2Line, RiMessage2Line } from 'react-icons/ri';
-import { BiChevronDown, BiChevronUp,  BiHomeCircle, BiImages } from 'react-icons/bi';
+import { BiChevronDown, BiChevronUp, BiHomeCircle, BiImages } from 'react-icons/bi';
 import { AiOutlineAppstoreAdd } from 'react-icons/ai';
 
 function Sidebar({ open, location, history, user, pathname, setOpen, setOpenMobile, openMobile }) {
@@ -87,15 +87,8 @@ function Sidebar({ open, location, history, user, pathname, setOpen, setOpenMobi
                         >Quotes</li>
                       </ol>
                     </div>
-
                   </div>
-
                 </div>
-
-             
-        
-
-
               </div>
             </nav>
           </div>
@@ -145,7 +138,7 @@ function Sidebar({ open, location, history, user, pathname, setOpen, setOpenMobi
                   </ol>
                 </div>
 
-             
+
                 <div>
                   <span onClick={() => setShowMe(showMe === 3 ? 0 : 3)} className=" accor text-white cursor-pointer h-12 items-center flex justify-between px-3 py-2 text-[13px]  transition ease-in-out duration-150 hover:text-white/60 "  >
                     <div className="flex  space-x-4 ">
@@ -160,7 +153,7 @@ function Sidebar({ open, location, history, user, pathname, setOpen, setOpenMobi
                     <li
                       onClick={() => { onClickMenu('/app/quotesCategory'); setOpenMobile(!openMobile) }} className={` " cursor-pointer text-white transition duration-150 p-1 " ${location.pathname === "/app/quotesCategory" ? "text-white cursor-pointer font-medium" : ""}`}
                     >Quotes Category</li>
-                          <li
+                    <li
                       onClick={() => { onClickMenu('/app/quotes'); setOpenMobile(!openMobile) }} className={` " cursor-pointer text-white transition duration-150 p-1 " ${location.pathname === "/app/quotes" ? "text-white cursor-pointer font-medium" : ""}`}
                     >Quotes</li>
 
@@ -211,7 +204,7 @@ function Sidebar({ open, location, history, user, pathname, setOpen, setOpenMobi
                   </ol>
                 </div>
 
-   
+
                 <div>
                   <span onClick={() => setShowMe(showMe === 3 ? 0 : 3)} className=" accor hover:text-white cursor-pointer h-12 items-center flex justify-between px-3 py-2 text-[13px]  transition ease-in-out duration-150 text-white/60 "  >
                     <div className="flex  space-x-4 ">
