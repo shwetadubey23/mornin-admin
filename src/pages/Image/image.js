@@ -87,7 +87,7 @@ class Image extends Component {
 
       }
     }
-    console.log('nextProps.users.isMatchImageUpdate', nextProps.users.filesDetails);
+    // console.log('nextProps.users.isMatchImageUpdate', nextProps.users.filesDetails);
     if (nextProps.users.filesDetails) {
       return {
         ...nextProps,
@@ -105,7 +105,6 @@ class Image extends Component {
     }
   }
   handlePageClick = (data) => {
-    // console.log("data  ", data);
     let offset = Math.ceil(data.selected * this.state.size);
     this.setState({ offset: offset, page: data.selected });
     let datatemp = {
@@ -116,7 +115,6 @@ class Image extends Component {
     this.props.dispatch(imageActions.getImageList(datatemp));
   }
   handleSearch = (event) => {
-    // // console.log("666666666666666", event.target.value);
     event.preventDefault();
     let { value } = event.target;
     this.setState({ keyWord: value, offset: 0 });
@@ -206,7 +204,6 @@ class Image extends Component {
     let fieldsBanner = this.state.fieldsBanner;
     let errorsBanner = this.state.errorsBanner;
     fieldsBanner[name] = value;
-    // console.log(name, value);
     errorsBanner[name] = "";
     this.setState({ fieldsBanner, errorsBanner });
   }
@@ -303,8 +300,6 @@ class Image extends Component {
 
 
   handleFile = (event) => {
-    console.log("handleFileevent", event);
-
     this.setState({ selectedFile: event.target.files[0] });
 
     if (event.target.files[0]) {
@@ -322,11 +317,11 @@ class Image extends Component {
   render() {
 
     let { image, users } = this.props;
-    let {  loading, getAllImageSubCategory,getImageList,
+    let {  loading, getAllImageCategory,getImageList,
       bannerCatTotal, } = image;
     let { filesDetails } = users;
 
-
+  //  console.log('getAllImageCategorygetAllImageCategory', getAllImageCategory)
 
     return (
 
@@ -418,33 +413,6 @@ class Image extends Component {
                                       </td> */}
 
                                       <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{moment(new Date(parseInt(element.createdAt))).utcOffset("+05:30").format("YYYY-MM-DD HH:mm")}</td>
-
-                                      {/* <td className="px-2 py-3 text-sm text-gray-600 whitespace-nowrap">
-                                        <span className="flex justify-center pl-1">
-
-                                          <div class="targetablepx-4 tooltip px-3 py-1 font-medium tracking-wider text-blue-100 bg-gray-700 border rounded-md shadow-sm hover:shadow-lg hover:bg-gray-400 cursor-pointer" onClick={() => this.handlePasswordModal(element)}>
-
-                                            <label>Password</label>
-                                          </div>
-
-                                        </span>
-                                      </td> */}
-
-
-
-                                      {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap ">
-                                        <div class="flex justify-center">
-                                          <label class="flex items-center cursor-pointer targetablepx-4 tooltip">
-                                            <div class="relative" onClick={() => this.disableBannerCategory(element)}>
-                                              <input type="checkbox" id="toggleB" class="sr-only" />
-                                              <div class="block bg-gray-600 w-10 h-6 rounded-full"></div>
-                                              <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition"></div>
-                                              <span class='tooltip-text bg-pink-600 p-6 -mt-16 text-white text-sm rounded'>Enable / Disable</span>
-                                            </div>
-                                          </label>
-                                        </div>
-                                      </td> */}
-
                                       <td className="px-2 py-3 text-sm text-gray-600 whitespace-nowrap">
                                         <span className="flex justify-center pl-1">
                                           {element.isDisable === false ?
@@ -462,15 +430,6 @@ class Image extends Component {
 
                                       <td className="flex justify-center px-2 py-6 space-x-2 text-center text-gray-600 whitespace-nowrap">
                                         <div className='flex space-x-2'>
-
-                                
-                                          {/* <span className="relative ">
-                                            {element.isActive ? "ADDED" : <div class="targetablepx-4 tooltip p-2 rounded-full  font-medium    hover:bg-blue-100 cursor-pointer  " onClick={() => this.handleOpenCreateModalMoreDetails(element)}>
-                                              <span className='top-0 left-0 p-6 mx-auto -mt-8 -ml-6 text-sm text-white bg-gray-500 rounded tooltip-text'>More Details</span>
-                                              <BiDetail style={{ fontSize: "1.5rem" }} />
-                                            </div>}
-                                          </span> */}
-
                                           <span className="relative">
                                             <div class="targetablepx-4 tooltip p-2 rounded-full  font-medium    hover:bg-blue-100 cursor-pointer" onClick={() => this.handleOpenCreateModalUpdatePassword(element)}>
                                               {/* <span className='top-0 left-0 p-6 mx-auto -mt-8 text-sm text-white bg-gray-500 rounded tooltip-text'>Edit</span> */}
@@ -552,7 +511,7 @@ class Image extends Component {
           addBannerCreateModal={this.state.addBannerCreateModal}
           fieldsBanner={this.state.fieldsBanner}
           errorsBanner={this.state.errorsBanner}
-          getAllImageSubCategory={getAllImageSubCategory}
+          getAllImageCategory={getAllImageCategory}
           inputAddBannerChange={this.inputAddBannerChange}
           handleFile={this.handleFile}
           handleFile2={this.handleFile2}
@@ -584,7 +543,7 @@ class Image extends Component {
           errorsBannerMassage={this.state.errorsBannerMassage}
           inputChangeUpdateBanner={this.inputChangeUpdateBanner}
           updateBannerSubmit={this.updateBannerSubmit}
-          getAllImageSubCategory={getAllImageSubCategory}
+          getAllImageCategory={getAllImageCategory}
 
           handleFile={this.handleFile}
           handleFile2={this.handleFile2}

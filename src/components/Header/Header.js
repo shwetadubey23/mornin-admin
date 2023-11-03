@@ -9,7 +9,6 @@ import {AiFillInfoCircle} from 'react-icons/ai'
 
 
 const Header = (props) => {
-console.log('propspropspropsprops', props)
   const onClickMenutwo = (url) => {
     localStorage.removeItem('user');
     props.history.push(url)

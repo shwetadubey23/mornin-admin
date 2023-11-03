@@ -30,10 +30,10 @@ export default function UpdateCategoryModal(props) {
           <form autoComplete="off" className="p-4 space-y-4 capitalize border border-gray-300 ">
 
             <div className="w-full">
-              <label className="block text-xs font-medium text-gray-500 md:text-left" for="username">Banner Category:</label>
+              <label className="block text-xs font-medium text-gray-500 md:text-left" for="username">Image Category:</label>
               <select class="form-select border-1 px-3 py-2 placeholder-blueGray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" aria-label="Default select example" onChange={inputChangeUpdateBanner} id="bannerCategoryId" name="bannerCategoryId"
-                value={fieldsBannerUpdate && fieldsBannerUpdate["bannerCategoryId"] ? fieldsBannerUpdate["bannerCategoryId"] : null} >
-                <option selected>Please Select Banner Category</option>
+                value={fieldsBannerUpdate && fieldsBannerUpdate["imageSubCategoryId"] ? fieldsBannerUpdate["imageSubCategoryId"] : null} >
+                <option selected>Please Select Image Category</option>
                 {
                   getAllImageCategory && getAllImageCategory && getAllImageCategory.length > 0 ?
                     getAllImageCategory.map((element, index) => (
@@ -41,9 +41,9 @@ export default function UpdateCategoryModal(props) {
                     )) : null
                 }
               </select>
-              {errorsUpdateBanner && errorsUpdateBanner["bannerCategoryId"] ?
+              {errorsUpdateBanner && errorsUpdateBanner["imageSubCategoryId"] ?
                 <div className="text-xs text-red-600 invalid-feedback">
-                  {errorsUpdateBanner["bannerCategoryId"]}
+                  {errorsUpdateBanner["imageSubCategoryId"]}
                 </div>
                 : null}
             </div>

@@ -224,10 +224,10 @@ function updateImageCategory(data) {
 
                 users => {
                     // toast("Password Updated successfully.")
-                    dispatch(alertActions.success("Banner Category Update Successfully."));
+                    dispatch(alertActions.success("Image Category Update Successfully."));
                     dispatch(success(users));
                     dispatch(this.getImageCategoryList(reqData));
-                    dispatch(this.uploadImageClear());
+                    // dispatch(this.uploadImageClear());
 
                 },
                 error => {
@@ -340,7 +340,7 @@ function getImageList(data) {
                 users => {
                     // console.log("getImageList $$$$ action:", users);
                     dispatch(success(users));
-                    dispatch(this.uploadImageClear());
+                    // dispatch(this.uploadImageClear());
                 },
                 error => {
                     dispatch(alertActions.error(error));
@@ -382,7 +382,7 @@ function getImageCategoryList(data) {
                 users => {
                     // console.log("getImageCategoryList $$$$ action:", users);
                     dispatch(success(users));
-                    dispatch(this.uploadImageClear());
+                    // dispatch(this.uploadImageClear());
                 },
                 error => {
                     dispatch(alertActions.error(error));

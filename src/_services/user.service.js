@@ -80,13 +80,11 @@ export const userService = {
 };
 
 function logout() {
-    console.log("yyyyyyyyyyyyyyyyyyy");
+    // console.log("yyyyyyyyyyyyyyyyyyy");
     localStorage.removeItem('user');
     history.push(`#/login`);
 }
 function onerrorlogout() {
-
-    console.log("zzzzzzzzzzzzzzz");
 
     localStorage.removeItem('user');
     history.push(`#/login`);
@@ -122,16 +120,13 @@ function login(data) {
 }
 
 function uploadImage(filedata) {
-    console.log('filedatafiledatafiledatafiledatafiledata', filedata);
+    // console.log('filedatafiledatafiledatafiledatafiledata', filedata);
 
     let header = new Headers({
         "Authorization": authHeader().Authorization
     });
     var data = new FormData();
     data.append('image', filedata);
-    console.log('datadatadatadatadatadatadatadatadata', data);
-
-
     const requestOptions = {
         method: "POST",
         headers: header,
@@ -167,7 +162,7 @@ function marketAnalysisDashboard(data) {
             let userObj = {
                 marketAnalysisDashboard: data
             }
-            console.log("SERVICE____marketAnalysisDashboard:::", userObj);
+            // console.log("SERVICE____marketAnalysisDashboard:::", userObj);
             return userObj;
         });
 }

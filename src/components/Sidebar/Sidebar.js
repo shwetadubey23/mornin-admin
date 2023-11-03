@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
-import { RiBankFill, RiFileList2Line, RiMessage2Line } from 'react-icons/ri';
+import {  RiFileList2Line, RiMessage2Line } from 'react-icons/ri';
 import { BiChevronDown, BiChevronUp, BiHomeCircle, BiImages } from 'react-icons/bi';
-import { AiOutlineAppstoreAdd } from 'react-icons/ai';
 
 function Sidebar({ open, location, history, user, pathname, setOpen, setOpenMobile, openMobile }) {
 
-  console.log("SIDE_BAR____:::open::::", open);
+  // console.log("SIDE_BAR____:::open::::", open);
 
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   const onClickMenu = (url) => {

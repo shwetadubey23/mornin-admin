@@ -139,7 +139,7 @@ class Image extends Component {
     confirmAlert({
 
 
-      title: 'Confirm to Change Status of User?',
+      title: 'Confirm to Change Status ?',
       message: `Are you sure about  ${data.name}?`,
       buttons: [
         {
@@ -169,7 +169,7 @@ class Image extends Component {
       buttons: [
         {
           label: 'Yes',
-          onClick: () => this.props.dispatch(imageActions.deleteImage(datatemp, paginationData))
+          onClick: () => this.props.dispatch(imageActions.deleteImageCategory(datatemp, paginationData))
         },
         {
           label: 'No'
@@ -226,32 +226,24 @@ class Image extends Component {
 
   createImageCategorySubmit = () => {
 
-    // let { users } = this.props;
-    // let { filesDetails,
-    //   //  filesDetailsVideo
-    // } = users;
-    // console.log('filesDetailsfilesDetails__________', filesDetails);
     if (this.handleValidationAddImageCategory()) {
       let reqData = {
         "name": this.state.fieldsImageCategory.name,
-        "image": this.state && this.state.imageName ? this.state.imageName : null,
+        // "image": this.state && this.state.imageName ? this.state.imageName : null,
       }
-      this.props.dispatch(imageActions.createImage(reqData));
+      this.props.dispatch(imageActions.createImageCategory(reqData));
     }
 
   }
 
  
   updateImageCategorySubmit = () => {
-    let { users } = this.props;
-    let { filesDetails } = users;
-    console.log('filesDetailsfilesDetailsfilesDetailsfilesDetailsfilesDetails::::???', filesDetails);
 
     if (this.handleValidationUpdateImageCategory()) {
       let reqData = {
         "id": this.state.fieldsImageCategoryUpdate.id,
         "name": this.state.fieldsImageCategoryUpdate.name,
-        "image": this.state && this.state.imageName ? this.state.imageName : this.state.fieldsImageCategoryUpdate.image,
+        // "image": this.state && this.state.imageName ? this.state.imageName : this.state.fieldsImageCategoryUpdate.image,
       }
       let paginationData = {
         "keyWord": this.state.keyWord,
@@ -261,7 +253,7 @@ class Image extends Component {
 
       // console.log("update>>>>>>>>>>>>>>>>>>>>>>>000000000", reqData);
 
-      this.props.dispatch(imageActions.updateImage(reqData, paginationData));
+      this.props.dispatch(imageActions.updateImageCategory(reqData, paginationData));
     }
 
   }
@@ -270,13 +262,6 @@ class Image extends Component {
     let fieldsImageCategoryUpdate = this.state.fieldsImageCategoryUpdate;
     let errorsImageCategoryMassage = {};
     let formIsValid = true;
-
-    //flag
-    // if (!fieldsImageCategoryUpdate["flag"] || fieldsImageCategoryUpdate["flag"] === "") {
-    //   formIsValid = false;
-    //   errorsImageCategoryMassage["flag"] = "Cannot be empty";
-    // }
-
 
     //name
     if (!fieldsImageCategoryUpdate["name"] || fieldsImageCategoryUpdate["name"] === "") {
@@ -294,21 +279,13 @@ class Image extends Component {
     let errorsImageCategory = {};
     let formIsValid = true;
 
-    //ImageCategoryCategoryId
-    // if (!fieldsImageCategory["flag"] || fieldsImageCategory["flag"] === "") {
-    //   formIsValid = false;
-    //   errorsImageCategory["flag"] = "Cannot be empty flag";
-    // }
+   
     //name
     if (!fieldsImageCategory["name"] || fieldsImageCategory["name"] === "") {
       formIsValid = false;
       errorsImageCategory["name"] = "Cannot be empty name";
     }
 
-
-
-
-    console.log('errorsMassageerrorsMassageerrorsMassageerrorsMassage', errorsImageCategory);
     this.setState({ errorsImageCategory: errorsImageCategory });
     return formIsValid;
   }
@@ -340,7 +317,6 @@ class Image extends Component {
       ImageCategoryCatTotal, } = image;
     let { filesDetails } = users;
     // let { allMassage } = Massage;
-    console.log("RENDER111111111111111", ImageCarItems, ImageCategoryCatTotal);
     // // console.log('this.state.imageName', this.state.imageName);
 
 
@@ -392,11 +368,7 @@ class Image extends Component {
                               <tr className="">
                                 <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">#</th>
                                 <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">Name </th>
-                                {/* <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">Flag</th> */}
-
-                                <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">image</th>
-                                {/* <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">image</th> */}
-                                <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">Date/Time</th>
+                               <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">Date/Time</th>
 
                                 {/* <th className="px-6 py-3 text-sm font-semibold text-center text-gray-500 uppercase whitespace-nowrap">Password</th> */}
 
@@ -419,13 +391,6 @@ class Image extends Component {
 
                                       {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.flag ? element.flag : "-"}</td> */}
 
-                                      <td className="px-6 py-3 text-sm justify-start flex items-center text-gray-600 whitespace-nowrap">
-                                        <div className='flex justify-center'>
-                                          <img className="object-cover h-10 rounded-sm w-14" src={element && element.imageUserLink
-                                            ? element.imageUserLink
-                                            : "/dist/img/profile.png"} alt="" />
-                                        </div>
-                                      </td>
 
                                       {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">
                                         <div className='flex justify-center'>
