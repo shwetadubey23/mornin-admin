@@ -421,7 +421,7 @@ class Quotes extends Component {
                                       {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.QuotesCategoryId && element.QuotesCategoryId.name ? element.QuotesCategoryId.name : "-"}</td> */}
                                       <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.quotesSubCategoryId && element.quotesSubCategoryId.name ? element.quotesSubCategoryId.name : "-"}</td>
 
-                                      <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.quotes ? element.quotes : "-"}</td>
+                                      <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.quotes && element.quotes.substring(0,25) ? element.quotes.substring(0,25) : "-"}</td>
 
                                       {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">
                                         <div className='flex justify-center'>

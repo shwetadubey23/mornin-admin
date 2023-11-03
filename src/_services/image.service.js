@@ -7,7 +7,7 @@ export const imageService = {
     logout,
     // verifyEmail,
     // loginToThisAccount,
-    getAllImage,
+    getAllImageCategory,
     getAllPtPackage,
     createImage,
     updateImage,
@@ -17,9 +17,9 @@ export const imageService = {
     createPTPackage,
     createImageCategory,
     updateImageCategory,
-    getBannerCategoryList,
+    getImageCategoryList,
     deleteImageCategory,
-    disableBannerCategory,
+    disableImageCategory,
     getMassageUserById,
     updateMassageUserPassword,
     updatePTPackage,
@@ -109,7 +109,7 @@ function getImageList(data) {
         });
 }
 
-function getBannerCategoryList(data) {
+function getImageCategoryList(data) {
     let header = new Headers({
         'Content-Type': 'application/json',
         "Authorization": authHeader().Authorization
@@ -120,20 +120,20 @@ function getBannerCategoryList(data) {
         body: JSON.stringify(data)
     }
     // console.log('requestOptionsrequestOptionsrequestOptionsrequestOptionsrequestOptions', requestOptions);
-    return fetch(CONST.BACKEND_URL + `/getBannerCategoryList`, requestOptions)
+    return fetch(CONST.BACKEND_URL + `/getImageSubCategoryList`, requestOptions)
         .then(handleResponse)
         .then(data => {
 
             let userObj = {
-                getBannerCategoryList: data.data
+                getImageCategoryList: data.data
             }
-            // console.log("i am in service getBannerCategoryList", userObj);
+            // console.log("i am in service getImageCategoryList", userObj);
 
             return userObj;
         });
 }
 
-function getAllImage() {
+function getAllImageCategory() {
     // // console.log("data m kya aa rha h::service:::", data);
     let header = new Headers({
         'Content-Type': 'application/json',
@@ -144,14 +144,14 @@ function getAllImage() {
         headers: header,
         // body: JSON.stringify(data)
     }
-    return fetch(CONST.BACKEND_URL + `/getAllImage`, requestOptions)
+    return fetch(CONST.BACKEND_URL + `/getAllImageSubCategory`, requestOptions)
         .then(handleResponse)
         .then(data => {
 
             let userObj = {
-                getAllImage: data.data
+                getAllImageCategory: data.data
             }
-            // console.log("i am in service getAllImage", userObj);
+            // console.log("i am in service getAllImageCategory", userObj);
 
             return userObj;
         });
@@ -282,7 +282,7 @@ function deleteImageCategory(data) {
         headers: header,
         body: JSON.stringify(data)
     }
-    return fetch(CONST.BACKEND_URL + `/deleteImageCategory`, requestOptions)
+    return fetch(CONST.BACKEND_URL + `/deleteImageSubCategory`, requestOptions)
         .then(handleResponse)
         .then(data => {
 
@@ -338,7 +338,7 @@ function disableBanner(data) {
             return userObj;
         });
 }
-function disableBannerCategory(data) {
+function disableImageCategory(data) {
     let header = new Headers({
         'Content-Type': 'application/json',
         "Authorization": authHeader().Authorization
@@ -348,7 +348,7 @@ function disableBannerCategory(data) {
         headers: header,
         body: JSON.stringify(data)
     }
-    return fetch(CONST.BACKEND_URL + `/updateImageCategoryStatus`, requestOptions)
+    return fetch(CONST.BACKEND_URL + `/updateImageSubCategoryStatus`, requestOptions)
         .then(handleResponse)
         .then(data => {
 
@@ -371,7 +371,7 @@ function updateImageCategory(data) {
         headers: header,
         body: JSON.stringify(data)
     }
-    return fetch(CONST.BACKEND_URL + `/updateImageCategory`, requestOptions)
+    return fetch(CONST.BACKEND_URL + `/updateImageSubCategory`, requestOptions)
         .then(handleResponse)
         .then(data => {
             let userObj = {
@@ -500,7 +500,7 @@ function createImageCategory(data) {
         headers: header,
         body: JSON.stringify(data)
     }
-    return fetch(CONST.BACKEND_URL + `/createImageCategory`, requestOptions)
+    return fetch(CONST.BACKEND_URL + `/createImageSubCategory`, requestOptions)
         .then(handleResponse)
         .then(data => {
             let userObj = {

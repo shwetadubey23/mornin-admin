@@ -30,7 +30,7 @@ Content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTAyZDlhMjVkNTQ0NTNiYzQyOWU1ZmEiLCJjaHVuayI6MSwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjk4MzgzMjY3LCJleHAiOjIuMTc2NzgyMzM2MDAxNjk4NGUrMjF9.E5LDOQSPdIrbzcE3wXazYh6I8yS_YydVgH9T1MSyWLg
 
 {
-    "keyWord": "",
+    "keyWord": "Be",
     "pageNo": 1,
     "size": 10
 }
@@ -174,7 +174,7 @@ Authorization: {{token}}
 
 
 {
-    "keyWord": "",
+    "keyWord": "Go",
     "pageNo": 1,
     "size": 10
 }
@@ -307,4 +307,67 @@ Authorization: {{token}}
 {
   "id": "653a373536efb4c064302a61"
 }
+
+
+
+
+###  
+POST {{url}}/api/dadmin/createImageSubCategory HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+{
+  "name": "Ouotes test4"
+}
+
+###  
+POST https://morning.jamsara.com/api/dadmin/getImageSubCategoryList HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+{
+  
+   "keyWord": "",
+    "pageNo": 1,
+    "size": 10
+}
+
+###  
+POST {{url}}/api/dadmin/getAllImageSubCategory HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+
+
+###  
+POST {{url}}/api/dadmin/updateImageSubCategory HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+{
+  "id": "65448a03934f97b7919e1d17",
+  "name": "Good Ouote2"
+}
+
+###  
+POST {{url}}/api/dadmin/deleteImageSubCategory HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+{
+  "id": "65448a03934f97b7919e1d17"
+}
+
+###  
+POST {{url}}/api/dadmin/updateImageSubCategoryStatus HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+{
+  "id": "653b60852016de2c579ac7a7"
+}
+
+
+
+
 

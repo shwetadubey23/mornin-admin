@@ -8,8 +8,8 @@ export const imageActions = {
     login,
     logout,
     disableBanner,
-    disableBannerCategory,
-    getAllImage,
+    disableImageCategory,
+    getAllImageCategory,
     getAllPTPackage,
     createImage,
     createPTPackage,
@@ -17,7 +17,7 @@ export const imageActions = {
     updateImageCategory,
     updateImage,
     getImageList,
-    getBannerCategoryList,
+    getImageCategoryList,
     deleteImage,
     deleteImageCategory,
     uploadImageClear,
@@ -77,7 +77,7 @@ function createImage(data) {
                     dispatch(alertActions.success("Image Add Successfully."));
                     dispatch(success(users));
                     dispatch(this.getImageList(reqData));
-                    // dispatch(this.uploadImageClear());
+                    dispatch(this.uploadImageClear());
 
 
                 },
@@ -136,10 +136,10 @@ function createImageCategory(data) {
 
                 users => {
                     // toast("Password Updated successfully.")
-                    dispatch(alertActions.success("Banner Category Add Successfully."));
+                    dispatch(alertActions.success("Image Category Add Successfully."));
                     dispatch(success(users));
-                    dispatch(this.getBannerCategoryList(reqData));
-                    dispatch(this.uploadImageClear());
+                    dispatch(this.getImageCategoryList(reqData));
+                    // dispatch(this.uploadImageClear());
 
 
                 },
@@ -149,9 +149,9 @@ function createImageCategory(data) {
                 }
             );
     };
-    function request() { return { type: imageConstants.ADD_BANNER_REQUEST } }
-    function success(users) { return { type: imageConstants.ADD_BANNER_SUCCESS, users } }
-    function failure(error) { return { type: imageConstants.ADD_BANNER_FAILURE, error } }
+    function request() { return { type: imageConstants.ADD_BANNER_CATEGORY_REQUEST } }
+    function success(users) { return { type: imageConstants.ADD_BANNER_CATEGORY_SUCCESS, users } }
+    function failure(error) { return { type: imageConstants.ADD_BANNER_CATEGORY_FAILURE, error } }
 }
 function updatePTPackage(data) {
     let reqData = {
@@ -226,7 +226,7 @@ function updateImageCategory(data) {
                     // toast("Password Updated successfully.")
                     dispatch(alertActions.success("Banner Category Update Successfully."));
                     dispatch(success(users));
-                    dispatch(this.getBannerCategoryList(reqData));
+                    dispatch(this.getImageCategoryList(reqData));
                     dispatch(this.uploadImageClear());
 
                 },
@@ -271,14 +271,14 @@ function updateMassageUserPassword(data) {
     function failure(error) { return { type: imageConstants.UPDATE_MASSAGE_USER_PASSWORD_FAILURE, error } }
 }
 
-function getAllImage() {
+function getAllImageCategory() {
     // console.log(" m kya aa rha h::action:::", );
     return dispatch => {
         dispatch(request());
-        imageService.getAllImage()
+        imageService.getAllImageCategory()
             .then(
                 users => {
-                    // console.log("getAllImage $$$$ action:", users);
+                    // console.log("getAllImageCategory $$$$ action:", users);
                     dispatch(success(users));
                 },
                 error => {
@@ -298,7 +298,7 @@ function getAllPTPackage() {
         imageService.getAllPTPackage()
             .then(
                 users => {
-                    // console.log("getAllImage $$$$ action:", users);
+                    // console.log("getAllImageCategory $$$$ action:", users);
                     dispatch(success(users));
                 },
                 error => {
@@ -340,7 +340,7 @@ function getImageList(data) {
                 users => {
                     // console.log("getImageList $$$$ action:", users);
                     dispatch(success(users));
-                    // dispatch(this.uploadImageClear());
+                    dispatch(this.uploadImageClear());
                 },
                 error => {
                     dispatch(alertActions.error(error));
@@ -373,14 +373,14 @@ function getPTPackageList(data) {
     function success(users) { return { type: imageConstants.GET_PT_PACKAGE_LIST_SUCCESS, users } }
     function failure(error) { return { type: imageConstants.GET_PT_PACKAGE_LIST_FAILURE, error } }
 }
-function getBannerCategoryList(data) {
+function getImageCategoryList(data) {
     // console.log("data m kya aa rha h::action:::", data);
     return dispatch => {
         dispatch(request());
-        imageService.getBannerCategoryList(data)
+        imageService.getImageCategoryList(data)
             .then(
                 users => {
-                    // console.log("getBannerCategoryList $$$$ action:", users);
+                    // console.log("getImageCategoryList $$$$ action:", users);
                     dispatch(success(users));
                     dispatch(this.uploadImageClear());
                 },
@@ -435,7 +435,7 @@ function deleteImageCategory(data, paginationData) {
             .then(
                 users => {
                     dispatch(success(users));
-                    dispatch(this.getBannerCategoryList(paginationData));
+                    dispatch(this.getImageCategoryList(paginationData));
 
                 },
                 error => {
@@ -514,15 +514,15 @@ function disablePTPackage(data, paginationData) {
     function success(users) { return { type: imageConstants.DISABLE_PT_PACKAGE_SUCCESS, users } }
     function failure(error) { return { type: imageConstants.DISABLE_PT_PACKAGE_FAILURE, error } }
 }
-function disableBannerCategory(data, paginationData) {
+function disableImageCategory(data, paginationData) {
 
     return dispatch => {
         dispatch(request());
-        imageService.disableBannerCategory(data)
+        imageService.disableImageCategory(data)
             .then(
                 users => {
                     dispatch(success(users));
-                    dispatch(this.getBannerCategoryList(paginationData));
+                    dispatch(this.getImageCategoryList(paginationData));
                 },
                 error => {
                     dispatch(alertActions.error(error));

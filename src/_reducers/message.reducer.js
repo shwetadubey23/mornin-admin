@@ -3,7 +3,6 @@ import {
 } from '../_constants';
 
 export function message(state = {}, action) {
-  //  console.log("fgvbfghhrj>>>>>>>>>>>>>>", action);
   switch (action.type) {
     case messageConstants.GET_ID_MASSAGE_REQUEST:
       return {

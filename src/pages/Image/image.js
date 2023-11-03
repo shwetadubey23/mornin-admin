@@ -57,7 +57,7 @@ class Image extends Component {
       "size": this.state.size
     }
     this.props.dispatch(imageActions.getImageList())
-    // this.props.dispatch(imageActions.getAllBannerCategory())
+    this.props.dispatch(imageActions.getAllImageCategory())
 
 
 
@@ -176,13 +176,11 @@ class Image extends Component {
         }
       ]
     });
-    // console.log("alertalertalertalert", alert)
   }
 
 
   handleOpenCreateModalMoreDetails = (data) => {
     this.setState({ moreDetailsCreateModal: true, massageRowData: data });
-    //  // console.log("fgfdgf1111111111111111111111111111111111",req);
   }
 
   handleMoreDetailsHideModal = () => {
@@ -197,7 +195,6 @@ class Image extends Component {
 
   handleAddBannerHideModal = () => {
     this.setState({ addBannerCreateModal: false , fieldsBanner:{}, errorsBanner:{}  });
-    // this.setState({ appsettingUpdateModal: false });
   }
 
   handleOpenCreateModal = () => {
@@ -220,20 +217,14 @@ class Image extends Component {
     let errorsBannerMassage = this.state.errorsBannerMassage;
     fieldsBannerUpdate[name] = value;
     errorsBannerMassage[name] = "";
-    // console.log(name, value);
     this.setState({ fieldsBannerUpdate, errorsBannerMassage });
   }
 
   createBannerSubmit = () => {
-
-    // let { users } = this.props;
-    // let { filesDetails,
-    //   //  filesDetailsVideo
-    // } = users;
-    // console.log('filesDetailsfilesDetails__________', filesDetails);
     if (this.handleValidationAddBanner()) {
       let reqData = {
         "name": this.state.fieldsBanner.name,
+        "imageSubCategoryId": this.state.fieldsBanner.imageSubCategoryId,
         "image": this.state && this.state.imageName ? this.state.imageName : null,
       }
       this.props.dispatch(imageActions.createImage(reqData));
@@ -245,12 +236,11 @@ class Image extends Component {
   updateBannerSubmit = () => {
     let { users } = this.props;
     let { filesDetails } = users;
-    console.log('filesDetailsfilesDetailsfilesDetailsfilesDetailsfilesDetails::::???', filesDetails);
-
     if (this.handleValidationUpdateBanner()) {
       let reqData = {
         "id": this.state.fieldsBannerUpdate.id,
         "name": this.state.fieldsBannerUpdate.name,
+        "imageSubCategoryId": this.state.fieldsBannerUpdate.imageSubCategoryId,
         "image": this.state && this.state.imageName ? this.state.imageName : this.state.fieldsBannerUpdate.image,
       }
       let paginationData = {
@@ -258,9 +248,6 @@ class Image extends Component {
         "pageNo": this.state.pageNo,
         "size": this.state.size
       }
-
-      // console.log("update>>>>>>>>>>>>>>>>>>>>>>>000000000", reqData);
-
       this.props.dispatch(imageActions.updateImage(reqData, paginationData));
     }
 
@@ -326,7 +313,6 @@ class Image extends Component {
 
     }
     else {
-      // console.log("No File To Upload!")
     }
 
   }
@@ -336,12 +322,10 @@ class Image extends Component {
   render() {
 
     let { image, users } = this.props;
-    let {  loading, allBannerCat,getImageList,
+    let {  loading, getAllImageSubCategory,getImageList,
       bannerCatTotal, } = image;
     let { filesDetails } = users;
-    // let { allMassage } = Massage;
-    console.log("RENDER111111111111111", getImageList, bannerCatTotal);
-    // // console.log('this.state.imageName', this.state.imageName);
+
 
 
     return (
@@ -363,7 +347,7 @@ class Image extends Component {
 
                   <div className="flex flex-wrap items-center justify-between w-full ">
                     <div className="">
-                      <h3 className="text-xl font-semibold ">Image Management</h3>
+                      <h3 className="text-xl font-semibold ">Image List</h3>
                     </div>
 
                     <div className='flex space-x-6 '>
@@ -568,7 +552,7 @@ class Image extends Component {
           addBannerCreateModal={this.state.addBannerCreateModal}
           fieldsBanner={this.state.fieldsBanner}
           errorsBanner={this.state.errorsBanner}
-          allBannerCat={allBannerCat}
+          getAllImageSubCategory={getAllImageSubCategory}
           inputAddBannerChange={this.inputAddBannerChange}
           handleFile={this.handleFile}
           handleFile2={this.handleFile2}
@@ -600,7 +584,7 @@ class Image extends Component {
           errorsBannerMassage={this.state.errorsBannerMassage}
           inputChangeUpdateBanner={this.inputChangeUpdateBanner}
           updateBannerSubmit={this.updateBannerSubmit}
-          allBannerCat={allBannerCat}
+          getAllImageSubCategory={getAllImageSubCategory}
 
           handleFile={this.handleFile}
           handleFile2={this.handleFile2}

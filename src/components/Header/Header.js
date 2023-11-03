@@ -9,7 +9,7 @@ import {AiFillInfoCircle} from 'react-icons/ai'
 
 
 const Header = (props) => {
-
+console.log('propspropspropsprops', props)
   const onClickMenutwo = (url) => {
     localStorage.removeItem('user');
     props.history.push(url)
@@ -70,17 +70,18 @@ const Header = (props) => {
       <div className="bg-[#13BFA1] flex items-center justify-between flex-wrap gap-4 md:sticky top-0 z-40 md:px-6 px-2 h-16 relative">
 
         <div className='flex items-center space-x-4'>
-          <div className='xl:w-60 flex justify-start items-center'>
-            {/* <img onClick={() => navigate("/app/dashboard")} src='/images/logo.png' alt='logo' className='xl:w-52 w-36 cursor-pointer' /> */}
-            <p className='text-white'>Morning Quotes Admin</p>
-          </div>
-
-          <button ref={myRef}
+        <button ref={myRef}
             onClick={() => { props.handleClickInsidetwo(); props.setOpen(!props.open); props.setOpenMobile(!props.openMobile); }}
             //  onClick={() => { props.setOpen(!props.open); props.setOpenMobile(!props.openMobile) }}
             className='text-white/80 rounded-md '>
             <MdOutlineMenu size={24} />
           </button>
+          <div className='xl:w-60 flex justify-start items-center'>
+            {/* <img onClick={() => navigate("/app/dashboard")} src='/images/logo.png' alt='logo' className='xl:w-52 w-36 cursor-pointer' /> */}
+            <p className='text-white'>Morning Quotes Admin</p>
+          </div>
+
+
 
         
 
@@ -88,14 +89,14 @@ const Header = (props) => {
         <div className='flex items-center md:space-x-6'>
           {/* // onClick={open ? openFullscreen : closeFullscreen} */}
 
-          {open ? <CgMaximize
+          {/* {open ? <CgMaximize
             onClick={openFullscreen}
             size={24} className="text-[#6c757d] cursor-pointer md:flex hidden hover:text-white/80 transition duration-100  " />
             :
             <CgMaximize
               onClick={closeFullscreen}
               size={24} className="text-[#6c757d] cursor-pointer md:flex hidden hover:text-white/80 transition duration-100  " />
-          }
+          } */}
 
 
           {/* <div className=' items-center space-x-3 text-white md:flex hidden'>
@@ -114,7 +115,7 @@ const Header = (props) => {
 
             >
               <div className='flex items-center space-x-2'>
-                <h1 className='select-none text-[.8125rem] '>username</h1>
+                <h1 className='select-none text-[.8125rem] '>Admin</h1>
                 <FiChevronDown />
               </div>
               {clickedOutside ?

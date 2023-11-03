@@ -197,3 +197,40 @@
     0%, 39%, 100% { opacity: 0; }
     40% { opacity: 1; } 
   }
+
+
+  .pagination { 
+    @apply items-center flex
+}
+
+ 
+.pagination > li > a,
+.pagination > li > span {
+    @apply relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 cursor-pointer bg-black bg-opacity-10
+}
+
+.pagination > li:nth-child(2n + 1) > a,
+.pagination > li:nth-child(2n + 1) > span{
+    @apply bg-opacity-5
+}
+
+.pagination>li.active>a {
+ @apply bg-[#13BFA1] text-white   
+ 
+}
+
+/* Style the active class (and buttons on mouse-over) */
+.pagination > li > a:hover {
+    @apply bg-[#13BFA1] text-white
+       
+    }
+    .pagination > li:first-child > a,
+    .pagination > li:first-child > span {
+       @apply rounded-l block
+       
+    }
+    .pagination > li:last-child > a,
+    .pagination > li:last-child > span {
+        @apply rounded-r block mr-0
+       
+    }

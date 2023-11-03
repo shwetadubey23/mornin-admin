@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { messageActions, userActions, } from '../../_actions';
+import { imageActions, userActions, } from '../../_actions';
 import Loader from '../../components/Loader/Loader';
 import moment from 'moment'
 import ReactPaginate from 'react-paginate';
@@ -17,17 +17,17 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import { MdAdd,MdOutlineEdit } from "react-icons/md";
 
 
-class QuotesCategory extends Component {
+class Image extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isVideo: false,
       isVideoUpdate: false,
       massageRowData: {},
-      fieldsQuotesCategory: {},
-      errorsQuotesCategory: {},
-      fieldsQuotesCategoryUpdate: {},
-      errorsQuotesCategoryMassage: {},
+      fieldsImageCategory: {},
+      errorsImageCategory: {},
+      fieldsImageCategoryUpdate: {},
+      errorsImageCategoryMassage: {},
       fieldsUserPasswordUpdate: {},
       errorsUpdatePassword: {},
       creditpasswordOpenModal: false,
@@ -35,9 +35,9 @@ class QuotesCategory extends Component {
       type: null,
       gameType: null,
       rankType: null,
-      addQuotesCategoryCreateModal: false,
+      addImageCategoryCreateModal: false,
       moreDetailsCreateModal: false,
-      UpdateQuotesCategoryCreateModal: false,
+      UpdateImageCategoryCreateModal: false,
       loginToThisAccountModal: false,
       offset: 0,
       size: 10,
@@ -56,7 +56,8 @@ class QuotesCategory extends Component {
       "pageNo": this.state.pageNo,
       "size": this.state.size
     }
-    this.props.dispatch(messageActions.getQuotesCategoryList(temp))
+    this.props.dispatch(imageActions.getImageCategoryList())
+    // this.props.dispatch(imageActions.getAllImageCategoryCategory())
 
 
 
@@ -65,19 +66,19 @@ class QuotesCategory extends Component {
 
     // console.log("STATIC______nextProps.Massage.addUserSuccess", nextProps.massage.addUserSuccess);
 
-    if (nextProps.message.addUserSuccess) {
+    if (nextProps.image.addUserSuccess) {
       return {
         ...nextProps,
         updatePwdformData: {
           "id": "",
           "password": ""
         },
-        fieldsQuotesCategory: {},
-        errorsQuotesCategory: {},
+        fieldsImageCategory: {},
+        errorsImageCategory: {},
         fieldsUserPasswordUpdate: {},
         errorsUpdatePassword: {},
-        addQuotesCategoryCreateModal: false,
-        UpdateQuotesCategoryCreateModal: false,
+        addImageCategoryCreateModal: false,
+        UpdateImageCategoryCreateModal: false,
         moreDetailsCreateModal: false,
         creditpasswordOpenModal: false,
         type: null,
@@ -86,7 +87,7 @@ class QuotesCategory extends Component {
 
       }
     }
-    // console.log('nextProps.users.isMatchImageUpdate', nextProps.users.filesDetails);
+    console.log('nextProps.users.isMatchImageUpdate', nextProps.users.filesDetails);
     if (nextProps.users.filesDetails) {
       return {
         ...nextProps,
@@ -112,7 +113,7 @@ class QuotesCategory extends Component {
       "pageNo": data.selected + 1,
       "size": this.state.size
     }
-    this.props.dispatch(messageActions.getQuotesCategoryList(datatemp));
+    this.props.dispatch(imageActions.getImageList(datatemp));
   }
   handleSearch = (event) => {
     // // console.log("666666666666666", event.target.value);
@@ -124,9 +125,9 @@ class QuotesCategory extends Component {
       "pageNo": 1,
       "size": this.state.size
     }
-    this.props.dispatch(messageActions.getQuotesCategoryList(data));
+    this.props.dispatch(imageActions.getImageList(data));
   }
-  disableQuotesCategoryCategory = (data) => {
+  disableImageCategoryCategory = (data) => {
     let datatemp = {
       "id": data.id,
     }
@@ -143,7 +144,7 @@ class QuotesCategory extends Component {
       buttons: [
         {
           label: 'Yes',
-          onClick: () => this.props.dispatch(messageActions.disableQuotesCategory(datatemp, paginationdata))
+          onClick: () => this.props.dispatch(imageActions.disableImageCategory(datatemp, paginationdata))
         },
         {
           label: 'No'
@@ -151,7 +152,7 @@ class QuotesCategory extends Component {
       ]
     });
   }
-  deleteQuotesCategoryCategory = (data) => {
+  deleteImageCategoryCategory = (data) => {
     let datatemp = {
       "id": data.id,
     }
@@ -168,7 +169,7 @@ class QuotesCategory extends Component {
       buttons: [
         {
           label: 'Yes',
-          onClick: () => this.props.dispatch(messageActions.deleteQuotesCategory(datatemp, paginationData))
+          onClick: () => this.props.dispatch(imageActions.deleteImage(datatemp, paginationData))
         },
         {
           label: 'No'
@@ -188,75 +189,69 @@ class QuotesCategory extends Component {
     this.setState({ moreDetailsCreateModal: false });
   }
   handleOpenCreateModalUpdatePassword = (data) => {
-    this.setState({ UpdateQuotesCategoryCreateModal: true, fieldsQuotesCategoryUpdate: data });
+    this.setState({ UpdateImageCategoryCreateModal: true, fieldsImageCategoryUpdate: data });
   }
   handleUpdatePasswordHideModal = () => {
-    this.setState({ UpdateQuotesCategoryCreateModal: false });
+    this.setState({ UpdateImageCategoryCreateModal: false });
   }
 
- 
-
-  handleAddQuotesCategoryHideModal = () => {
-    this.setState({ addQuotesCategoryCreateModal: false , fieldsQuotesCategory:{}, errorsQuotesCategory:{}  });
+  handleAddImageCategoryHideModal = () => {
+    this.setState({ addImageCategoryCreateModal: false , fieldsImageCategory:{}, errorsImageCategory:{}  });
     // this.setState({ appsettingUpdateModal: false });
   }
 
   handleOpenCreateModal = () => {
-    this.setState({ addQuotesCategoryCreateModal: true,  });
+    this.setState({ addImageCategoryCreateModal: true,  });
   }
-  inputAddQuotesCategoryChange = (e) => {
+  inputAddImageCategoryChange = (e) => {
     e.preventDefault();
     let { name, value } = e.target;
-    let fieldsQuotesCategory = this.state.fieldsQuotesCategory;
-    let errorsQuotesCategory = this.state.errorsQuotesCategory;
-    fieldsQuotesCategory[name] = value;
+    let fieldsImageCategory = this.state.fieldsImageCategory;
+    let errorsImageCategory = this.state.errorsImageCategory;
+    fieldsImageCategory[name] = value;
     // console.log(name, value);
-    errorsQuotesCategory[name] = "";
-    this.setState({ fieldsQuotesCategory, errorsQuotesCategory });
+    errorsImageCategory[name] = "";
+    this.setState({ fieldsImageCategory, errorsImageCategory });
   }
-  inputChangeUpdateQuotesCategory = (e) => {
+  inputChangeUpdateImageCategory = (e) => {
     e.preventDefault();
     let { name, value } = e.target;
-    let fieldsQuotesCategoryUpdate = this.state.fieldsQuotesCategoryUpdate;
-    let errorsQuotesCategoryMassage = this.state.errorsQuotesCategoryMassage;
-    fieldsQuotesCategoryUpdate[name] = value;
-    errorsQuotesCategoryMassage[name] = "";
+    let fieldsImageCategoryUpdate = this.state.fieldsImageCategoryUpdate;
+    let errorsImageCategoryMassage = this.state.errorsImageCategoryMassage;
+    fieldsImageCategoryUpdate[name] = value;
+    errorsImageCategoryMassage[name] = "";
     // console.log(name, value);
-    this.setState({ fieldsQuotesCategoryUpdate, errorsQuotesCategoryMassage });
+    this.setState({ fieldsImageCategoryUpdate, errorsImageCategoryMassage });
   }
 
-  createQuotesCategorySubmit = () => {
+  createImageCategorySubmit = () => {
 
     // let { users } = this.props;
     // let { filesDetails,
     //   //  filesDetailsVideo
     // } = users;
     // console.log('filesDetailsfilesDetails__________', filesDetails);
-    if (this.handleValidationAddQuotesCategory()) {
+    if (this.handleValidationAddImageCategory()) {
       let reqData = {
-        // "flag": this.state.fieldsQuotesCategory.flag,
-        "name": this.state.fieldsQuotesCategory.name,
-        // "image": this.state && this.state.imageName ? this.state.imageName : null,
-
+        "name": this.state.fieldsImageCategory.name,
+        "image": this.state && this.state.imageName ? this.state.imageName : null,
       }
-      // console.log("createRestoCategory>>>>>>>>>>>>>>>>>>>>>>>>>>>>", reqData);
-      this.props.dispatch(messageActions.createQuotesCategory(reqData));
+      this.props.dispatch(imageActions.createImage(reqData));
     }
 
   }
 
  
-  updateQuotesCategorySubmit = () => {
+  updateImageCategorySubmit = () => {
     let { users } = this.props;
     let { filesDetails } = users;
     console.log('filesDetailsfilesDetailsfilesDetailsfilesDetailsfilesDetails::::???', filesDetails);
 
-    if (this.handleValidationUpdateQuotesCategory()) {
+    if (this.handleValidationUpdateImageCategory()) {
       let reqData = {
-        "id": this.state.fieldsQuotesCategoryUpdate.id,
-        // "flag": this.state.fieldsQuotesCategoryUpdate.flag,
-        "name": this.state.fieldsQuotesCategoryUpdate.name,
-        // "image": this.state && this.state.imageName ? this.state.imageName : this.state.fieldsQuotesCategoryUpdate.image,
+        "id": this.state.fieldsImageCategoryUpdate.id,
+        "name": this.state.fieldsImageCategoryUpdate.name,
+        "image": this.state && this.state.imageName ? this.state.imageName : this.state.fieldsImageCategoryUpdate.image,
       }
       let paginationData = {
         "keyWord": this.state.keyWord,
@@ -266,55 +261,55 @@ class QuotesCategory extends Component {
 
       // console.log("update>>>>>>>>>>>>>>>>>>>>>>>000000000", reqData);
 
-      this.props.dispatch(messageActions.updateQuotesCategory(reqData, paginationData));
+      this.props.dispatch(imageActions.updateImage(reqData, paginationData));
     }
 
   }
 
-  handleValidationUpdateQuotesCategory = () => {
-    let fieldsQuotesCategoryUpdate = this.state.fieldsQuotesCategoryUpdate;
-    let errorsQuotesCategoryMassage = {};
+  handleValidationUpdateImageCategory = () => {
+    let fieldsImageCategoryUpdate = this.state.fieldsImageCategoryUpdate;
+    let errorsImageCategoryMassage = {};
     let formIsValid = true;
 
     //flag
-    // if (!fieldsQuotesCategoryUpdate["flag"] || fieldsQuotesCategoryUpdate["flag"] === "") {
+    // if (!fieldsImageCategoryUpdate["flag"] || fieldsImageCategoryUpdate["flag"] === "") {
     //   formIsValid = false;
-    //   errorsQuotesCategoryMassage["flag"] = "Cannot be empty";
+    //   errorsImageCategoryMassage["flag"] = "Cannot be empty";
     // }
 
 
     //name
-    if (!fieldsQuotesCategoryUpdate["name"] || fieldsQuotesCategoryUpdate["name"] === "") {
+    if (!fieldsImageCategoryUpdate["name"] || fieldsImageCategoryUpdate["name"] === "") {
       formIsValid = false;
-      errorsQuotesCategoryMassage["name"] = "Cannot be empty";
+      errorsImageCategoryMassage["name"] = "Cannot be empty";
     }
 
 
-    this.setState({ errorsQuotesCategoryMassage: errorsQuotesCategoryMassage });
+    this.setState({ errorsImageCategoryMassage: errorsImageCategoryMassage });
     return formIsValid;
   }
 
-  handleValidationAddQuotesCategory = () => {
-    let fieldsQuotesCategory = this.state.fieldsQuotesCategory;
-    let errorsQuotesCategory = {};
+  handleValidationAddImageCategory = () => {
+    let fieldsImageCategory = this.state.fieldsImageCategory;
+    let errorsImageCategory = {};
     let formIsValid = true;
 
-    //QuotesCategoryCategoryId
-    // if (!fieldsQuotesCategory["flag"] || fieldsQuotesCategory["flag"] === "") {
+    //ImageCategoryCategoryId
+    // if (!fieldsImageCategory["flag"] || fieldsImageCategory["flag"] === "") {
     //   formIsValid = false;
-    //   errorsQuotesCategory["flag"] = "Cannot be empty flag";
+    //   errorsImageCategory["flag"] = "Cannot be empty flag";
     // }
     //name
-    if (!fieldsQuotesCategory["name"] || fieldsQuotesCategory["name"] === "") {
+    if (!fieldsImageCategory["name"] || fieldsImageCategory["name"] === "") {
       formIsValid = false;
-      errorsQuotesCategory["name"] = "Cannot be empty name";
+      errorsImageCategory["name"] = "Cannot be empty name";
     }
 
 
 
 
-    console.log('errorsMassageerrorsMassageerrorsMassageerrorsMassage', errorsQuotesCategory);
-    this.setState({ errorsQuotesCategory: errorsQuotesCategory });
+    console.log('errorsMassageerrorsMassageerrorsMassageerrorsMassage', errorsImageCategory);
+    this.setState({ errorsImageCategory: errorsImageCategory });
     return formIsValid;
   }
 
@@ -340,12 +335,12 @@ class QuotesCategory extends Component {
 
   render() {
 
-    let { message, users } = this.props;
-    let {  loading, allQuotesCategoryCat,QuotesItems,
-      QuotesTotal, } = message;
+    let { image, users } = this.props;
+    let {  loading, allImageCategoryCat,ImageCarItems,
+      ImageCategoryCatTotal, } = image;
     let { filesDetails } = users;
     // let { allMassage } = Massage;
-    console.log("RENDER111111111111111", QuotesItems, QuotesTotal);
+    console.log("RENDER111111111111111", ImageCarItems, ImageCategoryCatTotal);
     // // console.log('this.state.imageName', this.state.imageName);
 
 
@@ -368,7 +363,7 @@ class QuotesCategory extends Component {
 
                   <div className="flex flex-wrap items-center justify-between w-full ">
                     <div className="">
-                      <h3 className="text-xl font-semibold ">Quotes Category</h3>
+                      <h3 className="text-xl font-semibold ">Image Category</h3>
                     </div>
 
                     <div className='flex space-x-6 '>
@@ -383,7 +378,7 @@ class QuotesCategory extends Component {
                         </div>
                       </form>
 
-                      <button className="flex items-center px-2 py-2 text-sm font-medium text-white capitalize bg-[#2a3042]/80  rounded-md " onClick={() => this.handleOpenCreateModal()}><MdAdd style={{ fontSize: "1.5rem" }} className="mr-1.5" />  Add Quotes Category </button>
+                      <button className="flex items-center px-2 py-2 text-sm font-medium text-white capitalize bg-[#2a3042]/80  rounded-md " onClick={() => this.handleOpenCreateModal()}><MdAdd style={{ fontSize: "1.5rem" }} className="mr-1.5" />  Add Images  </button>
 
                     </div>
 
@@ -399,7 +394,7 @@ class QuotesCategory extends Component {
                                 <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">Name </th>
                                 {/* <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">Flag</th> */}
 
-                                {/* <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">image</th> */}
+                                <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">image</th>
                                 {/* <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">image</th> */}
                                 <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">Date/Time</th>
 
@@ -412,25 +407,25 @@ class QuotesCategory extends Component {
 
                             <tbody>
                               {
-                                QuotesItems && QuotesItems.length > 0 ?
-                                  QuotesItems.map((element, index) => (<React.Fragment key={element.id}>
+                                ImageCarItems && ImageCarItems.length > 0 ?
+                                  ImageCarItems.map((element, index) => (<React.Fragment key={element.id}>
                                     <tr key={element.id} className="bg-white border-b border-black border-opacity-10 ">
                                       <td className="px-6 py-3 text-sm font-medium text-gray-600 whitespace-nowrap">
                                         {this.state.offset + index + 1}</td>
 
 
-                                      {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.QuotesCategoryCategoryId && element.QuotesCategoryCategoryId.name ? element.QuotesCategoryCategoryId.name : "-"}</td> */}
+                                      {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.ImageCategoryCategoryId && element.ImageCategoryCategoryId.name ? element.ImageCategoryCategoryId.name : "-"}</td> */}
                                       <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.name ? element.name : "-"}</td>
 
                                       {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.flag ? element.flag : "-"}</td> */}
 
-                                      {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">
+                                      <td className="px-6 py-3 text-sm justify-start flex items-center text-gray-600 whitespace-nowrap">
                                         <div className='flex justify-center'>
-                                          <img className="object-cover h-10 rounded-sm w-14" src={element && element.imageLinkUrl
-                                            ? element.imageLinkUrl
+                                          <img className="object-cover h-10 rounded-sm w-14" src={element && element.imageUserLink
+                                            ? element.imageUserLink
                                             : "/dist/img/profile.png"} alt="" />
                                         </div>
-                                      </td> */}
+                                      </td>
 
                                       {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">
                                         <div className='flex justify-center'>
@@ -456,7 +451,7 @@ class QuotesCategory extends Component {
                                       {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap ">
                                         <div class="flex justify-center">
                                           <label class="flex items-center cursor-pointer targetablepx-4 tooltip">
-                                            <div class="relative" onClick={() => this.disableQuotesCategoryCategory(element)}>
+                                            <div class="relative" onClick={() => this.disableImageCategoryCategory(element)}>
                                               <input type="checkbox" id="toggleB" class="sr-only" />
                                               <div class="block bg-gray-600 w-10 h-6 rounded-full"></div>
                                               <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition"></div>
@@ -469,11 +464,11 @@ class QuotesCategory extends Component {
                                       <td className="px-2 py-3 text-sm text-gray-600 whitespace-nowrap">
                                         <span className="flex justify-center pl-1">
                                           {element.isDisable === false ?
-                                            <div class="targetablepx-4 tooltip px-3 py-1 font-medium tracking-wider text-blue-100 bg-green-700 border rounded-md shadow-sm hover:shadow-lg hover:bg-green-400 cursor-pointer" onClick={() => this.disableQuotesCategoryCategory(element)}>
+                                            <div class="targetablepx-4 tooltip px-3 py-1 font-medium tracking-wider text-blue-100 bg-green-700 border rounded-md shadow-sm hover:shadow-lg hover:bg-green-400 cursor-pointer" onClick={() => this.disableImageCategoryCategory(element)}>
 
                                               <label>Enabled</label>
                                             </div>
-                                            : <div class="targetablepx-4 tooltip px-3 py-1 font-medium tracking-wider text-blue-100 bg-red-500 border rounded-md shadow-sm hover:shadow-lg hover:bg-green-400 cursor-pointer" onClick={() => this.disableQuotesCategoryCategory(element)}>
+                                            : <div class="targetablepx-4 tooltip px-3 py-1 font-medium tracking-wider text-blue-100 bg-red-500 border rounded-md shadow-sm hover:shadow-lg hover:bg-green-400 cursor-pointer" onClick={() => this.disableImageCategoryCategory(element)}>
 
                                               <label>Disabled</label>
                                             </div>}
@@ -501,7 +496,7 @@ class QuotesCategory extends Component {
                                           </span>
 
                                           <span className="relative">
-                                            <div class="targetablepx-4 tooltip p-2 rounded-full  font-medium    hover:bg-blue-100 cursor-pointer" onClick={() => this.deleteQuotesCategoryCategory(element)}>
+                                            <div class="targetablepx-4 tooltip p-2 rounded-full  font-medium    hover:bg-blue-100 cursor-pointer" onClick={() => this.deleteImageCategoryCategory(element)}>
                                               {/* <span className='top-0 left-0 p-6 mx-auto -mt-8 -ml-2 text-sm text-white bg-gray-500 rounded tooltip-text'>Delete</span> */}
                                               <RiDeleteBinLine style={{ fontSize: "1.5rem" }} title='Delete'/>
                                             </div>
@@ -526,13 +521,13 @@ class QuotesCategory extends Component {
                       isMobile ?
                         <nav className="relative z-0 flex justify-end mt-5 w-76">
                           {
-                            QuotesTotal && QuotesTotal > 10 ?
+                            ImageCategoryCatTotal && ImageCategoryCatTotal > 10 ?
                               <ReactPaginate
                                 previousLabel={'Prev'}
                                 nextLabel={'Next'}
                                 breakLabel={'...'}
                                 breakClassName={'break-me'}
-                                pageCount={QuotesTotal / this.state.size}
+                                pageCount={ImageCategoryCatTotal / this.state.size}
                                 marginPagesDisplayed={1}
                                 pageRangeDisplayed={1}
                                 onPageChange={this.handlePageClick}
@@ -543,13 +538,13 @@ class QuotesCategory extends Component {
                               : null}
                         </nav> : <nav className="relative z-0 flex justify-end mt-5 w-76">
                           {
-                            QuotesTotal && QuotesTotal > 10 ?
+                            ImageCategoryCatTotal && ImageCategoryCatTotal > 10 ?
                               <ReactPaginate
                                 previousLabel={'Previous'}
                                 nextLabel={'Next'}
                                 breakLabel={'...'}
                                 breakClassName={'break-me'}
-                                pageCount={QuotesTotal / this.state.size}
+                                pageCount={ImageCategoryCatTotal / this.state.size}
                                 marginPagesDisplayed={3}
                                 pageRangeDisplayed={3}
                                 onPageChange={this.handlePageClick}
@@ -570,18 +565,18 @@ class QuotesCategory extends Component {
         <DialogExample />
 
         <CreateAddCategoryModal
-          addQuotesCategoryCreateModal={this.state.addQuotesCategoryCreateModal}
-          fieldsQuotesCategory={this.state.fieldsQuotesCategory}
-          errorsQuotesCategory={this.state.errorsQuotesCategory}
-          allQuotesCategoryCat={allQuotesCategoryCat}
-          inputAddQuotesCategoryChange={this.inputAddQuotesCategoryChange}
+          addImageCategoryCreateModal={this.state.addImageCategoryCreateModal}
+          fieldsImageCategory={this.state.fieldsImageCategory}
+          errorsImageCategory={this.state.errorsImageCategory}
+          allImageCategoryCat={allImageCategoryCat}
+          inputAddImageCategoryChange={this.inputAddImageCategoryChange}
           handleFile={this.handleFile}
           handleFile2={this.handleFile2}
-          createQuotesCategorySubmit={this.createQuotesCategorySubmit}
+          createImageCategorySubmit={this.createImageCategorySubmit}
           handleSelectType={this.handleSelectType}
           handleSelectGameType={this.handleSelectGameType}
           handleSelectRankType={this.handleSelectRankType}
-          handleAddQuotesCategoryHideModal={this.handleAddQuotesCategoryHideModal}
+          handleAddImageCategoryHideModal={this.handleAddImageCategoryHideModal}
           inputChangeIsVideo={this.inputChangeIsVideo}
           isVideo={this.state.isVideo}
           filesDetails={filesDetails}
@@ -600,12 +595,12 @@ class QuotesCategory extends Component {
         />
 
         <UpdateCategoryModal
-          UpdateQuotesCategoryCreateModal={this.state.UpdateQuotesCategoryCreateModal}
-          fieldsQuotesCategoryUpdate={this.state.fieldsQuotesCategoryUpdate}
-          errorsQuotesCategoryMassage={this.state.errorsQuotesCategoryMassage}
-          inputChangeUpdateQuotesCategory={this.inputChangeUpdateQuotesCategory}
-          updateQuotesCategorySubmit={this.updateQuotesCategorySubmit}
-          allQuotesCategoryCat={allQuotesCategoryCat}
+          UpdateImageCategoryCreateModal={this.state.UpdateImageCategoryCreateModal}
+          fieldsImageCategoryUpdate={this.state.fieldsImageCategoryUpdate}
+          errorsImageCategoryMassage={this.state.errorsImageCategoryMassage}
+          inputChangeUpdateImageCategory={this.inputChangeUpdateImageCategory}
+          updateImageCategorySubmit={this.updateImageCategorySubmit}
+          allImageCategoryCat={allImageCategoryCat}
 
           handleFile={this.handleFile}
           handleFile2={this.handleFile2}
@@ -635,13 +630,13 @@ class QuotesCategory extends Component {
   }
 }
 function mapStateToProps(state) {
-  const { message, users, product, } = state;
+  const { image, users, product, } = state;
   return {
-    message,
+    image,
     users,
     product
     // kyc,
     // authentication
   };
 }
-export default connect(mapStateToProps)(QuotesCategory);
+export default connect(mapStateToProps)(Image);

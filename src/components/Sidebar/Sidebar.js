@@ -38,7 +38,7 @@ function Sidebar({ open, location, history, user, pathname, setOpen, setOpenMobi
 
                 </div>
 
-                <div onClick={() => onClickMenu('/app/image')} className={`hover:text-white cursor-pointer h-14 items-center flex px-3 text-white/60  py-2 text-sm  transition ease-in-out duration-150 relative  group hover:bg-[#2a3042]/80   ${location.pathname === "/app/image" ? "text-white/100 " : ""}`}>
+                {/* <div onClick={() => onClickMenu('/app/image')} className={`hover:text-white cursor-pointer h-14 items-center flex px-3 text-white/60  py-2 text-sm  transition ease-in-out duration-150 relative  group hover:bg-[#2a3042]/80   ${location.pathname === "/app/image" ? "text-white/100 " : ""}`}>
                   <div className="flex w-full justify-center p-4">
                     <BiImages size={16} />
                   </div>
@@ -46,8 +46,29 @@ function Sidebar({ open, location, history, user, pathname, setOpen, setOpenMobi
                     <p className="whitespace-nowrap">Image</p>
                   </div>
 
-                </div>
+                </div> */}
 
+                <div className='hover:text-white cursor-pointer h-14 items-center flex px-3 text-white/60  py-2 text-sm  transition ease-in-out duration-150 relative  group hover:bg-[#2a3042]/80'>
+                  <div className="flex w-full justify-center ">
+                    <BiImages size={24} />
+                  </div>
+
+                  <div className="w-60 absolute top-0 left-[70px]   hidden  group-hover:flex  justify-center   bg-[#2a3042]/80  z-20">
+                    <div className="w-full">
+                      <p className="whitespace-nowrap h-14 block w-full flex items-center p-4 ">Image Management</p>
+                      <ol className="space-y-4  py-3 text-white/80 text-sm bg-[#2a3042]">
+                        <li
+                          onClick={() => onClickMenu('/app/imageCategory')} className={` " cursor-pointer hover:text-white transition duration-150 px-4 py-1 " ${location.pathname === "/app/imageCategory" ? "text-white cursor-pointer font-medium" : ""}`}
+                        >Image Category</li>
+                        <li
+                          onClick={() => onClickMenu('/app/image')} className={` " cursor-pointer hover:text-white transition duration-150 px-4 py-1 " ${location.pathname === "/app/image" ? "text-white cursor-pointer font-medium" : ""}`}
+                        >Image</li>
+                      </ol>
+                    </div>
+
+                  </div>
+
+                </div>
                 <div className='hover:text-white cursor-pointer h-14 items-center flex px-3 text-white/60  py-2 text-sm  transition ease-in-out duration-150 relative  group hover:bg-[#2a3042]/80'>
                   <div className="flex w-full justify-center ">
                     <RiMessage2Line size={24} />
@@ -110,13 +131,28 @@ function Sidebar({ open, location, history, user, pathname, setOpen, setOpenMobi
                   <span className="text-[13px] ">Dashboard</span>
                 </div>
 
-                <div onClick={() => { onClickMenu('/app/image'); setOpenMobile(!openMobile) }} className={`text-white cursor-pointer h-12 items-center flex space-x-4 px-3 hover:text-white/60  py-2 text-sm  transition ease-in-out duration-150  ${location.pathname === "/app/image" ? "text-white/100 " : ""}`}>
-                  <div >
-                    <BiImages size={16} />
-                  </div>
-                  <span className="text-[13px] ">Image</span>
-                </div>
+              
 
+                <div>
+                  <span onClick={() => setShowMe(showMe === 1 ? 0 : 1)} className=" accor text-white cursor-pointer h-12 items-center flex justify-between px-3 py-2 text-[13px]  transition ease-in-out duration-150 hover:text-white/60 "  >
+                    <div className="flex  space-x-4 ">
+                      <div className="">
+                        <BiImages size={20} />
+                      </div>
+                      <span className="text-[13px] ">Image Management </span>
+                    </div>
+                    {showMe === 1 ? <BiChevronUp size={20} /> : <BiChevronDown size={20} />}
+                  </span>
+                  <ol className={showMe === 1 ? "space-y-4 pl-10 py-3 text-white/80 text-[13px]  showdata" : " space-y-4 pl-10  text-white/80 text-[13px]  body overflow-hidden"}>
+                    <li
+                      onClick={() => { onClickMenu('/app/imageCategory'); setOpenMobile(!openMobile) }} className={` " cursor-pointer text-white transition duration-150 p-1 " ${location.pathname === "/app/imageCategory" ? "text-white cursor-pointer font-medium" : ""}`}
+                    >Image Category</li>
+                    <li
+                      onClick={() => { onClickMenu('/app/image'); setOpenMobile(!openMobile) }} className={` " cursor-pointer text-white transition duration-150 p-1 " ${location.pathname === "/app/image" ? "text-white cursor-pointer font-medium" : ""}`}
+                    >Image</li>
+                    {/* <li onClick={() => { onClickMenu('/app/createaccount'); setOpenMobile(!openMobile) }} className={` " cursor-pointer text-white transition duration-150 p-1 " ${location.pathname === "/app/createaccount" ? "text-white cursor-pointer font-medium" : ""}`}>Create Account</li> */}
+                  </ol>
+                </div>
                 <div>
                   <span onClick={() => setShowMe(showMe === 1 ? 0 : 1)} className=" accor text-white cursor-pointer h-12 items-center flex justify-between px-3 py-2 text-[13px]  transition ease-in-out duration-150 hover:text-white/60 "  >
                     <div className="flex  space-x-4 ">
@@ -177,13 +213,31 @@ function Sidebar({ open, location, history, user, pathname, setOpen, setOpenMobi
                   <span className="text-[13px] ">Dashboard</span>
                 </div>
 
-                <div onClick={() => { onClickMenu('/app/image'); setOpenMobile(!openMobile) }} className={`hover:text-white cursor-pointer h-12 items-center flex space-x-4 px-3 text-white/60  py-2 text-[13px]  transition ease-in-out duration-150  ${location.pathname === "/app/image" ? "text-white/100 " : ""}`}>
+                {/* <div onClick={() => { onClickMenu('/app/image'); setOpenMobile(!openMobile) }} className={`hover:text-white cursor-pointer h-12 items-center flex space-x-4 px-3 text-white/60  py-2 text-[13px]  transition ease-in-out duration-150  ${location.pathname === "/app/image" ? "text-white/100 " : ""}`}>
                   <div >
                     <BiImages size={16} />
                   </div>
                   <span className="text-[13px] ">Image</span>
-                </div>
+                </div> */}
 
+                <div>
+                  <span onClick={() => setShowMe(showMe === 1 ? 0 : 1)} className=" accor hover:text-white cursor-pointer h-12 items-center flex justify-between px-3 py-2 text-[13px]  transition ease-in-out duration-150 text-white/60 "  >
+                    <div className="flex  space-x-4 ">
+                      <div className="">
+                        <BiImages size={20} />
+                      </div>
+                    </div>
+                    {showMe === 1 ? <BiChevronUp size={20} /> : <BiChevronDown size={20} />}
+                  </span>
+                  <ol className={showMe === 1 ? "space-y-4 pl-10 py-3 text-white/80 text-[13px]  showdata" : " space-y-4 pl-10  text-white/80 text-[13px]  body overflow-hidden"}>
+                    <li
+                      onClick={() => { onClickMenu('/app/imageCategory'); setOpenMobile(!openMobile) }} className={` " cursor-pointer hover:text-white transition duration-150 p-1 " ${location.pathname === "/app/imageCategory" ? "text-white cursor-pointer font-medium" : ""}`}
+                    >Image Category</li>
+                    <li
+                      onClick={() => { onClickMenu('/app/image'); setOpenMobile(!openMobile) }} className={` " cursor-pointer hover:text-white transition duration-150 p-1 " ${location.pathname === "/app/image" ? "text-white cursor-pointer font-medium" : ""}`}
+                    >Image</li>
+                  </ol>
+                </div>
                 <div>
                   <span onClick={() => setShowMe(showMe === 1 ? 0 : 1)} className=" accor hover:text-white cursor-pointer h-12 items-center flex justify-between px-3 py-2 text-[13px]  transition ease-in-out duration-150 text-white/60 "  >
                     <div className="flex  space-x-4 ">

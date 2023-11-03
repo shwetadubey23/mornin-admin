@@ -2,8 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Route, Switch, withRouter, } from "react-router-dom";
 import Header from "../Header";
 import Sidebar from "../Sidebar/Sidebar";
-// import ActiveUser from "../../pages/ActiveUser/ActiveUser";
-import UserHistory from "../../pages/UserHistory/UserHistory";
 import User from "../../pages/User/User";
 import Dashboard from "../../pages/Dashboard/Dashboard";
 import ChangePasswordModal from "./Component/ChangePassword";
@@ -12,6 +10,7 @@ import Message from '../../pages/Message/Message';
 import MessageCategory from '../../pages/MessageCategory/MessageCategory';
 import Quotes from '../../pages/Quotes/Quotes';
 import QuotesCategory from '../../pages/QuotesCategory /QuotesCategory';
+import ImageCategory from '../../pages/ImageCategory/ImageCategory';
 function Layout(props) {
   const [open, setOpen] = useState(false);
 
@@ -63,13 +62,13 @@ function Layout(props) {
             <Switch>
               {/* <Route path="/app/user" component={withRouter(ActiveUser)} /> */}
               <Route path="/app/user" component={withRouter(User)} />
-              <Route path="/app/userhistory" component={withRouter(UserHistory)} />
               <Route path="/app/dashboard" component={withRouter(Dashboard)} />
               <Route path="/app/image" component={withRouter(image)} />
               <Route path="/app/message" component={withRouter(Message)} />
               <Route path="/app/messageCategory" component={withRouter(MessageCategory)} />
               <Route path="/app/quotes" component={withRouter(Quotes)} />
               <Route path="/app/quotesCategory" component={withRouter(QuotesCategory)} />
+              <Route path="/app/imageCategory" component={withRouter(ImageCategory)} />
             </Switch>
           </div>
         </div>

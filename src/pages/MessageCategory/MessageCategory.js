@@ -422,21 +422,6 @@ class MessageCategory extends Component {
                                       {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.MessageCategoryId && element.MessageCategoryId.name ? element.MessageCategoryId.name : "-"}</td> */}
                                       <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.name ? element.name : "-"}</td>
 
-                                      {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.flag ? element.flag : "-"}</td> */}
-
-                                      {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">
-                                        <div className='flex justify-center'>
-                                          <img className="object-cover h-10 rounded-sm w-14" src={element && element.imageLinkUrl
-                                            ? element.imageLinkUrl
-                                            : "/dist/img/profile.png"} alt="" />
-                                        </div>
-                                      </td> */}
-
-                                      {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">
-                                        <div className='flex justify-center'>
-                                          <img className="object-cover h-10 rounded-sm w-14" src={element && element.imageLinkUrl ? element.imageLinkUrl : "NA"} alt="not found" />
-                                        </div>
-                                      </td> */}
 
                                       <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{moment(new Date(parseInt(element.createdAt))).utcOffset("+05:30").format("YYYY-MM-DD HH:mm")}</td>
 

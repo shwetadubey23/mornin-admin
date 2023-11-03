@@ -3,7 +3,7 @@ import { CgLogIn } from 'react-icons/cg';
 
 export default function UpdateCategoryModal(props) {
 
-  let { UpdateBannerCreateModal, handleAppSeetingHideModal, errorsUpdateBanner, inputChangeUpdateBanner, updateBannerSubmit, fieldsBannerUpdate, handleFile, filesDetails
+  let { UpdateBannerCreateModal, handleAppSeetingHideModal, errorsUpdateBanner, inputChangeUpdateBanner, updateBannerSubmit, fieldsBannerUpdate, handleFile, filesDetails , getAllImageCategory
   } = props;
   // console.log("MODAL__fieldsBannerUpdate::", fieldsBannerUpdate);
 
@@ -29,14 +29,14 @@ export default function UpdateCategoryModal(props) {
           </button>
           <form autoComplete="off" className="p-4 space-y-4 capitalize border border-gray-300 ">
 
-            {/* <div className="w-full">
+            <div className="w-full">
               <label className="block text-xs font-medium text-gray-500 md:text-left" for="username">Banner Category:</label>
               <select class="form-select border-1 px-3 py-2 placeholder-blueGray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" aria-label="Default select example" onChange={inputChangeUpdateBanner} id="bannerCategoryId" name="bannerCategoryId"
                 value={fieldsBannerUpdate && fieldsBannerUpdate["bannerCategoryId"] ? fieldsBannerUpdate["bannerCategoryId"] : null} >
                 <option selected>Please Select Banner Category</option>
                 {
-                  allBannerCat && allBannerCat && allBannerCat.length > 0 ?
-                    allBannerCat.map((element, index) => (
+                  getAllImageCategory && getAllImageCategory && getAllImageCategory.length > 0 ?
+                    getAllImageCategory.map((element, index) => (
                       <option value={element && element.id ? element.id : null}>{element && element.name ? element.name : "NA"}</option>
                     )) : null
                 }
@@ -46,7 +46,7 @@ export default function UpdateCategoryModal(props) {
                   {errorsUpdateBanner["bannerCategoryId"]}
                 </div>
                 : null}
-            </div> */}
+            </div>
             <div className="w-full">
               <label className="block text-xs font-medium text-gray-500 md:text-left" for="username">Name :</label>
               <input className={` w-full p-2 mt-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 ring-gray-500  ${errorsUpdateBanner && !errorsUpdateBanner["name"] ? "border  placeholder-gray-500" : "border  border-red-500 "}`}

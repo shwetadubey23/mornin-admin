@@ -63,9 +63,6 @@ class Message extends Component {
 
   }
   static getDerivedStateFromProps(nextProps, prevState) {
-
-    // console.log("STATIC______nextProps.Massage.addUserSuccess", nextProps.massage.addUserSuccess);
-
     if (nextProps.message.addUserSuccess) {
       return {
         ...nextProps,
@@ -88,7 +85,6 @@ class Message extends Component {
 
       }
     }
-    // console.log('nextProps.users.isMatchImageUpdate', nextProps.users.filesDetails);
     if (nextProps.users.filesDetails) {
       return {
         ...nextProps,
@@ -106,7 +102,6 @@ class Message extends Component {
     }
   }
   handlePageClick = (data) => {
-    // console.log("data  ", data);
     let offset = Math.ceil(data.selected * this.state.size);
     this.setState({ offset: offset, page: data.selected });
     let datatemp = {
@@ -117,7 +112,6 @@ class Message extends Component {
     this.props.dispatch(messageActions.getMessageList(datatemp));
   }
   handleSearch = (event) => {
-    // // console.log("666666666666666", event.target.value);
     event.preventDefault();
     let { value } = event.target;
     this.setState({ keyWord: value, offset: 0 });
@@ -177,13 +171,11 @@ class Message extends Component {
         }
       ]
     });
-    // console.log("alertalertalertalert", alert)
   }
 
 
   handleOpenCreateModalMoreDetails = (data) => {
     this.setState({ moreDetailsCreateModal: true, massageRowData: data });
-    //  // console.log("fgfdgf1111111111111111111111111111111111",req);
   }
 
   handleMoreDetailsHideModal = () => {
@@ -200,7 +192,6 @@ class Message extends Component {
 
   handleAddMessageHideModal = () => {
     this.setState({ addMessageCreateModal: false , fieldsMessage:{}, errorsMessage:{}  });
-    // this.setState({ appsettingUpdateModal: false });
   }
 
   handleOpenCreateModal = () => {
@@ -212,7 +203,6 @@ class Message extends Component {
     let fieldsMessage = this.state.fieldsMessage;
     let errorsMessage = this.state.errorsMessage;
     fieldsMessage[name] = value;
-    // console.log(name, value);
     errorsMessage[name] = "";
     this.setState({ fieldsMessage, errorsMessage });
   }
@@ -223,7 +213,6 @@ class Message extends Component {
     let errorsMessageMassage = this.state.errorsMessageMassage;
     fieldsMessageUpdate[name] = value;
     errorsMessageMassage[name] = "";
-    // console.log(name, value);
     this.setState({ fieldsMessageUpdate, errorsMessageMassage });
   }
 
@@ -233,10 +222,8 @@ class Message extends Component {
       let reqData = {
         "message": this.state.fieldsMessage.message,
         "messageSubCategoryId": this.state.fieldsMessage.messageSubCategoryId,
-        // "image": this.state && this.state.imageName ? this.state.imageName : null,
 
       }
-      console.log("createRestoCategory>>>>>>>>>>>>>>>>>>>>>>>>>>>>", reqData);
       this.props.dispatch(messageActions.createMessage(reqData));
     }
 
@@ -249,16 +236,12 @@ class Message extends Component {
         "id": this.state.fieldsMessageUpdate.id,
         "message": this.state.fieldsMessageUpdate.message,
         "messageSubCategory": this.state.fieldsMessageUpdate.messageSubCategory,
-        // "image": this.state && this.state.imageName ? this.state.imageName : this.state.fieldsMessageUpdate.image,
       }
       let paginationData = {
         "keyWord": this.state.keyWord,
         "pageNo": this.state.pageNo,
         "size": this.state.size
       }
-
-      // console.log("update>>>>>>>>>>>>>>>>>>>>>>>000000000", reqData);
-
       this.props.dispatch(messageActions.updateMessage(reqData, paginationData));
     }
 
@@ -302,11 +285,6 @@ class Message extends Component {
     //   formIsValid = false;
     //   errorsMessage["messageSubCategoryId"] = "Cannot be empty messageSubCategoryId";
     // }
-
-
-
-
-    console.log('errorsMassageerrorsMassageerrorsMassageerrorsMassage', errorsMessage);
     this.setState({ errorsMessage: errorsMessage });
     return formIsValid;
   }
@@ -324,7 +302,6 @@ class Message extends Component {
 
     }
     else {
-      // console.log("No File To Upload!")
     }
 
   }
@@ -335,11 +312,9 @@ class Message extends Component {
 
     let { message, users } = this.props;
     let {  loading, allMessage,getMessageList,
-      MessageCatTotal, } = message;
+      messageTotal, } = message;
     let { filesDetails } = users;
-    // let { allMassage } = Massage;
-    console.log("RENDER111111111111111", getMessageList, );
-    // // console.log('this.state.imageName', this.state.imageName);
+
 
 
     return (
@@ -411,11 +386,9 @@ class Message extends Component {
                                       <td className="px-6 py-3 text-sm font-medium text-gray-600 whitespace-nowrap">
                                         {this.state.offset + index + 1}</td>
 
-
-                                      {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.MessageCategoryId && element.MessageCategoryId.name ? element.MessageCategoryId.name : "-"}</td> */}
                                       <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.messageSubCategoryId && element.messageSubCategoryId.name ? element.messageSubCategoryId.name : "-"}</td>
 
-                                      <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.message ? element.message : "-"}</td>
+                                      <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.message && element.message.substring(0,25) ? element.message.substring(0,25) : "-"}</td>
 
                                       {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">
                                         <div className='flex justify-center'>
@@ -519,13 +492,13 @@ class Message extends Component {
                       isMobile ?
                         <nav className="relative z-0 flex justify-end mt-5 w-76">
                           {
-                            MessageCatTotal && MessageCatTotal > 10 ?
+                            messageTotal && messageTotal > 10 ?
                               <ReactPaginate
                                 previousLabel={'Prev'}
                                 nextLabel={'Next'}
                                 breakLabel={'...'}
                                 breakClassName={'break-me'}
-                                pageCount={MessageCatTotal / this.state.size}
+                                pageCount={messageTotal / this.state.size}
                                 marginPagesDisplayed={1}
                                 pageRangeDisplayed={1}
                                 onPageChange={this.handlePageClick}
@@ -536,13 +509,13 @@ class Message extends Component {
                               : null}
                         </nav> : <nav className="relative z-0 flex justify-end mt-5 w-76">
                           {
-                            MessageCatTotal && MessageCatTotal > 10 ?
+                            messageTotal && messageTotal > 10 ?
                               <ReactPaginate
                                 previousLabel={'Previous'}
                                 nextLabel={'Next'}
                                 breakLabel={'...'}
                                 breakClassName={'break-me'}
-                                pageCount={MessageCatTotal / this.state.size}
+                                pageCount={messageTotal / this.state.size}
                                 marginPagesDisplayed={3}
                                 pageRangeDisplayed={3}
                                 onPageChange={this.handlePageClick}

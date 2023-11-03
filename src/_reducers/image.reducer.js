@@ -78,8 +78,8 @@ export function image(state = {}, action) {
         ...state,
         addUserSuccess: false,
         loading: false,
-        bannerCarItems: action.users.getBannerCategoryList.list,
-        bannerCatTotal: action.users.getBannerCategoryList.total
+        ImageCarItems: action.users.getImageCategoryList.list,
+        ImageCatTotal: action.users.getImageCategoryList.total
       };
     case imageConstants.GET_BANNER_CATEGORY_LIST_FAILURE:
       return {
@@ -136,7 +136,7 @@ export function image(state = {}, action) {
         ...state,
         addUserSuccess: false,
         loading: false,
-        allBannerCat: action.users.getAllBannerCategory,
+        getAllImageCategory: action.users.getAllImageCategory,
         // allrestaurentTotal: action.users.getAllrestaurent
       };
     case imageConstants.GET_ALL_BANNER_CATEGORY_FAILURE:
