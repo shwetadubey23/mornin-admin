@@ -15,7 +15,7 @@ export default function CreateAddCategoryModal(props) {
       <div className="animate__animated animate__fadeInDown animate__faster bg-[#f8f8fb]  md:w-[32rem] w-full  mx-auto rounded shadow-lg  overflow-y-auto mt-2">
         {/*modal header*/}
         <div className="flex items-center justify-between p-6 py-2 bg-[#13BFA1] border-b">
-          <p className="text-[16px] font-medium text-white uppercase">Add Image</p>
+          <p className="text-[16px] font-medium text-white uppercase">Add Image Category</p>
           <div className="rounded-full cursor-pointer modal-close ">
             <svg onClick={() => handleAddBannerHideModal()} className="fill-current text-white/60 hover:text-white/100 " xmlns="http://www.w3.org/2000/svg" width={18} height={18} viewBox="0 0 18 18">
               <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
@@ -26,7 +26,7 @@ export default function CreateAddCategoryModal(props) {
 
         <div className="p-4">
           <button className="text-sm text-gray-600 font-medium p-4 py-2 border border-gray-300 border-b-transparent bg-white -mb-0.5">
-            Create Image
+            Create Image Category
           </button>
           <form autoComplete="off" className="p-4 space-y-4 capitalize border border-gray-300 ">
             
