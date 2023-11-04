@@ -52,7 +52,7 @@ class Dashboard extends React.Component {
       <>
 
         <div className="z-0 overflow-hidden  overflow-x-auto focus:outline-none">
-        <div className="relative z-20 flex min-h-screen">
+        <div className=" z-20 flex min-h-screen">
         <div className="mx-auto w-full">
         <div className="p-3 2xl:p-8 sm:p-5">
           {/* <div className='p-2 space-y-6' >
