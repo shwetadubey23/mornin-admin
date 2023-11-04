@@ -5,14 +5,10 @@ import { confirmAlert } from 'react-confirm-alert';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import "jspdf-autotable";
-import ReactPaginate from 'react-paginate';
-import { isMobile } from "react-device-detect";
 import LoadingOverlay from 'react-loading-overlay';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
-import { LuCopyCheck, LuCopy } from "react-icons/lu";
 import { AiFillDelete } from "react-icons/ai";
-import { elements } from 'chart.js';
 
 class Transaction extends Component {
   constructor(props) {
@@ -89,10 +85,6 @@ class Transaction extends Component {
 
     let { users } = this.props;
     let { txList, loading, getNotificationListForUser } = users;
-    // console.log("overflowTxList_____________RENDER_______", overflowTxList);
-    // console.log("overflowTxTotal_____________RENDER_______", overflowTxTotal);
-
-
     return (
 
       <>
@@ -117,7 +109,7 @@ class Transaction extends Component {
                       </span>
                       <span className='text-left font-semibold px-6'>
                         <p>{elements && elements.name ? elements.name : "Robin"}</p>
-                        <p >{elements && elements.msg ? elements.msg : "Thankyou for completing Bio Preservation Task. You will receive a message once your documents are approved"}</p>
+                        <p >{elements && elements.msg ? elements.msg : ""}</p>
                         <p className='text-gray-500 text-sm '>{moment(new Date(parseInt(elements && elements.createdAt ? elements.createdAt : "-"))).utcOffset("+05:30").format("HH:mm DD-MM-YYYY")}</p>
                       </span>
                      

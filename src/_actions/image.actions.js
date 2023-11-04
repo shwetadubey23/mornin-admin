@@ -77,7 +77,7 @@ function createImage(data) {
                     dispatch(alertActions.success("Image Add Successfully."));
                     dispatch(success(users));
                     dispatch(this.getImageList(reqData));
-                    dispatch(this.uploadImageClear());
+                    // dispatch(this.uploadImageClear());
 
 
                 },
