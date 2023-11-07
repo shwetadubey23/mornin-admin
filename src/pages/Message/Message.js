@@ -314,7 +314,7 @@ class Message extends Component {
       messageTotal, } = message;
     let { filesDetails } = users;
 
-
+console.log('messageTotalmessageTotalmessageTotal', messageTotal)
 
     return (
 

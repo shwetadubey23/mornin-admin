@@ -315,10 +315,10 @@ class Image extends Component {
 
     let { image, users } = this.props;
     let {  loading, allImageCategoryCat,ImageCarItems,
-      ImageCategoryCatTotal, } = image;
+      ImageCatTotal, } = image;
     let { filesDetails } = users;
     // let { allMassage } = Massage;
-    // // console.log('this.state.imageName', this.state.imageName);
+    console.log('ImageCatTotalImageCatTotalImageCatTotal', ImageCatTotal);
 
 
     return (
@@ -485,13 +485,13 @@ class Image extends Component {
                       isMobile ?
                         <nav className="relative z-0 flex justify-end mt-5 w-76">
                           {
-                            ImageCategoryCatTotal && ImageCategoryCatTotal > 10 ?
+                            ImageCatTotal && ImageCatTotal > 10 ?
                               <ReactPaginate
                                 previousLabel={'Prev'}
                                 nextLabel={'Next'}
                                 breakLabel={'...'}
                                 breakClassName={'break-me'}
-                                pageCount={ImageCategoryCatTotal / this.state.size}
+                                pageCount={ImageCatTotal / this.state.size}
                                 marginPagesDisplayed={1}
                                 pageRangeDisplayed={1}
                                 onPageChange={this.handlePageClick}
@@ -502,13 +502,13 @@ class Image extends Component {
                               : null}
                         </nav> : <nav className="relative z-0 flex justify-end mt-5 w-76">
                           {
-                            ImageCategoryCatTotal && ImageCategoryCatTotal > 10 ?
+                            ImageCatTotal && ImageCatTotal > 10 ?
                               <ReactPaginate
                                 previousLabel={'Previous'}
                                 nextLabel={'Next'}
                                 breakLabel={'...'}
                                 breakClassName={'break-me'}
-                                pageCount={ImageCategoryCatTotal / this.state.size}
+                                pageCount={ImageCatTotal / this.state.size}
                                 marginPagesDisplayed={3}
                                 pageRangeDisplayed={3}
                                 onPageChange={this.handlePageClick}

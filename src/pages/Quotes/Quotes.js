@@ -344,7 +344,7 @@ class Quotes extends Component {
     let {  loading, AllQuotes,Quotes,Quotestotal
       } = message;
     let { filesDetails } = users;
-    console.log("QuotesQuotesQuotes", AllQuotes);
+    console.log("QuotesQuotesQuotes", Quotestotal);
 
 
     return (

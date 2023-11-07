@@ -343,10 +343,10 @@ class MessageCategory extends Component {
 
     let { message, users } = this.props;
     let {  loading, allMessageCat,getMessageCategoryList,
-      MessageCatTotal, } = message;
+      messageTotal, } = message;
     let { filesDetails } = users;
     // let { allMassage } = Massage;
-    // console.log("RENDER111111111111111", getMessageCategoryList, MessageCatTotal);
+    console.log("RENDER111111111111111", getMessageCategoryList, messageTotal);
     // // console.log('this.state.imageName', this.state.imageName);
 
 
@@ -512,13 +512,13 @@ class MessageCategory extends Component {
                       isMobile ?
                         <nav className="relative z-0 flex justify-end mt-5 w-76">
                           {
-                            MessageCatTotal && MessageCatTotal > 10 ?
+                            messageTotal && messageTotal > 10 ?
                               <ReactPaginate
                                 previousLabel={'Prev'}
                                 nextLabel={'Next'}
                                 breakLabel={'...'}
                                 breakClassName={'break-me'}
-                                pageCount={MessageCatTotal / this.state.size}
+                                pageCount={messageTotal / this.state.size}
                                 marginPagesDisplayed={1}
                                 pageRangeDisplayed={1}
                                 onPageChange={this.handlePageClick}
@@ -529,13 +529,13 @@ class MessageCategory extends Component {
                               : null}
                         </nav> : <nav className="relative z-0 flex justify-end mt-5 w-76">
                           {
-                            MessageCatTotal && MessageCatTotal > 10 ?
+                            messageTotal && messageTotal > 10 ?
                               <ReactPaginate
                                 previousLabel={'Previous'}
                                 nextLabel={'Next'}
                                 breakLabel={'...'}
                                 breakClassName={'break-me'}
-                                pageCount={MessageCatTotal / this.state.size}
+                                pageCount={messageTotal / this.state.size}
                                 marginPagesDisplayed={3}
                                 pageRangeDisplayed={3}
                                 onPageChange={this.handlePageClick}

@@ -346,7 +346,7 @@ class QuotesCategory extends Component {
       QuotesTotal, } = message;
     let { filesDetails } = users;
     // let { allMassage } = Massage;
-    console.log("RENDER111111111111111", QuotesItems, QuotesTotal);
+    console.log("RENDER111111111111111", QuotesTotal);
     // // console.log('this.state.imageName', this.state.imageName);
 
 

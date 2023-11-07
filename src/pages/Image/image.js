@@ -318,10 +318,10 @@ class Image extends Component {
 
     let { image, users } = this.props;
     let {  loading, getAllImageCategory,getImageList,
-      bannerCatTotal, } = image;
+      bannerTotal, } = image;
     let { filesDetails } = users;
 
-  //  console.log('getAllImageCategorygetAllImageCategory', getAllImageCategory)
+   console.log('getAllImageCategorygetAllImageCategory', bannerTotal)
 
     return (
 
@@ -464,13 +464,13 @@ class Image extends Component {
                       isMobile ?
                         <nav className="relative z-0 flex justify-end mt-5 w-76">
                           {
-                            bannerCatTotal && bannerCatTotal > 10 ?
+                            bannerTotal && bannerTotal > 10 ?
                               <ReactPaginate
                                 previousLabel={'Prev'}
                                 nextLabel={'Next'}
                                 breakLabel={'...'}
                                 breakClassName={'break-me'}
-                                pageCount={bannerCatTotal / this.state.size}
+                                pageCount={bannerTotal / this.state.size}
                                 marginPagesDisplayed={1}
                                 pageRangeDisplayed={1}
                                 onPageChange={this.handlePageClick}
@@ -481,13 +481,13 @@ class Image extends Component {
                               : null}
                         </nav> : <nav className="relative z-0 flex justify-end mt-5 w-76">
                           {
-                            bannerCatTotal && bannerCatTotal > 10 ?
+                            bannerTotal && bannerTotal > 10 ?
                               <ReactPaginate
                                 previousLabel={'Previous'}
                                 nextLabel={'Next'}
                                 breakLabel={'...'}
                                 breakClassName={'break-me'}
-                                pageCount={bannerCatTotal / this.state.size}
+                                pageCount={bannerTotal / this.state.size}
                                 marginPagesDisplayed={3}
                                 pageRangeDisplayed={3}
                                 onPageChange={this.handlePageClick}
