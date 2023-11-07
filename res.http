@@ -402,7 +402,7 @@ Authorization: {{token}}
 }
 
 ###  
-POST {{url}}/api/dadmin/getQuotesCategoryListById HTTP/1.1
+POST https://morning.jamsara.com/api/dadmin/getQuotesCategoryListById HTTP/1.1
 Content-type: application/json
 Authorization: {{token}}
 

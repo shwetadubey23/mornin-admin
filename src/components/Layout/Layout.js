@@ -11,6 +11,9 @@ import MessageCategory from '../../pages/MessageCategory/MessageCategory';
 import Quotes from '../../pages/Quotes/Quotes';
 import QuotesCategory from '../../pages/QuotesCategory /QuotesCategory';
 import ImageCategory from '../../pages/ImageCategory/ImageCategory';
+import messageDetails from '../../pages/MessageCategory/messageDetails';
+import quotesDetails from '../../pages/QuotesCategory /quotesDetails';
+import imageDetails from '../../pages/ImageCategory/imageDetails';
 function Layout(props) {
   const [open, setOpen] = useState(false);
 
@@ -68,6 +71,9 @@ function Layout(props) {
               <Route path="/app/quotes" component={withRouter(Quotes)} />
               <Route path="/app/quotesCategory" component={withRouter(QuotesCategory)} />
               <Route path="/app/imageCategory" component={withRouter(ImageCategory)} />
+              <Route path="/app/messageDetails/:id" component={withRouter(messageDetails)} />
+              <Route path="/app/quotesDetails/:id" component={withRouter(quotesDetails)} />
+              <Route path="/app/imageDetails/:id" component={withRouter(imageDetails)} />
             </Switch>
           </div>
         </div>

@@ -22,6 +22,7 @@ export const messageActions = {
     deleteMessageCategory,
     uploadImageClear,
     getMassageUserById,
+    getQuotesCategoryListById,
     updateMassageUserPassword,
     updateQuotesCategory,
     getQuotesCategoryList,
@@ -375,11 +376,11 @@ function getAllQuotesCategory() {
     function success(users) { return { type: messageConstants.GETALL_PACKAGE_SUCCESS, users } }
     function failure(error) { return { type: messageConstants.GETALL_PACKAGE_FAILURE, error } }
 }
-function getMassageUserById() {
+function getMassageUserById(data) {
     // console.log(" m kya aa rha h::action:::", );
     return dispatch => {
         dispatch(request());
-        messageService.getMassageUserById()
+        messageService.getMassageUserById(data)
             .then(
                 users => {
                     // console.log("getMassageUserById $$$$ action:", users);
@@ -394,6 +395,26 @@ function getMassageUserById() {
     function request() { return { type: messageConstants.GET_ID_MASSAGE_REQUEST } }
     function success(users) { return { type: messageConstants.GET_ID_MASSAGE_SUCCESS, users } }
     function failure(error) { return { type: messageConstants.GET_ID_MASSAGE_FAILURE, error } }
+}
+function getQuotesCategoryListById(data) {
+    // console.log(" m kya aa rha h::action:::", );
+    return dispatch => {
+        dispatch(request());
+        messageService.getQuotesCategoryListById(data)
+            .then(
+                users => {
+                    // console.log("getMassageUserById $$$$ action:", users);
+                    dispatch(success(users));
+                },
+                error => {
+                    dispatch(alertActions.error(error));
+                    dispatch(failure(error))
+                }
+            );
+    };
+    function request() { return { type: messageConstants.GET_ID_QUOTES_REQUEST } }
+    function success(users) { return { type: messageConstants.GET_ID_QUOTES_SUCCESS, users } }
+    function failure(error) { return { type: messageConstants.GET_ID_QUOTES_FAILURE, error } }
 }
 function getMessageList(data) {
     // console.log("data m kya aa rha h::action:::", data);

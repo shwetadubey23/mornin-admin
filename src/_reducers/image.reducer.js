@@ -13,7 +13,8 @@ export function image(state = {}, action) {
       return {
         ...state,
         addUserSuccess: false,
-        allrestaurent: action.users.getRestaurantUserById,
+        allImageCategory: action.users.getImageCategoryListById.list,
+        totalImageCategory: action.users.getImageCategoryListById.total,
       };
     case imageConstants.GET_ID_MASSAGE_FAILURE:
       return {

@@ -21,7 +21,7 @@ export const imageActions = {
     deleteImage,
     deleteImageCategory,
     uploadImageClear,
-    getMassageUserById,
+    getImageCategoryListById,
     updateMassageUserPassword,
     updatePTPackage,
     getPTPackageList,
@@ -311,14 +311,14 @@ function getAllPTPackage() {
     function success(users) { return { type: imageConstants.GETALL_PACKAGE_SUCCESS, users } }
     function failure(error) { return { type: imageConstants.GETALL_PACKAGE_FAILURE, error } }
 }
-function getMassageUserById() {
+function getImageCategoryListById(data) {
     // console.log(" m kya aa rha h::action:::", );
     return dispatch => {
         dispatch(request());
-        imageService.getMassageUserById()
+        imageService.getImageCategoryListById(data)
             .then(
                 users => {
-                    // console.log("getMassageUserById $$$$ action:", users);
+                    // console.log("getImageCategoryListById $$$$ action:", users);
                     dispatch(success(users));
                 },
                 error => {

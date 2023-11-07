@@ -12,7 +12,7 @@ import UpdateUserPasswordModal from './components/UpdateUserPasswordModal/Update
 import { isMobile } from "react-device-detect";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
-import { BiSearch } from "react-icons/bi";
+import { BiSearch, BiDetail } from "react-icons/bi";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { MdAdd,MdOutlineEdit } from "react-icons/md";
 
@@ -181,8 +181,9 @@ class MessageCategory extends Component {
 
 
   handleOpenCreateModalMoreDetails = (data) => {
-    this.setState({ moreDetailsCreateModal: true, massageRowData: data });
-    //  // console.log("fgfdgf1111111111111111111111111111111111",req);
+    // this.setState({ moreDetailsCreateModal: true, massageRowData: data });
+    this.props.history.push("/app/messageDetails/"+  data.id)
+     console.log("fgfdgf1111111111111111111111111111111111",data);
   }
   handleOpenCreateModalUpdatePassword = (data) => {
     this.setState({ UpdateMessageCreateModal: true, fieldsMessageUpdate: data });
@@ -470,12 +471,12 @@ class MessageCategory extends Component {
                                         <div className='flex space-x-2'>
 
                                 
-                                          {/* <span className="relative ">
-                                            {element.isActive ? "ADDED" : <div class="targetablepx-4 tooltip p-2 rounded-full  font-medium    hover:bg-blue-100 cursor-pointer  " onClick={() => this.handleOpenCreateModalMoreDetails(element)}>
-                                              <span className='top-0 left-0 p-6 mx-auto -mt-8 -ml-6 text-sm text-white bg-gray-500 rounded tooltip-text'>More Details</span>
-                                              <BiDetail style={{ fontSize: "1.5rem" }} />
-                                            </div>}
-                                          </span> */}
+                                          <span className="relative ">
+                                            <div class="targetablepx-4 tooltip p-2 rounded-full  font-medium    hover:bg-blue-100 cursor-pointer  " onClick={() => this.handleOpenCreateModalMoreDetails(element)}>
+                                              {/* <span className='top-0 left-0 p-6 mx-auto -mt-8 -ml-6 text-sm text-white bg-gray-500 rounded tooltip-text'>More Details</span> */}
+                                              <BiDetail style={{ fontSize: "1.5rem" }} title='Message Category Details'/>
+                                            </div>
+                                          </span>
 
                                           <span className="relative">
                                             <div class="targetablepx-4 tooltip p-2 rounded-full  font-medium    hover:bg-blue-100 cursor-pointer" onClick={() => this.handleOpenCreateModalUpdatePassword(element)}>

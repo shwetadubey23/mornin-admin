@@ -20,7 +20,7 @@ export const imageService = {
     getImageCategoryList,
     deleteImageCategory,
     disableImageCategory,
-    getMassageUserById,
+    getImageCategoryListById,
     updateMassageUserPassword,
     updatePTPackage,
     getPTPackageList,
@@ -181,7 +181,7 @@ function getAllPtPackage() {
         });
 }
 
-function getMassageUserById() {
+function getImageCategoryListById(data) {
     // // console.log("data m kya aa rha h::service:::", data);
     let header = new Headers({
         'Content-Type': 'application/json',
@@ -190,16 +190,16 @@ function getMassageUserById() {
     const requestOptions = {
         method: "POST",
         headers: header,
-        // body: JSON.stringify(data)
+        body: JSON.stringify(data)
     }
-    return fetch(CONST.BACKEND_URL + `/getMassageUserById`, requestOptions)
+    return fetch(CONST.BACKEND_URL + `/getImageCategoryListById`, requestOptions)
         .then(handleResponse)
         .then(data => {
 
             let userObj = {
-                getMassageUserById: data.data
+                getImageCategoryListById: data.data
             }
-            // console.log("i am in service getMassageUserById", userObj);
+            // console.log("i am in service getImageCategoryListById", userObj);
 
             return userObj;
         });

@@ -31,7 +31,7 @@ export const messageService = {
     getQuotesList,
     disableQuotes,
     deleteQuotes,
-
+    getQuotesCategoryListById
 };
 function logout() {
     localStorage.removeItem('user');
@@ -215,8 +215,8 @@ function getAllQuotesCategory() {
         });
 }
 
-function getMassageUserById() {
-    // // console.log("data m kya aa rha h::service:::", data);
+function getMassageUserById(data) {
+    // console.log("data m kya aa rha h::service:::", data);
     let header = new Headers({
         'Content-Type': 'application/json',
         "Authorization": authHeader().Authorization
@@ -224,9 +224,9 @@ function getMassageUserById() {
     const requestOptions = {
         method: "POST",
         headers: header,
-        // body: JSON.stringify(data)
+        body: JSON.stringify(data)
     }
-    return fetch(CONST.BACKEND_URL + `/getMassageUserById`, requestOptions)
+    return fetch(CONST.BACKEND_URL + `/getMessageByIdList`, requestOptions)
         .then(handleResponse)
         .then(data => {
 
@@ -238,29 +238,31 @@ function getMassageUserById() {
             return userObj;
         });
 }
+function getQuotesCategoryListById(data) {
+    // console.log("data m kya aa rha h::service:::", data);
+    let header = new Headers({
+        'Content-Type': 'application/json',
+        "Authorization": authHeader().Authorization
+    });
+    const requestOptions = {
+        method: "POST",
+        headers: header,
+        body: JSON.stringify(data)
+    }
+    return fetch(CONST.BACKEND_URL + `/getQuotesCategoryListById`, requestOptions)
+        .then(handleResponse)
+        .then(data => {
 
-// function verifyEmail(data) {
-//     let header = new Headers({
-//         'Content-Type': 'application/json',
-//         "Authorization": authHeader().Authorization
-//     });
-//     const requestOptions = {
-//         method: "POST",
-//         headers: header,
-//         body: JSON.stringify(data)
-//     }
-//     return fetch(CONST.BACKEND_URL + `/validateOtpAdmin`, requestOptions)
-//         .then(handleResponse)
-//         .then(data => {
+            let userObj = {
+                getQuotesCategoryListById: data.data
+            }
+            // console.log("i am in service getQuotesCategoryListById", userObj);
 
-//             let userObj = {
-//                 verifyEmail: data.data
-//             }
-//             // console.log("i am in service''...>> verifyEmail ::", userObj);
+            return userObj;
+        });
+}
 
-//             return userObj;
-//         });
-// }
+
 
 function deleteMessage(data) {
     let header = new Headers({

@@ -12,9 +12,27 @@ export function message(state = {}, action) {
       return {
         ...state,
         addUserSuccess: false,
-        allrestaurent: action.users.getRestaurantUserById,
+        getMassageUserById: action && action.users && action.users.getMassageUserById && action.users.getMassageUserById.list,
+        totalMessage: action && action.users && action.users.getMassageUserById && action.users.getMassageUserById.total,
       };
     case messageConstants.GET_ID_MASSAGE_FAILURE:
+      return {
+        ...state,
+        error: action.error
+      };
+
+    case messageConstants.GET_ID_QUOTES_REQUEST:
+      return {
+        ...state
+      };
+    case messageConstants.GET_ID_QUOTES_SUCCESS:
+      return {
+        ...state,
+        addUserSuccess: false,
+        getQuotesCategoryListById: action.users.getQuotesCategoryListById.list,
+        totalQuotes: action.users.getQuotesCategoryListById.total,
+      };
+    case messageConstants.GET_ID_QUOTES_FAILURE:
       return {
         ...state,
         error: action.error
