@@ -154,7 +154,7 @@ Authorization: {{token}}
 
 {
   "id": "653ba89d3dbfe0928a2fd502",
-  "messageSubCategory": "653b5df12016de2c579ac789",
+  "messageSubCategoryId": "653b5df12016de2c579ac789",
   "message": "Good wishes"
 
 
@@ -376,6 +376,42 @@ Authorization: {{token}}
   "id": "653b60852016de2c579ac7a7"
 }
 
+
+###  
+POST {{url}}/api/dadmin/getImageCategoryListById HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+{
+  "imageSubCategoryId": "6544d962c98e5e7dacee8874",
+    "keyWord": "",
+    "pageNo": 1,
+    "size": 10
+}
+
+###  
+POST https://morning.jamsara.com/api/dadmin/getMessageByIdList HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+{
+  "messageSubCategoryId": "65462d5c86dc33e5515987e5",
+    "keyWord": "",
+    "pageNo": 1,
+    "size": 10
+}
+
+###  
+POST {{url}}/api/dadmin/getQuotesCategoryListById HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
+
+{
+  "quotesSubCategoryId": "653a399c5939c2c2ddbbea70",
+    "keyWord": "",
+    "pageNo": 1,
+    "size": 10
+}
 
 
 

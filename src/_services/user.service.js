@@ -138,7 +138,7 @@ function uploadImage(filedata) {
             let userObj = {
                 filesDetails: res.data
             }
-            // console.log("servive_uploadImage", userObj);
+            console.log("servive_uploadImage", userObj);
             return userObj;
         });
 }

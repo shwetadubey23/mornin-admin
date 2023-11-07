@@ -421,21 +421,9 @@ class Quotes extends Component {
                                       {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.QuotesCategoryId && element.QuotesCategoryId.name ? element.QuotesCategoryId.name : "-"}</td> */}
                                       <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.quotesSubCategoryId && element.quotesSubCategoryId.name ? element.quotesSubCategoryId.name : "-"}</td>
 
-                                      <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.quotes && element.quotes.substring(0,25) ? element.quotes.substring(0,25) : "-"}</td>
+                                      <td className="px-6 py-3 text-sm text-gray-600 w-72 line-clamp-4">{element && element.quotes && element.quotes ? element.quotes : "-"}</td>
 
-                                      {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">
-                                        <div className='flex justify-center'>
-                                          <img className="object-cover h-10 rounded-sm w-14" src={element && element.imageLinkUrl
-                                            ? element.imageLinkUrl
-                                            : "/dist/img/profile.png"} alt="" />
-                                        </div>
-                                      </td> */}
-
-                                      {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">
-                                        <div className='flex justify-center'>
-                                          <img className="object-cover h-10 rounded-sm w-14" src={element && element.imageLinkUrl ? element.imageLinkUrl : "NA"} alt="not found" />
-                                        </div>
-                                      </td> */}
+                                    
 
                                       <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{moment(new Date(parseInt(element.createdAt))).utcOffset("+05:30").format("YYYY-MM-DD HH:mm")}</td>
 

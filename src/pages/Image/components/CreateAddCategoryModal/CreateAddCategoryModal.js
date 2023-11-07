@@ -84,9 +84,6 @@ export default function CreateAddCategoryModal(props) {
                   Upload Image 
                 </label>
                 <input id="image" name="image" type="file" onChange={handleFile} />
-                <div className="flex mt-1 space-x-4">
-
-                </div>
               </div>
 
 
@@ -95,7 +92,7 @@ export default function CreateAddCategoryModal(props) {
                   <>
                     <div>
                       <div className='flex justify-center'>
-                        <img className="object-cover h-14 rounded-sm w-14" src={filesDetails && filesDetails.imageURL ? filesDetails.imageURL : null} alt="not found" />
+                        <img className="object-cover h-14 rounded-sm w-14" src={filesDetails && filesDetails.imageURL ? filesDetails.imageURL : "/images/profile.png"} alt="not found" />
                       </div>
                     </div>
                   </> :

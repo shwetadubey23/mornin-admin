@@ -54,9 +54,9 @@ function logout() {
     return { type: userConstants.LOGOUT };
 }
 
-function uploadImageClear() {
+function uploadImageClear(data) {
     return dispatch => {
-        dispatch(success());
+        dispatch(success(data));
     };
     function success(uploadImage) { return { type: userConstants.FILE_UPLOAD_STATUS_SUCCESS, uploadImage } }
 }
@@ -340,7 +340,7 @@ function getImageList(data) {
                 users => {
                     // console.log("getImageList $$$$ action:", users);
                     dispatch(success(users));
-                    // dispatch(this.uploadImageClear());
+                    dispatch(this.uploadImageClear(users));
                 },
                 error => {
                     dispatch(alertActions.error(error));

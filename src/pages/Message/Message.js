@@ -8,7 +8,6 @@ import DialogExample from "./components/DialogExample/DialogExample";
 import ViewMoreDetailsModal from "./components/ViewMoreDetailsModal/ViewMoreDetailsModal";
 import CreateAddCategoryModal from "./components/CreateAddCategoryModal/CreateAddCategoryModal";
 import UpdateCategoryModal from "./components/UpdateCategoryModal/UpdateCategoryModal";
-import UpdateUserPasswordModal from './components/UpdateUserPasswordModal/UpdateUserPasswordModal';
 import { isMobile } from "react-device-detect";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
@@ -234,8 +233,8 @@ class Message extends Component {
     if (this.handleValidationUpdateMessage()) {
       let reqData = {
         "id": this.state.fieldsMessageUpdate.id,
-        "message": this.state.fieldsMessageUpdate.message,
-        "messageSubCategory": this.state.fieldsMessageUpdate.messageSubCategory,
+        "message": this.state && this.state.fieldsMessageUpdate &&  this.state.fieldsMessageUpdate.message ? this.state.fieldsMessageUpdate.message: null,
+        "messageSubCategoryId": this.state && this.state.fieldsMessageUpdate &&  this.state.fieldsMessageUpdate.messageSubCategoryId ? this.state.fieldsMessageUpdate.messageSubCategoryId: null,
       }
       let paginationData = {
         "keyWord": this.state.keyWord,
@@ -260,9 +259,9 @@ class Message extends Component {
 
 
     //name
-    if (!fieldsMessageUpdate["messageSubCategory"] || fieldsMessageUpdate["messageSubCategory"] === "") {
+    if (!fieldsMessageUpdate["messageSubCategoryId"] || fieldsMessageUpdate["messageSubCategoryId"] === "") {
       formIsValid = false;
-      errorsMessageMassage["messageSubCategory"] = "Cannot be empty";
+      errorsMessageMassage["messageSubCategoryId"] = "Cannot be empty";
     }
 
 
@@ -388,7 +387,11 @@ class Message extends Component {
 
                                       <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.messageSubCategoryId && element.messageSubCategoryId.name ? element.messageSubCategoryId.name : "-"}</td>
 
-                                      <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.message && element.message.substring(0,25) ? element.message.substring(0,25) : "-"}</td>
+                                      <td className="px-6 py-3 text-sm text-gray-600 ">
+                                        <div className='w-72 line-clamp-4 '>
+                                        {element && element.message && element.message ? element.message : "-"}
+                                        </div>
+                                        </td>
 
                                       {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">
                                         <div className='flex justify-center'>
@@ -554,16 +557,7 @@ class Message extends Component {
         />
 
 
-        <UpdateUserPasswordModal
-          creditpasswordOpenModal={this.state.creditpasswordOpenModal}
-          fieldsUserPasswordUpdate={this.state.fieldsUserPasswordUpdate}
-          errorsUpdatePassword={this.state.errorsUpdatePassword}
-          inputChangeUpdatePasswordUser={this.inputChangeUpdatePasswordUser}
-          updateUserPasswordSubmit={this.updateUserPasswordSubmit}
-          handleAppSeetingHideModal={this.handleCreditpasswordHideModal}
-          handleFile={this.handleFile}
-
-        />
+     
 
         <UpdateCategoryModal
           UpdateMessageCreateModal={this.state.UpdateMessageCreateModal}

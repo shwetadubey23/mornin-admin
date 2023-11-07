@@ -60,7 +60,6 @@ function Layout(props) {
             handleClickInsidetwo={handleClickInsidetwo} />
           <div className="w-full  overflow-y-auto bg-[#f3f3f4]  h-[calc(100%-4rem)] ">
             <Switch>
-              {/* <Route path="/app/user" component={withRouter(ActiveUser)} /> */}
               <Route path="/app/user" component={withRouter(User)} />
               <Route path="/app/dashboard" component={withRouter(Dashboard)} />
               <Route path="/app/image" component={withRouter(image)} />
