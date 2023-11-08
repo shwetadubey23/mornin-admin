@@ -197,9 +197,10 @@ function getImageCategoryListById(data) {
         .then(data => {
 
             let userObj = {
-                getImageCategoryListById: data.data
+                getImageCategoryListById: data.data.list,
+                totalImageCategory: data.data.total
             }
-            // console.log("i am in service getImageCategoryListById", userObj);
+            console.log("i am in service getImageCategoryListById", userObj);
 
             return userObj;
         });

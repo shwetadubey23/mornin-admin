@@ -92,7 +92,7 @@ export default function CreateAddCategoryModal(props) {
                   <>
                     <div>
                       <div className='flex justify-center'>
-                        <img className="object-cover h-14 rounded-sm w-14" src={filesDetails && filesDetails.imageURL ? filesDetails.imageURL : "/images/profile.png"} alt="not found" />
+                        <img className="object-cover h-14 rounded-sm w-14" src={filesDetails && filesDetails.imageURL ? filesDetails.imageURL : null} alt="not found" />
                       </div>
                     </div>
                   </> :

@@ -96,7 +96,9 @@ class messageDetails extends Component {
                         <p className='text-gray-500 text-sm '>{moment(new Date(parseInt(elements && elements.createdAt ? elements.createdAt : "-"))).utcOffset("+05:30").format("HH:mm DD-MM-YYYY")}</p>
                         </div>
                   </div>
-                )) : null}
+                )) :      <span className='text-center  text-red-500 font-semibold px-6 w-full '>
+                <p> "This Category have not any Messages"</p>
+              </span>}
 
 
               </div>

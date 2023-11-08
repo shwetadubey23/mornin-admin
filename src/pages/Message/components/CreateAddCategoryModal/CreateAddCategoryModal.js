@@ -35,7 +35,7 @@ export default function CreateAddCategoryModal(props) {
               <label className="block text-xs font-medium text-gray-500 md:text-left" for="username">Message:</label>
               <select class="form-select border-1 px-3 py-2 placeholder-blueGray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" aria-label="Default select example" onChange={inputAddMessageChange} id="messageSubCategoryId" name="messageSubCategoryId"
                 value={fieldsMessage && fieldsMessage["messageSubCategoryId"] ? fieldsMessage["messageSubCategoryId"] : ""} >
-                <option selected>Please Select Message</option>
+                <option selected>Please Select Message Category</option>
                 {
                   allMessage && allMessage && allMessage.length > 0 ?
                     allMessage.map((element, index) => (

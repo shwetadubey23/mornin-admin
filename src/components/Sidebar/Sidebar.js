@@ -153,16 +153,16 @@ function Sidebar({ open, location, history, user, pathname, setOpen, setOpenMobi
                   </ol>
                 </div>
                 <div>
-                  <span onClick={() => setShowMe(showMe === 1 ? 0 : 1)} className=" accor text-white cursor-pointer h-12 items-center flex justify-between px-3 py-2 text-[13px]  transition ease-in-out duration-150 hover:text-white/60 "  >
+                  <span onClick={() => setShowMe(showMe === 2 ? 0 : 2)} className=" accor text-white cursor-pointer h-12 items-center flex justify-between px-3 py-2 text-[13px]  transition ease-in-out duration-150 hover:text-white/60 "  >
                     <div className="flex  space-x-4 ">
                       <div className="">
                         <RiMessage2Line size={20} />
                       </div>
                       <span className="text-[13px] ">Message Management </span>
                     </div>
-                    {showMe === 1 ? <BiChevronUp size={20} /> : <BiChevronDown size={20} />}
+                    {showMe === 2 ? <BiChevronUp size={20} /> : <BiChevronDown size={20} />}
                   </span>
-                  <ol className={showMe === 1 ? "space-y-4 pl-10 py-3 text-white/80 text-[13px]  showdata" : " space-y-4 pl-10  text-white/80 text-[13px]  body overflow-hidden"}>
+                  <ol className={showMe === 2 ? "space-y-4 pl-10 py-3 text-white/80 text-[13px]  showdata" : " space-y-4 pl-10  text-white/80 text-[13px]  body overflow-hidden"}>
                     <li
                       onClick={() => { onClickMenu('/app/messageCategory'); setOpenMobile(!openMobile) }} className={` " cursor-pointer text-white transition duration-150 p-1 " ${location.pathname === "/app/messageCategory" ? "text-white cursor-pointer font-medium" : ""}`}
                     >Message Category</li>
@@ -238,16 +238,16 @@ function Sidebar({ open, location, history, user, pathname, setOpen, setOpenMobi
                   </ol>
                 </div>
                 <div>
-                  <span onClick={() => setShowMe(showMe === 1 ? 0 : 1)} className=" accor hover:text-white cursor-pointer h-12 items-center flex justify-between px-3 py-2 text-[13px]  transition ease-in-out duration-150 text-white/60 "  >
+                  <span onClick={() => setShowMe(showMe === 2 ? 0 : 2)} className=" accor hover:text-white cursor-pointer h-12 items-center flex justify-between px-3 py-2 text-[13px]  transition ease-in-out duration-150 text-white/60 "  >
                     <div className="flex  space-x-4 ">
                       <div className="">
                         <RiMessage2Line size={20} />
                       </div>
                       <span className="text-[13px] ">Account </span>
                     </div>
-                    {showMe === 1 ? <BiChevronUp size={20} /> : <BiChevronDown size={20} />}
+                    {showMe === 2 ? <BiChevronUp size={20} /> : <BiChevronDown size={20} />}
                   </span>
-                  <ol className={showMe === 1 ? "space-y-4 pl-10 py-3 text-white/80 text-[13px]  showdata" : " space-y-4 pl-10  text-white/80 text-[13px]  body overflow-hidden"}>
+                  <ol className={showMe === 2 ? "space-y-4 pl-10 py-3 text-white/80 text-[13px]  showdata" : " space-y-4 pl-10  text-white/80 text-[13px]  body overflow-hidden"}>
                     <li
                       onClick={() => { onClickMenu('/app/messageCategory'); setOpenMobile(!openMobile) }} className={` " cursor-pointer hover:text-white transition duration-150 p-1 " ${location.pathname === "/app/messageCategory" ? "text-white cursor-pointer font-medium" : ""}`}
                     >Message Category</li>

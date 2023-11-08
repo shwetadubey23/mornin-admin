@@ -4,8 +4,6 @@ import { userActions, imageActions } from '../../_actions';
 import { confirmAlert } from 'react-confirm-alert';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import "jspdf-autotable";
-import { AiFillDelete } from "react-icons/ai";
 
 class messageDetails extends Component {
   constructor(props) {
@@ -27,7 +25,6 @@ class messageDetails extends Component {
       "size": 10,
 
     }
-    console.log('datadatadatadatadatadatadata11111111111111111', data)
     this.props.dispatch(imageActions.getImageCategoryListById(data));
   }
 
@@ -57,7 +54,7 @@ class messageDetails extends Component {
 
     let { users, image } = this.props;
     let { loading, allImageCategory, totalImageCategory } = image;
-    console.log('getMassageUserById111111111111', allImageCategory)
+    // console.log('getMassageUserById111111111111', allImageCategory)
     return (
 
       <>
@@ -102,8 +99,8 @@ class messageDetails extends Component {
                       </div>
 
                 )) :
-                  <span className='text-center justify-center items-center text-red-500 font-semibold px-6'>
-                    <p> "This Category have not any Quotes"</p>
+                  <span className='text-center justify-start items-center text-red-500 font-semibold px-6 w-[500px] '>
+                    <p> "This Category have not any Images"</p>
                   </span>
                 }
    </div>
