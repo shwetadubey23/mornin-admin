@@ -200,7 +200,7 @@ function Sidebar({ open, location, history, user, pathname, setOpen, setOpenMobi
         </div>
       </div>
 
-      {openMobile ? <div className='md:static fixed z-20 top-16 left-0 inset-y-0 lg:static  lg:left-auto lg:inset-auto lg:hidden flex  w-[250px] bg-[#13BFA1] h-full '>
+     <div className={openMobile ? 'hidden ' :'md:static fixed z-20 top-16 left-0 inset-y-0 lg:static  lg:left-auto lg:inset-auto lg:hidden flex  w-[250px] bg-[#13BFA1] h-full '}>
         <div className="relative flex flex-col w-full ">
           <div className="flex flex-col flex-1 overflow-x-hidden overflow-y-auto h-full  ">
             <nav className="flex-1 space-y-2 ">
@@ -225,6 +225,7 @@ function Sidebar({ open, location, history, user, pathname, setOpen, setOpenMobi
                       <div className="">
                         <BiImages size={20} />
                       </div>
+                      <span className="text-[13px] ">Image Management </span>
                     </div>
                     {showMe === 1 ? <BiChevronUp size={20} /> : <BiChevronDown size={20} />}
                   </span>
@@ -243,7 +244,7 @@ function Sidebar({ open, location, history, user, pathname, setOpen, setOpenMobi
                       <div className="">
                         <RiMessage2Line size={20} />
                       </div>
-                      <span className="text-[13px] ">Account </span>
+                      <span className="text-[13px] ">Message Management </span>
                     </div>
                     {showMe === 2 ? <BiChevronUp size={20} /> : <BiChevronDown size={20} />}
                   </span>
@@ -285,8 +286,7 @@ function Sidebar({ open, location, history, user, pathname, setOpen, setOpenMobi
             </nav>
           </div>
         </div>
-      </div> : null
-      }
+      </div> 
 
     </div>
 
