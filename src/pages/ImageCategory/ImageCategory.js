@@ -230,7 +230,7 @@ class Image extends Component {
     if (this.handleValidationAddImageCategory()) {
       let reqData = {
         "name": this.state.fieldsImageCategory.name,
-        // "image": this.state && this.state.imageName ? this.state.imageName : null,
+        "image": this.state && this.state.imageName ? this.state.imageName : null,
       }
       this.props.dispatch(imageActions.createImageCategory(reqData));
     }
@@ -244,7 +244,7 @@ class Image extends Component {
       let reqData = {
         "id": this.state.fieldsImageCategoryUpdate.id,
         "name": this.state.fieldsImageCategoryUpdate.name,
-        // "image": this.state && this.state.imageName ? this.state.imageName : this.state.fieldsImageCategoryUpdate.image,
+        "image": this.state && this.state.imageName ? this.state.imageName : this.state.fieldsImageCategoryUpdate.image,
       }
       let paginationData = {
         "keyWord": this.state.keyWord,
@@ -371,7 +371,7 @@ class Image extends Component {
                                 <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">Name </th>
                                <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">Date/Time</th>
 
-                                {/* <th className="px-6 py-3 text-sm font-semibold text-center text-gray-500 uppercase whitespace-nowrap">Password</th> */}
+                                <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">image</th>
 
                                 <th className="px-6 py-3 text-sm font-semibold text-center text-gray-500 uppercase whitespace-nowrap">Status </th>
                                 <th className="px-6 py-3 text-sm font-semibold text-center text-gray-500 uppercase whitespace-nowrap">Actions</th>
@@ -393,13 +393,14 @@ class Image extends Component {
                                       {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.flag ? element.flag : "-"}</td> */}
 
 
-                                      {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">
-                                        <div className='flex justify-center'>
-                                          <img className="object-cover h-10 rounded-sm w-14" src={element && element.imageLinkUrl ? element.imageLinkUrl : "NA"} alt="not found" />
-                                        </div>
-                                      </td> */}
 
                                       <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{moment(new Date(parseInt(element.createdAt))).utcOffset("+05:30").format("YYYY-MM-DD HH:mm")}</td>
+
+                                      <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">
+                                        <div className='flex justify-start'>
+                                          <img className="object-cover h-10 rounded-sm w-14" src={element && element.imageUserLink ? element.imageUserLink : "NA"} alt="not found" />
+                                        </div>
+                                      </td>
 
                                       {/* <td className="px-2 py-3 text-sm text-gray-600 whitespace-nowrap">
                                         <span className="flex justify-center pl-1">

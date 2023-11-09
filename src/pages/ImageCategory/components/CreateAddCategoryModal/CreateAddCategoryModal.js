@@ -79,7 +79,7 @@ export default function CreateAddCategoryModal(props) {
 
           
 
-            {/* <div className="flex justify-between px-2"   >
+             <div className="flex justify-between px-2"   >
               <div className="flex flex-wrap w-full py-2">
                 <label htmlFor="image">
                   Upload Image 
@@ -113,7 +113,7 @@ export default function CreateAddCategoryModal(props) {
 
 
 
-            </div> */}
+            </div> 
 
             {/* btns */}
             <div className="flex justify-end py-0 space-x-4">

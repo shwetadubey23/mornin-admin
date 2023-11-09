@@ -39,10 +39,38 @@ export default function UpdateCategoryModal(props) {
                 </div>
                 : null}
             </div>
-          
 
 
-      
+            {
+
+              filesDetails && filesDetails.imageURL ?
+
+                <div className=""   >
+
+                  <div className='flex justify-between px-4 '>
+                    <img className="object-cover w-24 h-20 rounded-sm" src={filesDetails && filesDetails.imageURL ? filesDetails.imageURL : null} alt="not found" />
+                  </div>
+                  <div className="flex flex-wrap w-full mt-4 ">
+
+                    <input id="image" name="image" type="file" onChange={handleFile} />
+                  </div>
+                </div>
+                :
+                <div>
+                  <div className='flex justify-between px-4'>
+                    <img className="object-cover w-24 h-20 rounded-sm" src={fieldsImageCategoryUpdate && fieldsImageCategoryUpdate.imageUserLink ? fieldsImageCategoryUpdate.imageUserLink : null} alt="not found" />
+                  </div>
+
+                  <div className="flex flex-wrap w-full mt-4 ">
+
+                    <input id="image" name="image" type="file" onChange={handleFile} />
+                  </div>
+                </div>
+
+
+
+            }
+
 
             {/* btns */}
             <div className="flex justify-end py-0 space-x-4">

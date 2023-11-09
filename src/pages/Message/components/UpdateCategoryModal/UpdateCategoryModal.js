@@ -49,7 +49,7 @@ export default function UpdateCategoryModal(props) {
             </div>
             <div className="w-full">
               <label className="block text-xs font-medium text-gray-500 md:text-left" for="username">Message :</label>
-              <input className={` w-full p-2 mt-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 ring-gray-500  ${errorsUpdateMessage && !errorsUpdateMessage["message"] ? "border  placeholder-gray-500" : "border  border-red-500 "}`}
+              <textarea className={` w-full p-2 mt-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 ring-gray-500  ${errorsUpdateMessage && !errorsUpdateMessage["message"] ? "border  placeholder-gray-500" : "border  border-red-500 "}`}
                 id="message" name="message" placeholder="Message" value={fieldsMessageUpdate.message} type="message" onChange={inputChangeUpdateMessage} />
               {errorsUpdateMessage && errorsUpdateMessage["message"] ?
                 <div className="text-xs text-red-500 invalid-feedback">

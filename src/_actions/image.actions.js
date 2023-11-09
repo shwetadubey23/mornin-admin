@@ -382,7 +382,7 @@ function getImageCategoryList(data) {
                 users => {
                     // console.log("getImageCategoryList $$$$ action:", users);
                     dispatch(success(users));
-                    // dispatch(this.uploadImageClear());
+                    dispatch(this.uploadImageClear(users));
                 },
                 error => {
                     dispatch(alertActions.error(error));

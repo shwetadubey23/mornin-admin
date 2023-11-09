@@ -421,7 +421,11 @@ class Quotes extends Component {
                                       {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.QuotesCategoryId && element.QuotesCategoryId.name ? element.QuotesCategoryId.name : "-"}</td> */}
                                       <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.quotesSubCategoryId && element.quotesSubCategoryId.name ? element.quotesSubCategoryId.name : "-"}</td>
 
-                                      <td className="px-6 py-3 text-sm text-gray-600 w-72 line-clamp-4">{element && element.quotes && element.quotes ? element.quotes : "-"}</td>
+                                      <td className="px-6 py-3">
+                                        <div className=' text-sm text-gray-600 w-72 line-clamp-4'>
+                                        {element && element.quotes && element.quotes ? element.quotes : "-"}
+                                          </div>
+                                          </td>
 
                                     
 
