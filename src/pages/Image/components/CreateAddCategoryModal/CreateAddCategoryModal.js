@@ -53,7 +53,7 @@ export default function CreateAddCategoryModal(props) {
 
 
 
-            <div className="w-full">
+            {/* <div className="w-full">
               <label className="block text-xs font-medium text-gray-500 md:text-left" for="username">Name : </label>
               <input className={` w-full p-2 mt-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 ring-gray-500  ${errorsBanner && !errorsBanner["name"] ? "border placeholder-gray-500" : "border border-red-500 "}`}
                 id="name" name="name" placeholder="Name" value={fieldsBanner && fieldsBanner.name ? fieldsBanner.name : ''} type="text" onChange={inputAddBannerChange} />
@@ -62,7 +62,7 @@ export default function CreateAddCategoryModal(props) {
                   {errorsBanner["name"]}
                 </div>
                 : null}
-            </div>
+            </div> */}
 
             {/* <div className="w-full">
               <label className="block text-xs font-medium text-gray-500 md:text-left" for="username">Flag : </label>

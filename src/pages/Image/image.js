@@ -220,7 +220,7 @@ class Image extends Component {
   createBannerSubmit = () => {
     if (this.handleValidationAddBanner()) {
       let reqData = {
-        "name": this.state.fieldsBanner.name,
+        // "name": this.state.fieldsBanner.name,
         "imageSubCategoryId": this.state.fieldsBanner.imageSubCategoryId,
         "image": this.state && this.state.imageName ? this.state.imageName : null,
       }
@@ -236,7 +236,7 @@ class Image extends Component {
     if (this.handleValidationUpdateBanner()) {
       let reqData = {
         "id": this.state.fieldsBannerUpdate.id,
-        "name": this.state.fieldsBannerUpdate.name,
+        // "name": this.state.fieldsBannerUpdate.name,
         "imageSubCategoryId": this.state.fieldsBannerUpdate.imageSubCategoryId,
         "image": this.state && this.state.imageName ? this.state.imageName : this.state.fieldsBannerUpdate.image,
       }
@@ -263,9 +263,9 @@ class Image extends Component {
 
 
     //name
-    if (!fieldsBannerUpdate["name"] || fieldsBannerUpdate["name"] === "") {
+    if (!fieldsBannerUpdate["imageSubCategoryId"] || fieldsBannerUpdate["imageSubCategoryId"] === "") {
       formIsValid = false;
-      errorsBannerMassage["name"] = "Cannot be empty";
+      errorsBannerMassage["imageSubCategoryId"] = "Cannot be empty";
     }
 
 
@@ -284,9 +284,9 @@ class Image extends Component {
     //   errorsBanner["flag"] = "Cannot be empty flag";
     // }
     //name
-    if (!fieldsBanner["name"] || fieldsBanner["name"] === "") {
+    if (!fieldsBanner["imageSubCategoryId"] || fieldsBanner["imageSubCategoryId"] === "") {
       formIsValid = false;
-      errorsBanner["name"] = "Cannot be empty name";
+      errorsBanner["imageSubCategoryId"] = "Cannot be empty imageSubCategoryId";
     }
 
 

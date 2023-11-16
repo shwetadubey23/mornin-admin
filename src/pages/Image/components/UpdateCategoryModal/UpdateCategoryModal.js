@@ -47,7 +47,7 @@ export default function UpdateCategoryModal(props) {
                 </div>
                 : null}
             </div>
-            <div className="w-full">
+            {/* <div className="w-full">
               <label className="block text-xs font-medium text-gray-500 md:text-left" for="username">Name :</label>
               <input className={` w-full p-2 mt-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 ring-gray-500  ${errorsUpdateBanner && !errorsUpdateBanner["name"] ? "border  placeholder-gray-500" : "border  border-red-500 "}`}
                 id="name" name="name" placeholder="Name" value={fieldsBannerUpdate.name} type="name" onChange={inputChangeUpdateBanner} />
@@ -56,7 +56,7 @@ export default function UpdateCategoryModal(props) {
                   {errorsUpdateBanner["name"]}
                 </div>
                 : null}
-            </div>
+            </div> */}
             {/* <div className="w-full">
               <label className="block text-xs font-medium text-gray-500 md:text-left" for="username">Falg :</label>
               <input className={` w-full p-2 mt-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 ring-gray-500  ${errorsUpdateBanner && !errorsUpdateBanner["flag"] ? "border  placeholder-gray-500" : "border  border-red-500 "}`}
