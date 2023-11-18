@@ -370,7 +370,7 @@ class Image extends Component {
                             <thead className="bg-gray-200">
                               <tr className="">
                                 <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">#</th>
-                                <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">Name </th>
+                                {/* <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">Name </th> */}
                                 {/* <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">Flag</th> */}
 
                                 <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">image</th>
@@ -394,7 +394,7 @@ class Image extends Component {
 
 
                                       {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.bannerCategoryId && element.bannerCategoryId.name ? element.bannerCategoryId.name : "-"}</td> */}
-                                      <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.name ? element.name : "-"}</td>
+                                      {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.name ? element.name : "-"}</td> */}
 
                                       {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.flag ? element.flag : "-"}</td> */}
 
