@@ -10,6 +10,7 @@ export const userActions = {
     childListActiveUser,
     activeSport,
     uploadImage,
+    uploadMultiImages,
    
 };
 
@@ -99,6 +100,40 @@ function uploadImage(data){
     function failure(error) {
         return {
             type: userConstants.FILE_UPLOAD_STATUS_FAILURE, error
+        }
+    }
+}
+
+function uploadMultiImages(data){
+    console.log('datadatadatadatadataaaaaaaaaaaaaaaa', data)
+    return dispatch => {
+        dispatch(request());
+        userService.uploadMultiImages(data)
+        .then(
+            uploadMultiImages => {
+                toast("Image Uploaded Successfully");
+                dispatch(success(uploadMultiImages));
+            },
+            error =>{
+                dispatch(alertActions.error(error));
+                dispatch(failure(error))
+            }
+
+        )
+    };
+    function request(){
+        return{
+            type:userConstants.FILE_UPLOAD_MULTI_STATUS_REQUEST
+        }
+    }
+    function success(uploadImage) {
+        return {
+            type:userConstants.FILE_UPLOAD_MULTI_STATUS_SUCCESS , uploadImage
+        }
+    }
+    function failure(error) {
+        return {
+            type: userConstants.FILE_UPLOAD_MULTI_STATUS_FAILURE, error
         }
     }
 }

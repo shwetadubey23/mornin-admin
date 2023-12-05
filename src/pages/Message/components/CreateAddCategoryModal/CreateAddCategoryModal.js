@@ -9,6 +9,12 @@ export default function CreateAddCategoryModal(props) {
     errorsMessage,
     createMessageSubmit,
   } = props;
+
+
+
+
+
+  console.log("allMessage",allMessage);
   return (
 
     <div className={addMessageCreateModal ? "fixed w-full top-0 left-0 h-full inset-0 z-40 overflow-hidden mt-0 flex justify-center items-center overflow-y-auto bg-black/40 md:p-0 p-1" : "hidden"} style={{ marginTop: '0rem', }}  >
@@ -35,7 +41,7 @@ export default function CreateAddCategoryModal(props) {
               <label className="block text-xs font-medium text-gray-500 md:text-left" for="username">Message:</label>
               <select class="form-select border-1 px-3 py-2 placeholder-blueGray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" aria-label="Default select example" onChange={inputAddMessageChange} id="messageSubCategoryId" name="messageSubCategoryId"
                 value={fieldsMessage && fieldsMessage["messageSubCategoryId"] ? fieldsMessage["messageSubCategoryId"] : ""} >
-                <option selected>Please Select Message Category</option>
+                <option selected> Select Message Category</option>
                 {
                   allMessage && allMessage && allMessage.length > 0 ?
                     allMessage.map((element, index) => (

@@ -14,7 +14,7 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import { BiSearch } from "react-icons/bi";
 import { RiDeleteBinLine } from "react-icons/ri";
-import { MdAdd,MdOutlineEdit } from "react-icons/md";
+import { MdAdd, MdOutlineEdit } from "react-icons/md";
 
 
 class Image extends Component {
@@ -192,11 +192,11 @@ class Image extends Component {
   }
 
   handleAddBannerHideModal = () => {
-    this.setState({ addBannerCreateModal: false , fieldsBanner:{}, errorsBanner:{}  });
+    this.setState({ addBannerCreateModal: false, fieldsBanner: {}, errorsBanner: {} });
   }
 
   handleOpenCreateModal = () => {
-    this.setState({ addBannerCreateModal: true,  });
+    this.setState({ addBannerCreateModal: true, });
   }
   inputAddBannerChange = (e) => {
     e.preventDefault();
@@ -218,10 +218,14 @@ class Image extends Component {
   }
 
   createBannerSubmit = () => {
+    let { users } = this.props;
+    let { filesDetails } = users;
+    console.log('cc', filesDetails)
     if (this.handleValidationAddBanner()) {
       let reqData = {
         // "name": this.state.fieldsBanner.name,
         "imageSubCategoryId": this.state.fieldsBanner.imageSubCategoryId,
+        // "image": this.state && this.state.imageName ? this.state.imageName : null,
         "image": this.state && this.state.imageName ? this.state.imageName : null,
       }
       this.props.dispatch(imageActions.createImage(reqData));
@@ -229,7 +233,7 @@ class Image extends Component {
 
   }
 
- 
+
   updateBannerSubmit = () => {
     let { users } = this.props;
     let { filesDetails } = users;
@@ -246,6 +250,7 @@ class Image extends Component {
         "size": this.state.size
       }
       this.props.dispatch(imageActions.updateImage(reqData, paginationData));
+      console.log('reqDatareqDatareqDatareqDatareqDatareqData', reqData)
     }
 
   }
@@ -299,37 +304,105 @@ class Image extends Component {
 
 
 
+  //   handleFile = (event) => {
+
+  //    const input = event.target;
+  //     const files = input.files;
+
+  // const tempimagearray=[]
+
+
+  //     // You can now handle the selected files, for example, by logging their names.
+  //     for (let i = 0; i < files.length; i++) {
+
+  //         const element = files[i];
+  //         // element.name=element.name
+  //         tempimagearray.push(element)
+  //         console.log("`Selected file",tempimagearray);
+
+
+
+  //     }
+
+  //     // this.setState({ selectedFile: event.target.files[0] });
+
+  //     if (event.target.files[0]) {
+  //       this.setState({ selectedFile: null });
+  //       this.props.dispatch(userActions.uploadImage(event.target.files[event.target.files.length - 1]));
+
+  //     }
+  //     else {
+  //     }
+
+  //   }
+
+
+
+  //   handleFile = (event) => {
+  // console.log('event1111111111111111', event)
+  //    const input = event.target;
+  //     const files = input.files;
+
+  // const tempimagearray=[]
+  //    for (let i = 0; i < files.length; i++) {
+
+  //         const element = files[i];
+  //         tempimagearray.push(element)
+  //         console.log("`Selected file",tempimagearray);
+  //     }
+
+  //     if (event.target.files[0]) {
+  //       this.setState({ selectedFile: null });
+  //       this.props.dispatch(userActions.uploadMultiImages(event.target.files[event.target.files.length - 1]));
+
+  //     }
+  //     else {
+  //     }
+
+  //   }
+
+
   handleFile = (event) => {
-    this.setState({ selectedFile: event.target.files[0] });
+    const input = event.target;
+    const files = input.files;
 
-    if (event.target.files[0]) {
-      this.setState({ selectedFile: null });
-      this.props.dispatch(userActions.uploadImage(event.target.files[event.target.files.length - 1]));
 
+    console.log("filesfilesfiles",event);
+    const tempimagearray = [];
+
+    for (let i = 0; i < files.length; i++) {
+      const element = files[i];
+      tempimagearray.push(element);
+      console.log("Selected file", tempimagearray);
+      // Dispatch the upload function for each selected file
+      this.props.dispatch(userActions.uploadMultiImages(tempimagearray));
     }
-    else {
-    }
 
-  }
+    // Optionally, you can update the component state with the array of selected files
+    this.setState({ selectedFiles: tempimagearray });
+
+    // Do other logic as needed
+  };
+
+
  
-
 
   render() {
 
     let { image, users } = this.props;
-    let {  loading, getAllImageCategory,getImageList,
+    let { loading, getAllImageCategory, getImageList,
       bannerTotal, } = image;
     let { filesDetails } = users;
 
-   console.log('getAllImageCategorygetAllImageCategory', bannerTotal)
+    console.log('getAllImageCategorygetAllImageCategory', this.handleFile)
 
     return (
 
       <>
         <div>
-        <Loader
+          <Loader
             active={loading}
-            text = "Please wait....."
+            text="Please wait....."
           />
         </div>
 
@@ -434,14 +507,14 @@ class Image extends Component {
                                             <div class="targetablepx-4 tooltip p-2 rounded-full  font-medium    hover:bg-blue-100 cursor-pointer" onClick={() => this.handleOpenCreateModalUpdatePassword(element)}>
                                               {/* <span className='top-0 left-0 p-6 mx-auto -mt-8 text-sm text-white bg-gray-500 rounded tooltip-text'>Edit</span> */}
 
-                                              <MdOutlineEdit style={{ fontSize: "1.5rem" }}  title='Edit'/>
+                                              <MdOutlineEdit style={{ fontSize: "1.5rem" }} title='Edit' />
                                             </div>
                                           </span>
 
                                           <span className="relative">
                                             <div class="targetablepx-4 tooltip p-2 rounded-full  font-medium    hover:bg-blue-100 cursor-pointer" onClick={() => this.deleteBannerCategory(element)}>
                                               {/* <span className='top-0 left-0 p-6 mx-auto -mt-8 -ml-2 text-sm text-white bg-gray-500 rounded tooltip-text'>Delete</span> */}
-                                              <RiDeleteBinLine style={{ fontSize: "1.5rem" }} title='Delete'/>
+                                              <RiDeleteBinLine style={{ fontSize: "1.5rem" }} title='Delete' />
                                             </div>
                                           </span>
                                         </div>

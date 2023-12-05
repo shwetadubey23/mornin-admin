@@ -1,6 +1,7 @@
 
 import { authHeader, history } from '../_helpers';
 import { CONST, } from '../_config';
+import axios from 'axios';
 
 export const userService = {
     marketAnalysisDashboard,
@@ -9,6 +10,7 @@ export const userService = {
     childListActiveUser,
     activeSport,
     uploadImage,
+    uploadMultiImages,
     // creditdata,
 
 
@@ -142,6 +144,67 @@ function uploadImage(filedata) {
             return userObj;
         });
 }
+// function uploadMultiImages(filedata) {
+//     // console.log('filedatafiledatafiledatafiledatafiledata', filedata);
+
+//     let header = new Headers({
+//         "Authorization": authHeader().Authorization
+//     });
+//     var data = new FormData();
+//     data.append('image', filedata);
+//     const requestOptions = {
+//         method: "POST",
+//         headers: header,
+//         body: data
+//     }
+//     return fetch(CONST.BACKEND_URL + `/uploadMultiImages`, requestOptions)
+//         .then(handleResponse)
+//         .then(res => {
+//             let userObj = {
+//                 filesDetails: res.data
+//             }
+//             console.log("servive_uploadImage", userObj);
+//             return userObj;
+//         });
+// }
+
+
+function uploadMultiImages(filedata) {
+    console.log('filedatafiledatafiledatafiledatafiledata', filedata);
+
+    const header = {
+        "Authorization": authHeader().Authorization
+    };
+
+    const data = new FormData();
+    data.append('images', filedata);
+
+    console.log('datadatadatadatadatadata', data)
+
+    const requestOptions = {
+        method: "POST",
+        headers: header,
+        data: data
+    };
+console.log('requestOptionsrequestOptionsrequestOptions', requestOptions)
+    return axios.post(CONST.BACKEND_URL + `/uploadMultiImages`, data, requestOptions)
+        .then(response => {
+            let userObj = {
+                filesDetails: response.data
+            };
+            console.log("servive_uploadImage", userObj);
+            return userObj;
+        })
+        .catch(error => {
+            // Handle errors here
+            console.error("Error in uploadMultiImages:", error);
+            throw error; // rethrow the error
+        });
+}
+
+
+
+
 function marketAnalysisDashboard(data) {
 
     // console.log("datahjdsdasjkdhsa:", data);

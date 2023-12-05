@@ -13,7 +13,7 @@ function success(message) {
     // toast(messagetest)
     toast.success(messagetest, {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 1000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -29,7 +29,7 @@ function error(message) {
     // toast(messagetest)
     toast.error(messagetest, {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 1000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,

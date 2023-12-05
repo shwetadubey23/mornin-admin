@@ -14,6 +14,7 @@ import ImageCategory from '../../pages/ImageCategory/ImageCategory';
 import messageDetails from '../../pages/MessageCategory/messageDetails';
 import quotesDetails from '../../pages/QuotesCategory /quotesDetails';
 import imageDetails from '../../pages/ImageCategory/imageDetails';
+// import MessageDetails from '../../pages/MessageDetails/MessageDetails';
 function Layout(props) {
   const [open, setOpen] = useState(false);
 
@@ -72,6 +73,7 @@ function Layout(props) {
               <Route path="/app/quotesCategory" component={withRouter(QuotesCategory)} />
               <Route path="/app/imageCategory" component={withRouter(ImageCategory)} />
               <Route path="/app/messageDetails/:id" component={withRouter(messageDetails)} />
+              {/* <Route path="/app/messageDetails/:id" component={withRouter(MessageDetails)} /> */}
               <Route path="/app/quotesDetails/:id" component={withRouter(quotesDetails)} />
               <Route path="/app/imageDetails/:id" component={withRouter(imageDetails)} />
             </Switch>

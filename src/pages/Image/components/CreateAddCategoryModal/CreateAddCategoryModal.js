@@ -5,10 +5,59 @@ export default function CreateAddCategoryModal(props) {
 
   let { handleAddBannerHideModal, inputAddBannerChange,
     addBannerCreateModal,
-    fieldsBanner, filesDetails, handleFile, getAllImageCategory,
+    fieldsBanner, filesDetails,handleFile, getAllImageCategory,
     errorsBanner,
     createBannerSubmit,
   } = props;
+
+
+
+  // function handleFile(event) {
+  //   const input = event.target;
+  //   const files = input.files;
+
+  //   // You can now handle the selected files, for example, by logging their names.
+  //   for (let i = 0; i < files.length; i++) {
+  //     console.log(`Selected file ${i + 1}: ${files[i].name}`);
+
+
+
+  //   }
+  // }
+
+  // const handleFile = (event) => {
+  //   const files = event.target.files;
+
+  //   // Check if files were selected
+  //   if (!files || files.length === 0) {
+  //     console.error('No files selected.');
+  //     return;
+  //   }
+
+  //   // Iterate over selected files
+  //   Array.from(files).forEach((file) => {
+  //     const reader = new FileReader();
+
+  //     // Set up the FileReader callback
+  //     reader.onload = (e) => {
+  //       // 'e.target.result' contains the base64-encoded image data
+  //       const imageData = e.target.result;
+
+  //       // Log the image data to the console
+  //       console.log('Image Data:', imageData);
+
+  //       // You can now use the 'imageData' as needed, for example, send it to the server
+  //     };
+
+  //     // Set up another callback for handling read errors
+  //     reader.onerror = (e) => {
+  //       console.error('File reading error:', e.target.error);
+  //     };
+
+  //     // Read the file as a Data URL (base64)
+  //     reader.readAsDataURL(file);
+  //   });
+  // };
   return (
 
     <div className={addBannerCreateModal ? "fixed w-full top-0 left-0 h-full inset-0 z-40 overflow-hidden mt-0 flex justify-center items-center overflow-y-auto bg-black/40 md:p-0 p-1" : "hidden"} style={{ marginTop: '0rem', }}  >
@@ -35,7 +84,7 @@ export default function CreateAddCategoryModal(props) {
               <label className="block text-xs font-medium text-gray-500 md:text-left" for="username">Image:</label>
               <select class="form-select border-1 px-3 py-2 placeholder-blueGray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" aria-label="Default select example" onChange={inputAddBannerChange} id="imageSubCategoryId" name="imageSubCategoryId"
                 value={fieldsBanner && fieldsBanner["imageSubCategoryId"] ? fieldsBanner["imageSubCategoryId"] : ""} >
-                <option selected>Please Select Image</option>
+                <option selected> Select Image</option>
                 {
                   getAllImageCategory && getAllImageCategory && getAllImageCategory.length > 0 ?
                     getAllImageCategory.map((element, index) => (
@@ -83,7 +132,8 @@ export default function CreateAddCategoryModal(props) {
                 <label htmlFor="image">
                   Upload Image 
                 </label>
-                <input id="image" name="image" type="file" onChange={handleFile} />
+                <input id="image" name="image" type="file" multiple onChange={handleFile} />
+                {/* <input multiple  id="image" name="image" type="file" onChange={handleFile} /> */}
               </div>
 
 

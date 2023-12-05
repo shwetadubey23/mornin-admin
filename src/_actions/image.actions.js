@@ -93,6 +93,7 @@ function createImage(data) {
 }
 
 function createPTPackage(data) {
+    console.log('11111111111111111111111111111', data)
     let reqData = {
         "keyWord": "",
         "pageNo": 1,

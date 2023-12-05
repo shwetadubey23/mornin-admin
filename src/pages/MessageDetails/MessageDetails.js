@@ -16,7 +16,7 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import { MdAdd,MdOutlineEdit } from "react-icons/md";
 
 
-class Message extends Component {
+class MessageDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,10 +25,7 @@ class Message extends Component {
       massageRowData: {},
       fieldsMessage: {},
       errorsMessage: {},
-      fieldsMessageUpdate: {
-        message : "",
-        messageSubCategoryId : null
-      },
+      fieldsMessageUpdate: {},
       errorsMessageMassage: {},
       fieldsUserPasswordUpdate: {},
       errorsUpdatePassword: {},
@@ -46,7 +43,6 @@ class Message extends Component {
       pageNo: 1,
       keyWord: '',
       imageName: '',
-      updateid:'',
       updatePwdformData: {
         "id": "",
         "password": ""
@@ -54,15 +50,15 @@ class Message extends Component {
     }
   }
   componentDidMount() {
-    let temp = {
+    let data = {
+      messageSubCategoryId: this.props.match.params.id,
       "keyWord": "",
-      "pageNo": this.state.pageNo,
-      "size": this.state.size
+      "pageNo": 1,
+      "size": 10,
+
     }
-    this.props.dispatch(messageActions.getMessageList(temp)) 
-    this.props.dispatch(messageActions.getAllMessageCategory())
-
-
+    console.log('datadatadatadatadatadatadata11111111111111111', data)
+    this.props.dispatch(messageActions.getMassageUserById(data));
 
   }
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -137,7 +133,7 @@ class Message extends Component {
     confirmAlert({
 
 
-      title: 'Confirm to Change Status of Message?',
+      title: 'Confirm to Change Status of User?',
       message: `Are you sure about  ${data.name}?`,
       buttons: [
         {
@@ -186,25 +182,8 @@ class Message extends Component {
   }
 
   handleOpenCreateModalUpdatePassword = (data) => {
-
-
-    console.log("gsdhfhdsfdsgfdsgh",data);
-    this.setState({ updateid: data&&data.messageSubCategoryId&&data&&data.messageSubCategoryId.id });
-    // this.setState({fieldsMessageUpdate: {...data}})
-    this.handelSetStateDataFunction(data)
     this.setState({ UpdateMessageCreateModal: true, fieldsMessageUpdate: data });
-    console.log("fieldsMessageUpdatefieldsMessageUpdatefieldsMessageUpdate", this.state.fieldsMessageUpdate)
   }
-
-  handelSetStateDataFunction= (data) =>{
-    const newData= {
-      ...data
-    }
-    console.log("gsdhfhdsfdsgfdsgh",newData);
-    this.setState({fieldsMessageUpdate: {messageSubCategoryId : newData.messageSubCategoryId, message :newData.message}})
-    console.log("fieldsMessageUpdatefieldsMessageUpdate", this.state.fieldsMessageUpdate)
-  }
-
   handleUpdatePasswordHideModal = () => {
     this.setState({ UpdateMessageCreateModal: false });
   }
@@ -227,13 +206,9 @@ class Message extends Component {
     this.setState({ fieldsMessage, errorsMessage });
   }
   inputChangeUpdateMessage = (e) => {
-    this.setState({updateid:''})
-
-
     e.preventDefault();
     console.log('fieldsMessageUpdatefieldsMessageUpdatefieldsMessageUpdate', e.target.value)
     let { name, value } = e.target;
-    
     let fieldsMessageUpdate = this.state.fieldsMessageUpdate;
     let errorsMessageMassage = this.state.errorsMessageMassage;
     fieldsMessageUpdate[name] = value;
@@ -257,14 +232,10 @@ class Message extends Component {
  
   updateMessageSubmit = () => {
     if (this.handleValidationUpdateMessage()) {
-
-console.log("this.state && this.state.fieldsMessageUpdate", this.state && this.state.fieldsMessageUpdate&&this.state && this.state.fieldsMessageUpdate.messageSubCategoryId?this.state.fieldsMessageUpdate.messageSubCategoryId:null);
-
       let reqData = {
         "id": this.state.fieldsMessageUpdate.id,
         "message": this.state && this.state.fieldsMessageUpdate &&  this.state.fieldsMessageUpdate.message ? this.state.fieldsMessageUpdate.message: null,
-      //   "messageSubCategoryId": this.state && this.state.fieldsMessageUpdate &&  this.state.fieldsMessageUpdate.messageSubCategoryId ? this.state.fieldsMessageUpdate.messageSubCategoryId: null,
-        "messageSubCategoryId": this.state && this.state.fieldsMessageUpdate&&this.state && this.state.fieldsMessageUpdate.messageSubCategoryId? this.state.fieldsMessageUpdate.messageSubCategoryId: this.state.fieldsMessageUpdate&&this.state && this.state.fieldsMessageUpdate.messageSubCategoryId&&this.state.fieldsMessageUpdate.messageSubCategoryId.id,
+        "messageSubCategoryId": this.state && this.state.fieldsMessageUpdate &&  this.state.fieldsMessageUpdate.messageSubCategoryId ? this.state.fieldsMessageUpdate.messageSubCategoryId: null,
       }
       let paginationData = {
         "keyWord": this.state.keyWord,
@@ -341,7 +312,7 @@ console.log("this.state && this.state.fieldsMessageUpdate", this.state && this.s
 
     let { message, users } = this.props;
     let {  loading, allMessage,getMessageList,
-      messageTotal, } = message;
+      messageTotal, getMassageUserById} = message;
     let { filesDetails } = users;
 
 console.log('messageTotalmessageTotalmessageTotal', this.state.fieldsMessageUpdate)
@@ -393,7 +364,7 @@ console.log('messageTotalmessageTotalmessageTotal', this.state.fieldsMessageUpda
                             <thead className="bg-gray-200">
                               <tr className="">
                                 <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">#</th>
-                                <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">Message Category </th>
+                            
                                 <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">Message</th>
 
                                 {/* <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">image</th> */}
@@ -409,13 +380,13 @@ console.log('messageTotalmessageTotalmessageTotal', this.state.fieldsMessageUpda
 
                             <tbody>
                               {
-                                getMessageList && getMessageList.length > 0 ?
-                                  getMessageList.map((element, index) => (<React.Fragment key={element.id}>
+                                getMassageUserById && getMassageUserById.length > 0 ?
+                                  getMassageUserById.map((element, index) => (<React.Fragment key={element.id}>
                                     <tr key={element.id} className="bg-white border-b border-black border-opacity-10 ">
                                       <td className="px-6 py-3 text-sm font-medium text-gray-600 whitespace-nowrap">
                                         {this.state.offset + index + 1}</td>
 
-                                      <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.messageSubCategoryId && element.messageSubCategoryId.name ? element.messageSubCategoryId.name : "-"}</td>
+                                      {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.messageSubCategoryId && element.messageSubCategoryId.name ? element.messageSubCategoryId.name : "-"}</td> */}
 
                                       <td className="px-6 py-3 text-sm text-gray-600 ">
                                         <div className='w-72 line-clamp-4 '>
@@ -634,4 +605,4 @@ function mapStateToProps(state) {
     // authentication
   };
 }
-export default connect(mapStateToProps)(Message);
+export default connect(mapStateToProps)(MessageDetails);
