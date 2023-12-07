@@ -44,7 +44,7 @@ class Image extends Component {
       pageNo: 1,
       keyWord: '',
       imageName: '',
-      selectedFiles:[],
+      selectedFiles: [],
       updatePwdformData: {
         "id": "",
         "password": ""
@@ -342,47 +342,47 @@ class Image extends Component {
   handleFile = (event) => {
     const input = event.target;
     const files = input.files;
-  
+
     console.log("filesfilesfiles", event);
     const tempimagearray = [];
-  
+
     for (let i = 0; i < files.length; i++) {
       const element = files[i];
       tempimagearray.push(element);
     }
-  
+
     // Dispatch the upload function after all files are added to tempimagearray
     this.props.dispatch(userActions.uploadMultiImages(tempimagearray));
     console.log("elementelement", tempimagearray);
     // Optionally, you can update the component state with the array of selected files
     this.setState({ selectedFiles: tempimagearray });
-     console.log('this.state.selectedFiles', this.state.selectedFiles)
+    console.log('this.state.selectedFiles', this.state.selectedFiles)
     // Do other logic as needed
   };
-  
-//   handleFile = async (event) => {
-//     const input = event.target;
-//     const files = input.files;
 
-//     console.log("filesfilesfiles", event);
-//     const tempimagearray = [];
+  //   handleFile = async (event) => {
+  //     const input = event.target;
+  //     const files = input.files;
 
-//     for (let i = 0; i < files.length; i++) {
-//         const element = files[i];
-//         tempimagearray.push(element);
-//     }
+  //     console.log("filesfilesfiles", event);
+  //     const tempimagearray = [];
 
-//     // Dispatch the upload function after all files are added to tempimagearray
-//     await this.props.dispatch(userActions.uploadMultiImages(tempimagearray));
+  //     for (let i = 0; i < files.length; i++) {
+  //         const element = files[i];
+  //         tempimagearray.push(element);
+  //     }
 
-//     console.log("elementelement", tempimagearray);
+  //     // Dispatch the upload function after all files are added to tempimagearray
+  //     await this.props.dispatch(userActions.uploadMultiImages(tempimagearray));
 
-//     // Optionally, you can update the component state with the array of selected files
-//     this.setState({ selectedFiles: tempimagearray }, () => {
-//         console.log('this.state.selectedFiles', this.state.selectedFiles);
-//         // Do other logic as needed
-//     });
-// };
+  //     console.log("elementelement", tempimagearray);
+
+  //     // Optionally, you can update the component state with the array of selected files
+  //     this.setState({ selectedFiles: tempimagearray }, () => {
+  //         console.log('this.state.selectedFiles', this.state.selectedFiles);
+  //         // Do other logic as needed
+  //     });
+  // };
 
 
   render() {
@@ -471,10 +471,10 @@ class Image extends Component {
 
                                       <td className="px-6 py-3 text-sm justify-start flex items-center text-gray-600 whitespace-nowrap">
                                         <div className='flex justify-center'>
-                                          <img className="object-cover h-10 rounded-sm w-14" src={element && element.imageUserLink
-                                            ? element.imageUserLink
-                                            : "/dist/img/profile.png"} alt="" />
+                                          <img className="object-cover h-10 rounded-sm w-14" src={element && element.imageUserLinks &&  element.imageUserLinks[0] ? element.imageUserLinks[0]
+                                            : "/images/morning.png"} alt="" />
                                         </div>
+                                        {/* {element.imageUserLinks[0]} */}
                                       </td>
 
                                       {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">

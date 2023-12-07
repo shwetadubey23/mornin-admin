@@ -82,8 +82,9 @@ class messageDetails extends Component {
                 {allImageCategory && allImageCategory.length > 0 ? allImageCategory.map((elements, index) => (
                    
                       <div className=" bg-white  shadow-lg rounded-lg space-y-4   overflow-hidden">
+                        
                         <img
-                          src={elements && elements.imageUserLink ? elements.imageUserLink : "https://media.geeksforgeeks.org/wp-content/uploads/20200412121906/skeleton-loading.gif"}
+                          src={elements && elements.imageUserLinks &&  elements.imageUserLinks[0] ? elements.imageUserLinks[0]  : "https://media.geeksforgeeks.org/wp-content/uploads/20200412121906/skeleton-loading.gif"}
                           alt={elements && elements.name ? elements.name : "Image"}
                           className="w-full h-[200px]"
                         />

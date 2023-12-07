@@ -13,7 +13,7 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import { BiSearch } from "react-icons/bi";
 import { RiDeleteBinLine } from "react-icons/ri";
-import { MdAdd,MdOutlineEdit } from "react-icons/md";
+import { MdAdd, MdOutlineEdit } from "react-icons/md";
 
 
 class Message extends Component {
@@ -26,8 +26,8 @@ class Message extends Component {
       fieldsMessage: {},
       errorsMessage: {},
       fieldsMessageUpdate: {
-        message : "",
-        messageSubCategoryId : null
+        message: "",
+        messageSubCategoryId: null
       },
       errorsMessageMassage: {},
       fieldsUserPasswordUpdate: {},
@@ -46,7 +46,7 @@ class Message extends Component {
       pageNo: 1,
       keyWord: '',
       imageName: '',
-      updateid:'',
+      updateid: '',
       updatePwdformData: {
         "id": "",
         "password": ""
@@ -59,7 +59,7 @@ class Message extends Component {
       "pageNo": this.state.pageNo,
       "size": this.state.size
     }
-    this.props.dispatch(messageActions.getMessageList(temp)) 
+    this.props.dispatch(messageActions.getMessageList(temp))
     this.props.dispatch(messageActions.getAllMessageCategory())
 
 
@@ -188,20 +188,20 @@ class Message extends Component {
   handleOpenCreateModalUpdatePassword = (data) => {
 
 
-    console.log("gsdhfhdsfdsgfdsgh",data);
-    this.setState({ updateid: data&&data.messageSubCategoryId&&data&&data.messageSubCategoryId.id });
+    console.log("gsdhfhdsfdsgfdsgh", data);
+    // this.setState({ updateid: data && data.messageSubCategoryId });
     // this.setState({fieldsMessageUpdate: {...data}})
     this.handelSetStateDataFunction(data)
     this.setState({ UpdateMessageCreateModal: true, fieldsMessageUpdate: data });
     console.log("fieldsMessageUpdatefieldsMessageUpdatefieldsMessageUpdate", this.state.fieldsMessageUpdate)
   }
 
-  handelSetStateDataFunction= (data) =>{
-    const newData= {
+  handelSetStateDataFunction = (data) => {
+    const newData = {
       ...data
     }
-    console.log("gsdhfhdsfdsgfdsgh",newData);
-    this.setState({fieldsMessageUpdate: {messageSubCategoryId : newData.messageSubCategoryId, message :newData.message}})
+    console.log("gsdhfhdsfdsgfdsgh", newData);
+    this.setState({ fieldsMessageUpdate: { messageSubCategoryId: newData.messageSubCategoryId, message: newData.message } })
     console.log("fieldsMessageUpdatefieldsMessageUpdate", this.state.fieldsMessageUpdate)
   }
 
@@ -211,11 +211,11 @@ class Message extends Component {
 
 
   handleAddMessageHideModal = () => {
-    this.setState({ addMessageCreateModal: false , fieldsMessage:{}, errorsMessage:{}  });
+    this.setState({ addMessageCreateModal: false, fieldsMessage: {}, errorsMessage: {} });
   }
 
   handleOpenCreateModal = () => {
-    this.setState({ addMessageCreateModal: true,  });
+    this.setState({ addMessageCreateModal: true, });
   }
   inputAddMessageChange = (e) => {
     e.preventDefault();
@@ -227,13 +227,13 @@ class Message extends Component {
     this.setState({ fieldsMessage, errorsMessage });
   }
   inputChangeUpdateMessage = (e) => {
-    this.setState({updateid:''})
+    this.setState({ updateid: '' })
 
 
     e.preventDefault();
     console.log('fieldsMessageUpdatefieldsMessageUpdatefieldsMessageUpdate', e.target.value)
     let { name, value } = e.target;
-    
+
     let fieldsMessageUpdate = this.state.fieldsMessageUpdate;
     let errorsMessageMassage = this.state.errorsMessageMassage;
     fieldsMessageUpdate[name] = value;
@@ -254,17 +254,17 @@ class Message extends Component {
 
   }
 
- 
+
   updateMessageSubmit = () => {
     if (this.handleValidationUpdateMessage()) {
 
-console.log("this.state && this.state.fieldsMessageUpdate", this.state && this.state.fieldsMessageUpdate&&this.state && this.state.fieldsMessageUpdate.messageSubCategoryId?this.state.fieldsMessageUpdate.messageSubCategoryId:null);
+      console.log("this.state && this.state.fieldsMessageUpdate", this.state.fieldsMessageUpdate.messageSubCategoryId);
 
       let reqData = {
         "id": this.state.fieldsMessageUpdate.id,
-        "message": this.state && this.state.fieldsMessageUpdate &&  this.state.fieldsMessageUpdate.message ? this.state.fieldsMessageUpdate.message: null,
-      //   "messageSubCategoryId": this.state && this.state.fieldsMessageUpdate &&  this.state.fieldsMessageUpdate.messageSubCategoryId ? this.state.fieldsMessageUpdate.messageSubCategoryId: null,
-        "messageSubCategoryId": this.state && this.state.fieldsMessageUpdate&&this.state && this.state.fieldsMessageUpdate.messageSubCategoryId? this.state.fieldsMessageUpdate.messageSubCategoryId: this.state.fieldsMessageUpdate&&this.state && this.state.fieldsMessageUpdate.messageSubCategoryId&&this.state.fieldsMessageUpdate.messageSubCategoryId.id,
+        "message": this.state && this.state.fieldsMessageUpdate && this.state.fieldsMessageUpdate.message ? this.state.fieldsMessageUpdate.message : null,
+        //   "messageSubCategoryId": this.state && this.state.fieldsMessageUpdate &&  this.state.fieldsMessageUpdate.messageSubCategoryId ? this.state.fieldsMessageUpdate.messageSubCategoryId: null,
+        "messageSubCategoryId": this.state && this.state.fieldsMessageUpdate && this.state && this.state.fieldsMessageUpdate.messageSubCategoryId ? this.state.fieldsMessageUpdate.messageSubCategoryId : this.state.fieldsMessageUpdate && this.state && this.state.fieldsMessageUpdate.messageSubCategoryId && this.state.fieldsMessageUpdate.messageSubCategoryId,
       }
       let paginationData = {
         "keyWord": this.state.keyWord,
@@ -334,25 +334,25 @@ console.log("this.state && this.state.fieldsMessageUpdate", this.state && this.s
     }
 
   }
- 
+
 
 
   render() {
 
     let { message, users } = this.props;
-    let {  loading, allMessage,getMessageList,
+    let { loading, allMessage, getMessageList,
       messageTotal, } = message;
     let { filesDetails } = users;
 
-console.log('messageTotalmessageTotalmessageTotal', this.state.fieldsMessageUpdate)
+    console.log('messageTotalmessageTotalmessageTotal', this.state.fieldsMessageUpdate)
 
     return (
 
       <>
         <div>
-        <Loader
+          <Loader
             active={loading}
-            text = "Please wait....."
+            text="Please wait....."
           />
         </div>
 
@@ -419,9 +419,9 @@ console.log('messageTotalmessageTotalmessageTotal', this.state.fieldsMessageUpda
 
                                       <td className="px-6 py-3 text-sm text-gray-600 ">
                                         <div className='w-72 line-clamp-4 '>
-                                        {element && element.message && element.message ? element.message : "-"}
+                                          {element && element.message && element.message ? element.message : "-"}
                                         </div>
-                                        </td>
+                                      </td>
 
                                       {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">
                                         <div className='flex justify-center'>
@@ -483,7 +483,7 @@ console.log('messageTotalmessageTotalmessageTotal', this.state.fieldsMessageUpda
                                       <td className="flex justify-center px-2 py-6 space-x-2 text-center text-gray-600 whitespace-nowrap">
                                         <div className='flex space-x-2'>
 
-                                
+
                                           {/* <span className="relative ">
                                             {element.isActive ? "ADDED" : <div class="targetablepx-4 tooltip p-2 rounded-full  font-medium    hover:bg-blue-100 cursor-pointer  " onClick={() => this.handleOpenCreateModalMoreDetails(element)}>
                                               <span className='top-0 left-0 p-6 mx-auto -mt-8 -ml-6 text-sm text-white bg-gray-500 rounded tooltip-text'>More Details</span>
@@ -495,14 +495,14 @@ console.log('messageTotalmessageTotalmessageTotal', this.state.fieldsMessageUpda
                                             <div class="targetablepx-4 tooltip p-2 rounded-full  font-medium    hover:bg-blue-100 cursor-pointer" onClick={() => this.handleOpenCreateModalUpdatePassword(element)}>
                                               {/* <span className='top-0 left-0 p-6 mx-auto -mt-8 text-sm text-white bg-gray-500 rounded tooltip-text'>Edit</span> */}
 
-                                              <MdOutlineEdit style={{ fontSize: "1.5rem" }} title='Edit'/>
+                                              <MdOutlineEdit style={{ fontSize: "1.5rem" }} title='Edit' />
                                             </div>
                                           </span>
 
                                           <span className="relative">
                                             <div class="targetablepx-4 tooltip p-2 rounded-full  font-medium    hover:bg-blue-100 cursor-pointer" onClick={() => this.deleteMessageCategory(element)}>
                                               {/* <span className='top-0 left-0 p-6 mx-auto -mt-8 -ml-2 text-sm text-white bg-gray-500 rounded tooltip-text'>Delete</span> */}
-                                              <RiDeleteBinLine style={{ fontSize: "1.5rem" }} title='Delete'/>
+                                              <RiDeleteBinLine style={{ fontSize: "1.5rem" }} title='Delete' />
                                             </div>
                                           </span>
                                         </div>
@@ -587,7 +587,7 @@ console.log('messageTotalmessageTotalmessageTotal', this.state.fieldsMessageUpda
         />
 
 
-     
+
 
         <UpdateCategoryModal
           UpdateMessageCreateModal={this.state.UpdateMessageCreateModal}
