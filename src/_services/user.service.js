@@ -140,7 +140,7 @@ function uploadImage(filedata) {
             let userObj = {
                 filesDetails: res.data
             }
-            console.log("servive_uploadImage", userObj);
+            // console.log("servive_uploadImage", userObj);
             return userObj;
         });
 }
@@ -170,27 +170,43 @@ function uploadImage(filedata) {
 
 
 function uploadMultiImages(filedata) {
-    console.log('filedatafiledatafiledatafiledatafiledata', filedata);
+    console.log('uploadMultiImagesuploadMultiImagesuploadMultiImagesuploadMultiImages', filedata);
 
+  let dataimage=filedata
+ 
+
+let data = new FormData();
+let filenames = [];
+
+for (let i = 0; i < dataimage.length; i++) {
+    console.log('====================================', dataimage[i]);
+    data.append('images', dataimage[i]); // Append the entire File object
+    filenames.push(dataimage[i]); // Keep track of filenames
+}
+let dataA={
+    images:filenames
+}
+// Now you can access filenames array for the names of the images
+console.log('Filenames:', filenames);
+    // console.log('datadatadatadatadatadata', data)
     const header = {
         "Authorization": authHeader().Authorization
     };
-
-    const data = new FormData();
-    data.append('images', filedata);
-
-    console.log('datadatadatadatadatadata', data)
+   
 
     const requestOptions = {
         method: "POST",
         headers: header,
-        data: data
+        data: dataA
     };
 console.log('requestOptionsrequestOptionsrequestOptions', requestOptions)
     return axios.post(CONST.BACKEND_URL + `/uploadMultiImages`, data, requestOptions)
         .then(response => {
+
+            console.log('responseresponseresponse',response);
+         
             let userObj = {
-                filesDetails: response.data
+                filesDetails: response.data.data
             };
             console.log("servive_uploadImage", userObj);
             return userObj;

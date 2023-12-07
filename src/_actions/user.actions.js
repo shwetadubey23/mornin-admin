@@ -110,9 +110,9 @@ function uploadMultiImages(data){
         dispatch(request());
         userService.uploadMultiImages(data)
         .then(
-            uploadMultiImages => {
+            users => {
                 toast("Image Uploaded Successfully");
-                dispatch(success(uploadMultiImages));
+                dispatch(success(users));
             },
             error =>{
                 dispatch(alertActions.error(error));
@@ -126,9 +126,9 @@ function uploadMultiImages(data){
             type:userConstants.FILE_UPLOAD_MULTI_STATUS_REQUEST
         }
     }
-    function success(uploadImage) {
+    function success(users) {
         return {
-            type:userConstants.FILE_UPLOAD_MULTI_STATUS_SUCCESS , uploadImage
+            type:userConstants.FILE_UPLOAD_MULTI_STATUS_SUCCESS , users
         }
     }
     function failure(error) {

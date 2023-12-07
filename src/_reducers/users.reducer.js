@@ -4,6 +4,9 @@ import {
 
 export function users(state = {}, action) {
 
+  console.log('===action.users.filesDetails===================',action.users);
+ 
+
   switch (action.type) {
     case userConstants.ACTIVE_SPORT_REQUEST:
       return {
@@ -981,7 +984,7 @@ export function users(state = {}, action) {
           ...state,
           loading: false,
           imageUploadSuccess: true,
-          filesDetails: action.uploadImage.filesDetails
+          filesDetails: action.users.filesDetails
         };
   
       case userConstants.FILE_UPLOAD_MULTI_STATUS_FAILURE:

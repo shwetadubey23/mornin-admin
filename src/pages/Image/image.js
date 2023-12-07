@@ -222,12 +222,13 @@ class Image extends Component {
     let { users } = this.props;
     let { filesDetails } = users;
     console.log('cc', filesDetails)
+    let imageArray = filesDetails.map(item => item.imageName);
     if (this.handleValidationAddBanner()) {
       let reqData = {
         // "name": this.state.fieldsBanner.name,
         "imageSubCategoryId": this.state.fieldsBanner.imageSubCategoryId,
         // "image": this.state && this.state.imageName ? this.state.imageName : null,
-        "image": this.state && this.state.imageName ? this.state.imageName : null,
+        "image": imageArray,
       }
       this.props.dispatch(imageActions.createImage(reqData));
     }
@@ -391,7 +392,7 @@ class Image extends Component {
       bannerTotal, } = image;
     let { filesDetails } = users;
 
-    console.log('getAllImageCategorygetAllImageCategory', this.handleFile)
+    console.log('getAllImageCategorygetAllImageCategory', filesDetails)
 
     return (
 
