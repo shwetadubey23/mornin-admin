@@ -202,6 +202,37 @@ console.log('requestOptionsrequestOptionsrequestOptions', requestOptions)
         });
 }
 
+// function uploadMultiImages(filedata) {
+//     const header = {
+//         "Authorization": authHeader().Authorization,
+//         "Content-Type": "multipart/form-data"
+//     };
+
+//     const data = new FormData();
+
+//     for (let i = 0; i < filedata.length; i++) {
+//         // Use the correct key format for FormData
+//         data.append(`images[${i}]`, filedata[i]);
+//     }
+
+//     console.log('dataimagesimagesimagesimages', data);
+
+//     return axios.post(CONST.BACKEND_URL + `/uploadMultiImages`, data, {
+//         headers: header
+//     })
+//     .then(response => {
+//         console.log("service_uploadImage", response.data);
+//         return response.data;
+//     })
+//     .catch(error => {
+//         // Handle errors here
+//         console.error("Error in uploadMultiImages:", error);
+//         throw error;
+//     });
+// }
+
+
+
 
 
 
