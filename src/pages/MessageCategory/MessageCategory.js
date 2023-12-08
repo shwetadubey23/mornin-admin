@@ -14,7 +14,7 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import { BiSearch, BiDetail } from "react-icons/bi";
 import { RiDeleteBinLine } from "react-icons/ri";
-import { MdAdd,MdOutlineEdit } from "react-icons/md";
+import { MdAdd, MdOutlineEdit } from "react-icons/md";
 
 
 class MessageCategory extends Component {
@@ -182,8 +182,8 @@ class MessageCategory extends Component {
 
   handleOpenCreateModalMoreDetails = (data) => {
     // this.setState({ moreDetailsCreateModal: true, massageRowData: data });
-    this.props.history.push("/app/messageDetails/"+  data.id)
-     console.log("fgfdgf1111111111111111111111111111111111",data);
+    this.props.history.push("/app/messageDetails/" + data.id)
+    console.log("fgfdgf1111111111111111111111111111111111", data);
   }
   handleOpenCreateModalUpdatePassword = (data) => {
     this.setState({ UpdateMessageCreateModal: true, fieldsMessageUpdate: data });
@@ -198,12 +198,12 @@ class MessageCategory extends Component {
 
 
   handleAddMessageHideModal = () => {
-    this.setState({ addMessageCreateModal: false , fieldsMessage:{}, errorsMessage:{}  });
+    this.setState({ addMessageCreateModal: false, fieldsMessage: {}, errorsMessage: {} });
     // this.setState({ appsettingUpdateModal: false });
   }
 
   handleOpenCreateModal = () => {
-    this.setState({ addMessageCreateModal: true,  });
+    this.setState({ addMessageCreateModal: true, });
   }
   inputAddMessageChange = (e) => {
     e.preventDefault();
@@ -237,7 +237,7 @@ class MessageCategory extends Component {
       let reqData = {
         // "flag": this.state.fieldsMessage.flag,
         "name": this.state.fieldsMessage.name,
-        // "image": this.state && this.state.imageName ? this.state.imageName : null,
+        "image": this.state && this.state.imageName ? this.state.imageName : null,
 
       }
       // console.log("createRestoCategory>>>>>>>>>>>>>>>>>>>>>>>>>>>>", reqData);
@@ -246,7 +246,7 @@ class MessageCategory extends Component {
 
   }
 
- 
+
   updateMessageSubmit = () => {
     let { users } = this.props;
     let { filesDetails } = users;
@@ -257,7 +257,7 @@ class MessageCategory extends Component {
         "id": this.state.fieldsMessageUpdate.id,
         // "flag": this.state.fieldsMessageUpdate.flag,
         "name": this.state.fieldsMessageUpdate.name,
-        // "image": this.state && this.state.imageName ? this.state.imageName : this.state.fieldsMessageUpdate.image,
+        "image": this.state && this.state.imageName ? this.state.imageName : this.state.fieldsMessageUpdate.image,
       }
       let paginationData = {
         "keyWord": this.state.keyWord,
@@ -336,13 +336,13 @@ class MessageCategory extends Component {
     }
 
   }
- 
+
 
 
   render() {
 
     let { message, users } = this.props;
-    let {  loading, allMessageCat,getMessageCategoryList,
+    let { loading, allMessageCat, getMessageCategoryList,
       messageTotal, } = message;
     let { filesDetails } = users;
     // let { allMassage } = Massage;
@@ -354,9 +354,9 @@ class MessageCategory extends Component {
 
       <>
         <div>
-        <Loader
+          <Loader
             active={loading}
-            text = "Please wait....."
+            text="Please wait....."
           />
         </div>
 
@@ -400,7 +400,7 @@ class MessageCategory extends Component {
                                 <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">Name </th>
                                 {/* <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">Flag</th> */}
 
-                                {/* <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">image</th> */}
+                                <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">image</th>
                                 {/* <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">image</th> */}
                                 <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">Date/Time</th>
 
@@ -423,7 +423,11 @@ class MessageCategory extends Component {
                                       {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.MessageCategoryId && element.MessageCategoryId.name ? element.MessageCategoryId.name : "-"}</td> */}
                                       <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.name ? element.name : "-"}</td>
 
-
+                                      <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">
+                                        <div className='flex justify-start'>
+                                          <img className="object-cover h-10 rounded-sm w-14" src={element && element.imageUserLink ? element.imageUserLink : "NA"} alt="not found" />
+                                        </div>
+                                      </td>
                                       <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{moment(new Date(parseInt(element.createdAt))).utcOffset("+05:30").format("YYYY-MM-DD HH:mm")}</td>
 
                                       {/* <td className="px-2 py-3 text-sm text-gray-600 whitespace-nowrap">
@@ -470,11 +474,11 @@ class MessageCategory extends Component {
                                       <td className="flex justify-center px-2 py-6 space-x-2 text-center text-gray-600 whitespace-nowrap">
                                         <div className='flex space-x-2'>
 
-                                
+
                                           <span className="relative ">
                                             <div class="targetablepx-4 tooltip p-2 rounded-full  font-medium    hover:bg-blue-100 cursor-pointer  " onClick={() => this.handleOpenCreateModalMoreDetails(element)}>
                                               {/* <span className='top-0 left-0 p-6 mx-auto -mt-8 -ml-6 text-sm text-white bg-gray-500 rounded tooltip-text'>More Details</span> */}
-                                              <BiDetail style={{ fontSize: "1.5rem" }} title='Message Category Details'/>
+                                              <BiDetail style={{ fontSize: "1.5rem" }} title='Message Category Details' />
                                             </div>
                                           </span>
 
@@ -482,7 +486,7 @@ class MessageCategory extends Component {
                                             <div class="targetablepx-4 tooltip p-2 rounded-full  font-medium    hover:bg-blue-100 cursor-pointer" onClick={() => this.handleOpenCreateModalUpdatePassword(element)}>
                                               {/* <span className='top-0 left-0 p-6 mx-auto -mt-8 text-sm text-white bg-gray-500 rounded tooltip-text'>Edit</span> */}
 
-                                              <MdOutlineEdit style={{ fontSize: "1.5rem" }}  title='Edit'/>
+                                              <MdOutlineEdit style={{ fontSize: "1.5rem" }} title='Edit' />
                                             </div>
                                           </span>
 

@@ -7,7 +7,7 @@ export default function CreateAddCategoryModal(props) {
     addMessageCreateModal,
     fieldsMessage,
     errorsMessage,
-    createMessageSubmit,
+    createMessageSubmit, handleFile, filesDetails
   } = props;
   return (
 
@@ -76,7 +76,7 @@ export default function CreateAddCategoryModal(props) {
             </div> */}
 
 
-            {/* 
+           
 
             <div className="flex justify-between px-2"   >
               <div className="flex flex-wrap w-full py-2">
@@ -102,7 +102,7 @@ export default function CreateAddCategoryModal(props) {
                   <>
                     <div>
                       <div className='flex justify-center'>
-                        <img className="object-cover h-10 rounded-sm w-14" src="/dist/img/profile.png" alt="not found" />
+                        <img className="object-cover h-10 rounded-sm w-14" src="/images/profile.png" alt="not found" />
                       </div>
                     </div>
                   </>
@@ -112,7 +112,7 @@ export default function CreateAddCategoryModal(props) {
 
 
 
-            </div>*/}
+            </div>
 
             {/* btns */}
             <div className="flex justify-end py-0 space-x-4">

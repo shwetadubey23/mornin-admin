@@ -3,7 +3,7 @@ import { CgLogIn } from 'react-icons/cg';
 
 export default function UpdateCategoryModal(props) {
 
-  let { UpdateMessageCreateModal, handleAppSeetingHideModal, errorsUpdateMessage, inputChangeUpdateMessage, updateMessageSubmit, fieldsMessageUpdate
+  let { UpdateMessageCreateModal, handleAppSeetingHideModal, errorsUpdateMessage, inputChangeUpdateMessage, updateMessageSubmit, fieldsMessageUpdate , filesDetails, handleFile
   } = props;
   // console.log("MODAL__fieldsMessageUpdate::", fieldsMessageUpdate);
 
@@ -69,7 +69,7 @@ export default function UpdateCategoryModal(props) {
             </div> */}
 
 
-            {/* {
+            {
 
               filesDetails && filesDetails.imageURL ?
 
@@ -99,7 +99,7 @@ export default function UpdateCategoryModal(props) {
 
 
 
-            } */}
+            } 
 
 
             {/* btns */}
