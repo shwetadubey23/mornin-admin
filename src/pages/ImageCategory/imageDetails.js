@@ -54,7 +54,7 @@ class messageDetails extends Component {
 
     let { users, image } = this.props;
     let { loading, allImageCategory, totalImageCategory } = image;
-    // console.log('getMassageUserById111111111111', allImageCategory)
+    console.log('getMassageUserById111111111111', allImageCategory)
     return (
 
       <>
@@ -77,34 +77,40 @@ class messageDetails extends Component {
                     Images ({totalImageCategory})
                   </h1>
                 </div>
-            
-                    <div className="grid grid-cols-1 gap-4 xl:gap-10 md:grid-cols-2 xl:grid-cols-4 py-10">
-                {allImageCategory && allImageCategory.length > 0 ? allImageCategory.map((elements, index) => (
-                   
-                      <div className=" bg-white  shadow-lg rounded-lg space-y-4   overflow-hidden">
-                        
-                        <img
-                          src={elements && elements.imageUserLinks &&  elements.imageUserLinks[0] ? elements.imageUserLinks[0]  : "https://media.geeksforgeeks.org/wp-content/uploads/20200412121906/skeleton-loading.gif"}
-                          alt={elements && elements.name ? elements.name : "Image"}
-                          className="w-full h-[200px]"
-                        />
-                        <div className="relative  p-5">
-                          <h3 className="text-base font-bold capitalize leading-snug  line-clamp-1">
-                            {elements && elements.name ? elements.name : "Image"}
-                          </h3>
-                         
-                        </div>
-                        <div className='flex justify-end items-end py-2 px-3'>
-                      <p className='text-gray-500 text-sm '>{moment(new Date(parseInt(elements && elements.createdAt ? elements.createdAt : "-"))).utcOffset("+05:30").format("HH:mm DD-MM-YYYY")}</p>
-                    </div>
-                      </div>
 
-                )) :
-                  <span className='text-center justify-start items-center text-red-500 font-semibold px-6 w-[500px] '>
-                    <p> "This Category have not any Images"</p>
-                  </span>
-                }
-   </div>
+                <div className="grid grid-cols-1 gap-4 xl:gap-10  py-10">
+                  {allImageCategory && allImageCategory.length > 0 ? allImageCategory.map((elements, index) => (
+
+                    <div className=" bg-white p-10 shadow-lg rounded-lg space-y-4 gap-4 xl:space-x-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 overflow-hidden">
+                      {
+                        Array.isArray(elements.imageUserLinks) &&
+                        elements.imageUserLinks.map((imageName, index) => (
+                          <img className='w-72 h-52 rounded-md ' key={index} src={imageName} alt={`Image ${index}`} />
+                        ))
+                      }
+
+                      {/* <img
+                        src={elements && elements.imageUserLinks && elements.imageUserLinks[0] ? elements.imageUserLinks[0] : "https://media.geeksforgeeks.org/wp-content/uploads/20200412121906/skeleton-loading.gif"}
+                        alt={elements && elements.name ? elements.name : "Image"}
+                        className="w-full h-[200px]"
+                      /> */}
+                      <div className="relative  p-5">
+                        {/* <h3 className="text-base font-bold capitalize leading-snug  line-clamp-1">
+                          {elements && elements.name ? elements.name : "Image"}
+                        </h3> */}
+
+                      </div>
+                      <div className='flex justify-end items-end py-2 px-3'>
+                        <p className='text-gray-500 text-sm '>{moment(new Date(parseInt(elements && elements.createdAt ? elements.createdAt : "-"))).utcOffset("+05:30").format("HH:mm DD-MM-YYYY")}</p>
+                      </div>
+                    </div>
+
+                  )) :
+                    <span className='text-center justify-start items-center text-red-500 font-semibold px-6 w-[500px] '>
+                      <p> "This Category have not any Images"</p>
+                    </span>
+                  }
+                </div>
 
               </div>
             </div>
