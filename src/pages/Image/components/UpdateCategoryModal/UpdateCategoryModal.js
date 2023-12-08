@@ -1,12 +1,29 @@
 import React from "react";
 import { CgLogIn } from 'react-icons/cg';
+import { useState } from 'react';
 
 export default function UpdateCategoryModal(props) {
 
-  let { UpdateBannerCreateModal, handleAppSeetingHideModal, errorsUpdateBanner, inputChangeUpdateBanner, updateBannerSubmit, fieldsBannerUpdate, handleFile, filesDetails, getAllImageCategory
+  let { UpdateBannerCreateModal, handleAppSeetingHideModal, errorsUpdateBanner, inputChangeUpdateBanner, updateBannerSubmit, fieldsBannerUpdate, filesDetails, getAllImageCategory, handleFileUpdate, handleFile
   } = props;
   console.log("MODAL__fieldsBannerUpdate::", fieldsBannerUpdate.imageUserLinks);
 
+  const [imageFiles, setImageFiles] = useState([]);
+
+  // Function to update the state with a file at a specific index
+  const updateFileAtIndex = (index, file) => {
+    setImageFiles((prevFiles) => {
+      const newFiles = [...prevFiles];
+      newFiles[index] = file;
+      return newFiles;
+    });
+  };
+  // const handleFile = (event, index) => {
+  //   const files = event.target.files;
+  //   console.log('eventeventeventeventevent', event)
+  //   // Assuming you have a function to handle file updates
+  //   updateFileAtIndex(index, files[0]);
+  // };
 
   return (
 
@@ -85,33 +102,31 @@ export default function UpdateCategoryModal(props) {
                 </div>
                 :
                 <div className=" w-full flex">
-                  {/* <div className='flex justify-between px-4'>
+                  <div className='flex justify-between px-4'>
                     <img className="object-cover w-24 h-20 rounded-sm" src={fieldsBannerUpdate && fieldsBannerUpdate.imageUserLink ? fieldsBannerUpdate.imageUserLink : null} alt="not found" />
-                  </div> */}
-                  <div className="grid grid-cols-2 gap-2">
-                    {
-                      Array.isArray(fieldsBannerUpdate.imageUserLinks) &&
+                  </div>
+                  {/* <div className="grid grid-cols-2 gap-2">
+                    {Array.isArray(fieldsBannerUpdate.imageUserLinks) &&
                       fieldsBannerUpdate.imageUserLinks.map((imageName, index) => (
-                        <div key={index} className="">
+                        <div key={index}>
                           <img className='object-cover h-14 rounded-sm w-14' src={imageName} alt={`Image ${index}`} />
-                          <div className="flex flex-wrap w-full my-2">
+                          <div className="flex flex-wrap w-full mt-4">
                             <input
                               id={`image-${index}`}
                               name={`image-${index}`}
-                              type="file"
-                              onChange={(e) => handleFile(e, index)}
+                              type="file" multiple
+                              onChange={(e) => handleFileUpdate(e, index)}
                             />
                           </div>
                         </div>
-                      ))
-                    }
-                  </div>
-
-
-                  {/* <div className="flex flex-wrap w-full mt-4 ">
-
-                    <input id="image" name="image" type="file" onChange={handleFile} />
+                      ))}
                   </div> */}
+
+
+                  <div className="flex flex-wrap w-full mt-4 ">
+
+                    <input id="image" name="image" type="file" onChange={handleFileUpdate} />
+                  </div>
                 </div>
 
 

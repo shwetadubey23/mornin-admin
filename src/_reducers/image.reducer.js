@@ -3,7 +3,7 @@ import {
 } from '../_constants';
 
 export function image(state = {}, action) {
-  //  console.log("imageimageimageimageimageimage", action.users);
+   console.log("imageimageimageimageimageimage", action.users);
   switch (action.type) {
     case imageConstants.GET_ID_MASSAGE_REQUEST:
       return {

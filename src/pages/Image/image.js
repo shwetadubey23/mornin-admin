@@ -239,6 +239,7 @@ class Image extends Component {
   updateBannerSubmit = () => {
     let { users } = this.props;
     let { filesDetails } = users;
+    // let imageArray = filesDetails.map(item => item.imageName);
     if (this.handleValidationUpdateBanner()) {
       let reqData = {
         "id": this.state.fieldsBannerUpdate.id,
@@ -246,6 +247,7 @@ class Image extends Component {
         // "imageSubCategoryId": this.state.fieldsBannerUpdate.imageSubCategoryId,
         "imageSubCategoryId": String(this.state.fieldsBannerUpdate.imageSubCategoryId?.id || this.state.fieldsBannerUpdate.imageSubCategoryId), // Ensure it's a string
         "image": this.state && this.state.imageName ? this.state.imageName : this.state.fieldsBannerUpdate.image,
+        // "image": imageArray,
       }
       let paginationData = {
         "keyWord": this.state.keyWord,
@@ -307,37 +309,37 @@ class Image extends Component {
 
 
 
-  //   handleFile = (event) => {
+  handleFileUpdate = (event) => {
 
-  //    const input = event.target;
-  //     const files = input.files;
+     const input = event.target;
+      const files = input.files;
 
-  // const tempimagearray=[]
-
-
-  //     // You can now handle the selected files, for example, by logging their names.
-  //     for (let i = 0; i < files.length; i++) {
-
-  //         const element = files[i];
-  //         // element.name=element.name
-  //         tempimagearray.push(element)
-  //         console.log("`Selected file",tempimagearray);
+  const tempimagearray=[]
 
 
+      // You can now handle the selected files, for example, by logging their names.
+      for (let i = 0; i < files.length; i++) {
 
-  //     }
+          const element = files[i];
+          // element.name=element.name
+          tempimagearray.push(element)
+          console.log("`Selected file",tempimagearray);
 
-  //     // this.setState({ selectedFile: event.target.files[0] });
 
-  //     if (event.target.files[0]) {
-  //       this.setState({ selectedFile: null });
-  //       this.props.dispatch(userActions.uploadImage(event.target.files[event.target.files.length - 1]));
 
-  //     }
-  //     else {
-  //     }
+      }
 
-  //   }
+      // this.setState({ selectedFile: event.target.files[0] });
+
+      if (event.target.files[0]) {
+        this.setState({ selectedFile: null });
+        this.props.dispatch(userActions.uploadImage(event.target.files[event.target.files.length - 1]));
+
+      }
+      else {
+      }
+
+    }
 
 
   handleFile = (event) => {
@@ -361,30 +363,29 @@ class Image extends Component {
     // Do other logic as needed
   };
 
-  //   handleFile = async (event) => {
-  //     const input = event.target;
-  //     const files = input.files;
+  // handleFileUpdate = (event, index) => {
+  //   const input = event.target;
+  //   const files = input.files;
+  //   console.log('filesfilesfiles', files);
 
-  //     console.log("filesfilesfiles", event);
-  //     const tempimagearray = [];
+  //   const tempImageArray = [...this.state.fieldsBannerUpdate.imageUserLinks];
 
-  //     for (let i = 0; i < files.length; i++) {
-  //         const element = files[i];
-  //         tempimagearray.push(element);
-  //     }
+  //   for (let i = 0; i < files.length; i++) {
+  //     tempImageArray[index + i] = URL.createObjectURL(files[i]);
+  //   }
 
-  //     // Dispatch the upload function after all files are added to tempimagearray
-  //     await this.props.dispatch(userActions.uploadMultiImages(tempimagearray));
+  //   // Dispatch the upload function after all files are added to tempImageArray
+  //   this.props.dispatch(userActions.uploadMultiImages(files));
 
-  //     console.log("elementelement", tempimagearray);
-
-  //     // Optionally, you can update the component state with the array of selected files
-  //     this.setState({ selectedFiles: tempimagearray }, () => {
-  //         console.log('this.state.selectedFiles', this.state.selectedFiles);
-  //         // Do other logic as needed
-  //     });
-  // };
-
+  //   // Optionally, you can update the component state with the array of selected files
+  //   this.setState({
+  //     fieldsBannerUpdate: {
+  //       ...this.state.fieldsBannerUpdate,
+  //       imageUserLinks: tempImageArray,
+  //     },
+  //     selectedFiles: files,
+  //   });
+  // }
 
   render() {
 
@@ -472,7 +473,7 @@ class Image extends Component {
 
                                       <td className="px-6 py-3 text-sm justify-start flex items-center text-gray-600 whitespace-nowrap">
                                         <div className='flex justify-center'>
-                                          <img className="object-cover h-10 rounded-sm w-14" src={element && element.imageUserLinks &&  element.imageUserLinks[0] ? element.imageUserLinks[0]
+                                          <img className="object-cover h-10 rounded-sm w-14" src={element && element.imageUserLinks  ? element.imageUserLinks
                                             : "/images/morning.png"} alt="" />
                                         </div>
                                         {/* {element.imageUserLinks[0]} */}
@@ -624,7 +625,7 @@ class Image extends Component {
           getAllImageCategory={getAllImageCategory}
 
           handleFile={this.handleFile}
-          handleFile2={this.handleFile2}
+          handleFileUpdate={this.handleFileUpdate}
           handleUpdateSelectType={this.handleUpdateSelectType}
           handleUpdateSelectGameType={this.handleUpdateSelectGameType}
           handleUpdateSelectRankType={this.handleUpdateSelectRankType}
