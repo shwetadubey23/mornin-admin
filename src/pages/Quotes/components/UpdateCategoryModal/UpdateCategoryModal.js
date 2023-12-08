@@ -5,7 +5,7 @@ export default function UpdateCategoryModal(props) {
 
   let { UpdateQuotesCreateModal, handleAppSeetingHideModal, errorsUpdateQuotes, inputChangeUpdateQuotes, updateQuotesSubmit, fieldsQuotesUpdate, AllQuotes
   } = props;
-  // console.log("MODAL__fieldsQuotesUpdate::", fieldsQuotesUpdate);
+  // console.log("MODAL__fieldsQuotesUpdate::", fieldsQuotesUpdate.quotesSubCategoryId.id);
 
 
   return (
@@ -25,17 +25,16 @@ export default function UpdateCategoryModal(props) {
 
         <div className="p-4">
           <button className="text-base text-gray-600 p-4 py-2 border border-gray-300 border-b-transparent bg-white -mb-0.5 font-bold">
-            Update Quotes{fieldsQuotesUpdate.name}
+            Update Quotes
           </button>
           <form autoComplete="off" className="p-4 space-y-4 capitalize border border-gray-300 ">
 
-            <div className="w-full">
+
+            {/* <div className="w-full">
               <label className="block text-xs font-medium text-gray-500 md:text-left" for="username">Quotes Category:</label>
               <select class="form-select border-1 px-3 py-2 placeholder-blueGray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" aria-label="Default select example" onChange={inputChangeUpdateQuotes} id="quotesSubCategoryId" name="quotesSubCategoryId"
-                value={fieldsQuotesUpdate && fieldsQuotesUpdate["quotesSubCategoryId"] ? fieldsQuotesUpdate["quotesSubCategoryId"] : ""} >
-                <option selected>
-                  {fieldsQuotesUpdate && fieldsQuotesUpdate["quotesSubCategoryId"] && fieldsQuotesUpdate["quotesSubCategoryId"].name ? fieldsQuotesUpdate["quotesSubCategoryId"].name : ""}
-                  </option>
+                value={fieldsQuotesUpdate && fieldsQuotesUpdate["quotesSubCategoryId"] ? fieldsQuotesUpdate["quotesSubCategoryId"] : null} >
+                <option selected> Select Quotes Category</option>
                 {
                   AllQuotes && AllQuotes && AllQuotes.length > 0 ?
                     AllQuotes.map((element, index) => (
@@ -48,7 +47,30 @@ export default function UpdateCategoryModal(props) {
                   {errorsUpdateQuotes["quotesSubCategoryId"]}
                 </div>
                 : null}
-            </div>
+            </div> */}
+            <select
+              className="form-select border-1 px-3 py-2 placeholder-blueGray-400 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+              aria-label="Default select example"
+              onChange={inputChangeUpdateQuotes}
+              id="quotesSubCategoryId"
+              name="quotesSubCategoryId"
+              value={(fieldsQuotesUpdate && fieldsQuotesUpdate["quotesSubCategoryId"] && fieldsQuotesUpdate["quotesSubCategoryId"].id) || null}
+            >
+              <option disabled>Select Quotes Category</option>
+              {AllQuotes && AllQuotes.length > 0
+                ? AllQuotes.map((element, index) => (
+                  <option key={index} 
+                  value={(element && element.id) ? String(element.id) : ""}
+                  >
+                    {element && element.name ? element.name : "NA"}
+                  </option>
+                ))
+                : null}
+            </select>
+
+
+
+
 
             <div className="w-full">
               <label className="block text-xs font-medium text-gray-500 md:text-left" for="username">Quotes :</label>

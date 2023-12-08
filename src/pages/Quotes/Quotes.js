@@ -254,7 +254,8 @@ class Quotes extends Component {
     if (this.handleValidationUpdateQuotes()) {
       let reqData = {
         "id": this.state.fieldsQuotesUpdate.id,
-        "quotesSubCategoryId": this.state.fieldsQuotesUpdate.quotesSubCategoryId,
+        // "quotesSubCategoryId": this.state.fieldsQuotesUpdate.quotesSubCategoryId,
+        "quotesSubCategoryId": String(this.state.fieldsQuotesUpdate.quotesSubCategoryId?.id || this.state.fieldsQuotesUpdate.quotesSubCategoryId), // Ensure it's a string
         "quotes": this.state.fieldsQuotesUpdate.quotes,
         // "image": this.state && this.state.imageName ? this.state.imageName : this.state.fieldsQuotesUpdate.image,
       }
