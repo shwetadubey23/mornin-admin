@@ -263,8 +263,8 @@ class Message extends Component {
       let reqData = {
         "id": this.state.fieldsMessageUpdate.id,
         "message": this.state && this.state.fieldsMessageUpdate && this.state.fieldsMessageUpdate.message ? this.state.fieldsMessageUpdate.message : null,
-        //   "messageSubCategoryId": this.state && this.state.fieldsMessageUpdate &&  this.state.fieldsMessageUpdate.messageSubCategoryId ? this.state.fieldsMessageUpdate.messageSubCategoryId: null,
-        "messageSubCategoryId": this.state && this.state.fieldsMessageUpdate && this.state && this.state.fieldsMessageUpdate.messageSubCategoryId ? this.state.fieldsMessageUpdate.messageSubCategoryId : this.state.fieldsMessageUpdate && this.state && this.state.fieldsMessageUpdate.messageSubCategoryId && this.state.fieldsMessageUpdate.messageSubCategoryId,
+          "messageSubCategoryId": this.state && this.state.fieldsMessageUpdate &&  this.state.fieldsMessageUpdate.messageSubCategoryId ? this.state.fieldsMessageUpdate.messageSubCategoryId: null,
+        // "messageSubCategoryId": this.state && this.state.fieldsMessageUpdate && this.state && this.state.fieldsMessageUpdate.messageSubCategoryId ? this.state.fieldsMessageUpdate.messageSubCategoryId : this.state.fieldsMessageUpdate && this.state && this.state.fieldsMessageUpdate.messageSubCategoryId && this.state.fieldsMessageUpdate.messageSubCategoryId,
       }
       let paginationData = {
         "keyWord": this.state.keyWord,
