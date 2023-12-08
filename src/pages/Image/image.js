@@ -12,7 +12,7 @@ import UpdateUserPasswordModal from './components/UpdateUserPasswordModal/Update
 import { isMobile } from "react-device-detect";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
-import { BiSearch } from "react-icons/bi";
+import { BiSearch, BiDetail } from "react-icons/bi";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { MdAdd, MdOutlineEdit } from "react-icons/md";
 
@@ -23,7 +23,7 @@ class Image extends Component {
     this.state = {
       isVideo: false,
       isVideoUpdate: false,
-      massageRowData: {},
+      imageRowData: {},
       fieldsBanner: {},
       errorsBanner: {},
       fieldsBannerUpdate: {},
@@ -179,7 +179,7 @@ class Image extends Component {
 
 
   handleOpenCreateModalMoreDetails = (data) => {
-    this.setState({ moreDetailsCreateModal: true, massageRowData: data });
+    this.setState({ moreDetailsCreateModal: true, imageRowData: data });
   }
 
   handleMoreDetailsHideModal = () => {
@@ -243,7 +243,8 @@ class Image extends Component {
       let reqData = {
         "id": this.state.fieldsBannerUpdate.id,
         // "name": this.state.fieldsBannerUpdate.name,
-        "imageSubCategoryId": this.state.fieldsBannerUpdate.imageSubCategoryId,
+        // "imageSubCategoryId": this.state.fieldsBannerUpdate.imageSubCategoryId,
+        "imageSubCategoryId": String(this.state.fieldsBannerUpdate.imageSubCategoryId?.id || this.state.fieldsBannerUpdate.imageSubCategoryId), // Ensure it's a string
         "image": this.state && this.state.imageName ? this.state.imageName : this.state.fieldsBannerUpdate.image,
       }
       let paginationData = {
@@ -441,7 +442,7 @@ class Image extends Component {
                             <thead className="bg-gray-200">
                               <tr className="">
                                 <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">#</th>
-                                {/* <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">Name </th> */}
+                                <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">Image Category  </th>
                                 {/* <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">Flag</th> */}
 
                                 <th className="px-6 py-3 text-sm font-semibold text-left text-gray-500 uppercase whitespace-nowrap">image</th>
@@ -464,7 +465,7 @@ class Image extends Component {
                                         {this.state.offset + index + 1}</td>
 
 
-                                      {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.bannerCategoryId && element.bannerCategoryId.name ? element.bannerCategoryId.name : "-"}</td> */}
+                                      <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.imageSubCategoryId && element.imageSubCategoryId.name ? element.imageSubCategoryId.name : "-"}</td>
                                       {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.name ? element.name : "-"}</td> */}
 
                                       {/* <td className="px-6 py-3 text-sm text-gray-600 whitespace-nowrap">{element && element.flag ? element.flag : "-"}</td> */}
@@ -501,6 +502,12 @@ class Image extends Component {
 
                                       <td className="flex justify-center px-2 py-6 space-x-2 text-center text-gray-600 whitespace-nowrap">
                                         <div className='flex space-x-2'>
+                                        <span className="relative ">
+                                            <div class="targetablepx-4 tooltip p-2 rounded-full  font-medium    hover:bg-blue-100 cursor-pointer  " onClick={() => this.handleOpenCreateModalMoreDetails(element)}>
+                                              {/* <span className='top-0 left-0 p-6 mx-auto -mt-8 -ml-6 text-sm text-white bg-gray-500 rounded tooltip-text'>More Details</span> */}
+                                              <BiDetail style={{ fontSize: "1.5rem" }} title='More Details' />
+                                            </div>
+                                          </span>
                                           <span className="relative">
                                             <div class="targetablepx-4 tooltip p-2 rounded-full  font-medium    hover:bg-blue-100 cursor-pointer" onClick={() => this.handleOpenCreateModalUpdatePassword(element)}>
                                               {/* <span className='top-0 left-0 p-6 mx-auto -mt-8 text-sm text-white bg-gray-500 rounded tooltip-text'>Edit</span> */}
@@ -629,7 +636,7 @@ class Image extends Component {
 
         <ViewMoreDetailsModal
           moreDetailsCreateModal={this.state.moreDetailsCreateModal}
-          massageRowData={this.state.massageRowData}
+          imageRowData={this.state.imageRowData}
           // getProductByCategoryId={getProductByCategoryId}
           handleMoreDetailsHideModal={this.handleMoreDetailsHideModal}
         />

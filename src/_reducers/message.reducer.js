@@ -125,7 +125,7 @@ export function message(state = {}, action) {
     case messageConstants.GET_MESSAGE_LIST_REQUEST:
       return {
         ...state,
-        loading: true
+        loading: false
       };
     case messageConstants.GET_MESSAGE_LIST_SUCCESS:
       return {
@@ -318,7 +318,7 @@ export function message(state = {}, action) {
     case messageConstants.GET_PT_PACKAGE_LIST_REQUEST:
       return {
         ...state,
-        loading: true
+        loading: false
       };
     case messageConstants.GET_PT_PACKAGE_LIST_SUCCESS:
       return {
@@ -376,7 +376,7 @@ export function message(state = {}, action) {
     case messageConstants.GET_QUOTES_LIST_REQUEST:
       return {
         ...state,
-        loading: true
+        loading: false
       };
     case messageConstants.GET_QUOTES_LIST_SUCCESS:
       return {

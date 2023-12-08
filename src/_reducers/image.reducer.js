@@ -72,7 +72,7 @@ export function image(state = {}, action) {
     case imageConstants.GET_BANNER_CATEGORY_LIST_REQUEST:
       return {
         ...state,
-        loading: true
+        loading: false
       };
     case imageConstants.GET_BANNER_CATEGORY_LIST_SUCCESS:
       return {
@@ -92,7 +92,7 @@ export function image(state = {}, action) {
     case imageConstants.GET_BANNER_LIST_REQUEST:
       return {
         ...state,
-        loading: true
+        loading: false
       };
     case imageConstants.GET_BANNER_LIST_SUCCESS:
       return {

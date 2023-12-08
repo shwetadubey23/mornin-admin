@@ -81,7 +81,7 @@ class messageDetails extends Component {
                 <div className="grid grid-cols-1 gap-4 xl:gap-10  py-10">
                   {allImageCategory && allImageCategory.length > 0 ? allImageCategory.map((elements, index) => (
 
-                    <div className=" bg-white p-10 shadow-lg rounded-lg space-y-4 gap-4 xl:space-x-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 overflow-hidden">
+                    <div className=" bg-white p-10 shadow-lg rounded-lg space-y-4 md:space-y-0 gap-4 xl:gap-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 overflow-hidden">
                       {
                         Array.isArray(elements.imageUserLinks) &&
                         elements.imageUserLinks.map((imageName, index) => (
