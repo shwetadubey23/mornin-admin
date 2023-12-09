@@ -414,5 +414,16 @@ Authorization: {{token}}
 }
 
 
+###  
+POST  https://morning.jamsara.com/api/dadmin/updateImage HTTP/1.1
+Content-type: application/json
+Authorization: {{token}}
 
+{
+  "id": "6572c80d15316f3beebd9074",
+   "imageSubCategoryId" : "655db2e65a0c232c35f89de8",
+    # "name": "User11",
+    "image": ["images-1702021099301.png", "images-1702021099313.png", "images-1702021099325.png"]
+
+}
 

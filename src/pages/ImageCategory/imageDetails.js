@@ -78,22 +78,22 @@ class messageDetails extends Component {
                   </h1>
                 </div>
 
-                <div className="grid grid-cols-1 gap-4 xl:gap-10  py-10">
+                <div className="  py-10 md:space-y-0 gap-4 xl:gap-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
                   {allImageCategory && allImageCategory.length > 0 ? allImageCategory.map((elements, index) => (
 
-                    <div className=" bg-white p-10 shadow-lg rounded-lg space-y-4 md:space-y-0 gap-4 xl:gap-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 overflow-hidden">
-                      {
+                    <div className=" bg-white p-10 shadow-lg rounded-lg space-y-4 md:space-y-0 overflow-hidden">
+                      {/* {
                         Array.isArray(elements.imageUserLinks) &&
                         elements.imageUserLinks.map((imageName, index) => (
                           <img className='w-72 h-52 rounded-md ' key={index} src={imageName} alt={`Image ${index}`} />
                         ))
-                      }
+                      } */}
 
-                      {/* <img
-                        src={elements && elements.imageUserLinks && elements.imageUserLinks[0] ? elements.imageUserLinks[0] : "https://media.geeksforgeeks.org/wp-content/uploads/20200412121906/skeleton-loading.gif"}
+                      <img
+                        src={elements && elements.imageUserLinks  ? elements.imageUserLinks : "https://media.geeksforgeeks.org/wp-content/uploads/20200412121906/skeleton-loading.gif"}
                         alt={elements && elements.name ? elements.name : "Image"}
                         className="w-full h-[200px]"
-                      /> */}
+                      />
                       <div className="relative  p-5">
                         {/* <h3 className="text-base font-bold capitalize leading-snug  line-clamp-1">
                           {elements && elements.name ? elements.name : "Image"}
