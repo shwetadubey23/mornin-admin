@@ -7,7 +7,8 @@ export function image(state = {}, action) {
   switch (action.type) {
     case imageConstants.GET_ID_MASSAGE_REQUEST:
       return {
-        ...state
+        ...state,
+        loading: false,
       };
     case imageConstants.GET_ID_MASSAGE_SUCCESS:
       return {
@@ -178,6 +179,23 @@ export function image(state = {}, action) {
         error: action.error
       };
 
+    case imageConstants.UPDATE_IMAGE_REQUEST:
+      return {
+        ...state,
+        loading: false,
+      };
+    case imageConstants.UPDATE_IMAGE_SUCCESS:
+      return {
+        ...state,
+        loading: true,
+        addUserSuccess: true
+      };
+    case imageConstants.UPDATE_IMAGE_FAILURE:
+      return {
+        ...state,
+        error: action.error
+      };
+
     case imageConstants.UPDATE_BANNER_CATEGORY_REQUEST:
       return {
         ...state
@@ -315,6 +333,24 @@ export function image(state = {}, action) {
         loading: false,
       };
     case imageConstants.DELETE_PT_PACKAGE_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      };
+
+    case imageConstants.DELETE_IMAGE_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case imageConstants.DELETE_IMAGE_SUCCESS:
+      return {
+        ...state,
+        addUserSuccess: false,
+        loading: false,
+      };
+    case imageConstants.DELETE_IMAGE_FAILURE:
       return {
         ...state,
         loading: false,

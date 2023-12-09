@@ -16,9 +16,11 @@ export const imageActions = {
     createImageCategory,
     updateImageCategory,
     updateImage,
+    updateImageDetail,
     getImageList,
     getImageCategoryList,
     deleteImage,
+    deleteImageDetail,
     deleteImageCategory,
     uploadImageClear,
     getImageCategoryListById,
@@ -199,7 +201,7 @@ function updateImage(data) {
                     dispatch(alertActions.success("Image Update Successfully."));
                     dispatch(success(users));
                     dispatch(this.getImageList(reqData));
-                    // dispatch(this.uploadImageClear());
+                    //   window.location.reload();
 
                 },
                 error => {
@@ -211,6 +213,36 @@ function updateImage(data) {
     function request() { return { type: imageConstants.UPDATE_BANNER_REQUEST } }
     function success(users) { return { type: imageConstants.UPDATE_BANNER_SUCCESS, users } }
     function failure(error) { return { type: imageConstants.UPDATE_BANNER_FAILURE, error } }
+}
+function updateImageDetail(data, paginationData) {
+    // let reqData = {
+    //     "imageSubCategoryId": this.props.match.params.id,
+    //     "keyWord": "",
+    //     "pageNo": 1,
+    //     "size": 10
+    // }
+    return dispatch => {
+        dispatch(request());
+        imageService.updateImageDetail(data)
+            .then(
+
+                users => {
+                    // toast("Password Updated successfully.")
+                    dispatch(alertActions.success("Image Update Successfully."));
+                    dispatch(success(users));
+                    dispatch(this.getImageCategoryListById(paginationData));
+                    // dispatch(this.uploadImageClear());
+
+                },
+                error => {
+                    dispatch(alertActions.error(error));
+                    dispatch(failure(error))
+                }
+            );
+    };
+    function request() { return { type: imageConstants.UPDATE_IMAGE_REQUEST } }
+    function success(users) { return { type: imageConstants.UPDATE_IMAGE_SUCCESS, users } }
+    function failure(error) { return { type: imageConstants.UPDATE_IMAGE_FAILURE, error } }
 }
 function updateImageCategory(data) {
     let reqData = {
@@ -321,6 +353,7 @@ function getImageCategoryListById(data) {
                 users => {
                     // console.log("getImageCategoryListById $$$$ action:", users);
                     dispatch(success(users));
+                    // dispatch(this.uploadImageClear(users));
                 },
                 error => {
                     dispatch(alertActions.error(error));
@@ -422,6 +455,32 @@ function deleteImage(data, paginationData) {
     function request() { return { type: imageConstants.DELETE_BANNER_REQUEST } }
     function success(users) { return { type: imageConstants.DELETE_BANNER_SUCCESS, users } }
     function failure(error) { return { type: imageConstants.DELETE_BANNER_FAILURE, error } }
+}
+function deleteImageDetail(data, paginationData) {
+    // let reqData = {
+    //     "keyWord": "",
+    //     "pageNo": 1,
+    //     "size": 10
+    // }
+    return dispatch => {
+        dispatch(request());
+        imageService.deleteImageDetail(data)
+            .then(
+                users => {
+                    dispatch(alertActions.success("Image Delete Successfully."));
+                    dispatch(success(users));
+                    dispatch(this.getImageCategoryListById(paginationData));
+                    // window.location.reload();
+                },
+                error => {
+                    dispatch(alertActions.error(error));
+                    dispatch(failure(error))
+                }
+            );
+    };
+    function request() { return { type: imageConstants.DELETE_IMAGE_REQUEST } }
+    function success(users) { return { type: imageConstants.DELETE_IMAGE_SUCCESS, users } }
+    function failure(error) { return { type: imageConstants.DELETE_IMAGE_FAILURE, error } }
 }
 
 function deleteImageCategory(data, paginationData) {

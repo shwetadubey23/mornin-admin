@@ -181,7 +181,7 @@ class Image extends Component {
 
 
   handleOpenCreateModalMoreDetails = (data) => {
-    this.props.history.push('/app/imageDetails/'+ data.id)
+    this.props.history.push('/app/imageDetails/'+ data.name+'/'+ data.id)
     // this.setState({ moreDetailsCreateModal: true, massageRowData: data });
      console.log("fgfdgf1111111111111111111111111111111111",data);
   }

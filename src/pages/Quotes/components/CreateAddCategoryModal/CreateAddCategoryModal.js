@@ -56,9 +56,9 @@ export default function CreateAddCategoryModal(props) {
             <div className="w-full">
               <label className="block text-xs font-medium text-gray-500 md:text-left" for="username">Quotes : </label>
               <textarea className={` w-full p-2 mt-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 ring-gray-500  ${errorsQuotes && !errorsQuotes["name"] ? "border placeholder-gray-500" : "border border-red-500 "}`}
-                id="quotes" name="quotes" placeholder="Quotes" value={fieldsQuotes && fieldsQuotes.quotes ? fieldsQuotes.quotes : ''} type="text" onChange={inputAddQuotesChange} />
+                id="quotes" name="quotes" placeholder="Quotes" value={fieldsQuotes && fieldsQuotes.quotes ? fieldsQuotes.quotes : ''} type="text" onChange={inputAddQuotesChange} rows="5"/>
               {errorsQuotes && errorsQuotes["quotes"] ?
-                <div className="text-xs text-red-500 invalid-feedback">
+                <div className="text-xs text-red-500 invalid-feedback" >
                   {errorsQuotes["quotes"]}
                 </div>
                 : null}

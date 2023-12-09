@@ -4,9 +4,9 @@ import { useState } from 'react';
 
 export default function UpdateCategoryModal(props) {
 
-  let { UpdateBannerCreateModal, handleAppSeetingHideModal, errorsUpdateBanner, inputChangeUpdateBanner, updateBannerSubmit, fieldsBannerUpdate, filesDetails, getAllImageCategory, handleFileUpdate, handleFile
+  let { UpdateBannerModal, handleUpdatePasswordHideModal, errorsUpdateBanner, inputChangeUpdateBanner, updateBannerSubmit, fieldsBannerUpdate, filesDetails, getAllImageCategory, handleFileUpdate, handleFile
   } = props;
-  // console.log("MODAL__fieldsBannerUpdate::", fieldsBannerUpdate.imageUserLinks);
+  console.log("MODAL__fieldsBannerUpdate::", fieldsBannerUpdate.imageUserLinks);
 
   const [imageFiles, setImageFiles] = useState([]);
 
@@ -27,13 +27,13 @@ export default function UpdateCategoryModal(props) {
 
   return (
 
-    <div className={UpdateBannerCreateModal ? "fixed w-full top-0 left-0 h-full inset-0 z-40 overflow-hidden mt-0 flex justify-center items-center overflow-y-auto bg-black/40 md:p-0 p-1" : "hidden"} style={{ marginTop: '0rem', }}  >
+    <div className={UpdateBannerModal ? "fixed w-full top-0 left-0 h-full inset-0 z-40 overflow-hidden mt-0 flex justify-center items-center overflow-y-auto bg-black/40 md:p-0 p-1" : "hidden"} style={{ marginTop: '0rem', }}  >
       <div className="animate__animated animate__fadeInDown animate__faster bg-[#f8f8fb]  md:w-[32rem] w-full  mx-auto rounded shadow-lg  overflow-y-auto mt-2">
         {/*modal header*/}
         <div className="flex items-center justify-between p-6 py-2 bg-[#22BFA1] border-b">
           <p className="text-[16px] font-medium text-white uppercase">Update Image </p>
           <div className="rounded-full cursor-pointer modal-close ">
-            <svg onClick={() => handleAppSeetingHideModal()} className="fill-current text-white/60 hover:text-white/100 " xmlns="http://www.w3.org/2000/svg" width={18} height={18} viewBox="0 0 18 18">
+            <svg onClick={() => handleUpdatePasswordHideModal()} className="fill-current text-white/60 hover:text-white/100 " xmlns="http://www.w3.org/2000/svg" width={18} height={18} viewBox="0 0 18 18">
               <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
               </path>
             </svg>

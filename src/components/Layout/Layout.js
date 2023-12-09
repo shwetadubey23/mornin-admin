@@ -75,7 +75,7 @@ function Layout(props) {
               <Route path="/app/messageDetails/:id" component={withRouter(messageDetails)} />
               {/* <Route path="/app/messageDetails/:id" component={withRouter(MessageDetails)} /> */}
               <Route path="/app/quotesDetails/:id" component={withRouter(quotesDetails)} />
-              <Route path="/app/imageDetails/:id" component={withRouter(imageDetails)} />
+              <Route path="/app/imageDetails/:name/:id" component={withRouter(imageDetails)} />
             </Switch>
           </div>
         </div>

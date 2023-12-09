@@ -11,8 +11,10 @@ export const imageService = {
     getAllPtPackage,
     createImage,
     updateImage,
+    updateImageDetail,
     getImageList,
     deleteImage,
+    deleteImageDetail,
     disableBanner,
     createPTPackage,
     createImageCategory,
@@ -251,6 +253,28 @@ function deleteImage(data) {
             return userObj;
         });
 }
+function deleteImageDetail(data) {
+    let header = new Headers({
+        'Content-Type': 'application/json',
+        "Authorization": authHeader().Authorization
+    });
+    const requestOptions = {
+        method: "POST",
+        headers: header,
+        body: JSON.stringify(data)
+    }
+    return fetch(CONST.BACKEND_URL + `/deleteImage`, requestOptions)
+        .then(handleResponse)
+        .then(data => {
+
+            let userObj = {
+                deleteImage: data.data
+            }
+            // console.log("i am in service''...>> deleteImage ::", userObj);
+
+            return userObj;
+        });
+}
 function deletePTPackage(data) {
     let header = new Headers({
         'Content-Type': 'application/json',
@@ -401,6 +425,27 @@ function updateImage(data) {
                 updateImage: data.data
             }
             // console.log("I am in service updateImage", userObj);
+
+            return userObj;
+        });
+}
+function updateImageDetail(data) {
+    let header = new Headers({
+        'Content-Type': 'application/json',
+        "Authorization": authHeader().Authorization
+    });
+    const requestOptions = {
+        method: "POST",
+        headers: header,
+        body: JSON.stringify(data)
+    }
+    return fetch(CONST.BACKEND_URL + `/updateImage`, requestOptions)
+        .then(handleResponse)
+        .then(data => {
+            let userObj = {
+                updateImageDetail: data.data
+            }
+            // console.log("I am in service updateImageDetail", userObj);
 
             return userObj;
         });

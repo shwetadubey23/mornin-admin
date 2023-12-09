@@ -164,7 +164,7 @@ class Image extends Component {
     confirmAlert({
 
       title: 'Confirm to Delete?',
-      message: `Are you sure to delete ${data.name}?`,
+      message: `Are you sure to delete Image ?`,
       buttons: [
         {
           label: 'Yes',
@@ -254,7 +254,7 @@ class Image extends Component {
         "pageNo": this.state.pageNo,
         "size": this.state.size
       }
-      this.props.dispatch(imageActions.updateImage(reqData, paginationData));
+       this.props.dispatch(imageActions.updateImage(reqData, paginationData));
       console.log('reqDatareqDatareqDatareqDatareqDatareqData', reqData)
     }
 

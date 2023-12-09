@@ -75,7 +75,7 @@ export default function UpdateCategoryModal(props) {
             <div className="w-full">
               <label className="block text-xs font-medium text-gray-500 md:text-left" for="username">Quotes :</label>
               <textarea className={` w-full p-2 mt-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 ring-gray-500  ${errorsUpdateQuotes && !errorsUpdateQuotes["quotes"] ? "border  placeholder-gray-500" : "border  border-red-500 "}`}
-                id="quotes" name="quotes" placeholder="Quotes" value={fieldsQuotesUpdate.quotes} type="quotes" onChange={inputChangeUpdateQuotes} />
+                id="quotes" name="quotes" placeholder="Quotes" value={fieldsQuotesUpdate.quotes} type="quotes" onChange={inputChangeUpdateQuotes} rows="5"/>
               {errorsUpdateQuotes && errorsUpdateQuotes["quotes"] ?
                 <div className="text-xs text-red-500 invalid-feedback">
                   {errorsUpdateQuotes["quotes"]}
