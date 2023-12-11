@@ -103,7 +103,7 @@ export default function UpdateCategoryModal(props) {
                 :
                 <div className=" w-full flex">
                   <div className='flex justify-between px-4'>
-                    <img className="object-cover w-24 h-20 rounded-sm" src={fieldsBannerUpdate && fieldsBannerUpdate.imageUserLink ? fieldsBannerUpdate.imageUserLink : null} alt="not found" />
+                    <img className="object-cover w-24 h-20 rounded-sm" src={fieldsBannerUpdate && fieldsBannerUpdate.imageUserLinksThumb ? fieldsBannerUpdate.imageUserLinksThumb : null} alt="not found" />
                   </div>
                   {/* <div className="grid grid-cols-2 gap-2">
                     {Array.isArray(fieldsBannerUpdate.imageUserLinks) &&

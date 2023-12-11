@@ -6,7 +6,7 @@ export default function UpdateCategoryModal(props) {
 
   let { UpdateBannerModal, handleUpdatePasswordHideModal, errorsUpdateBanner, inputChangeUpdateBanner, updateBannerSubmit, fieldsBannerUpdate, filesDetails, getAllImageCategory, handleFileUpdate, handleFile
   } = props;
-  console.log("MODAL__fieldsBannerUpdate::", fieldsBannerUpdate.imageUserLinks);
+  console.log("MODAL__fieldsBannerUpdate::", fieldsBannerUpdate.imageUserLinksThumb);
 
   const [imageFiles, setImageFiles] = useState([]);
 
@@ -101,9 +101,9 @@ export default function UpdateCategoryModal(props) {
                   </div>
                 </div>
                 :
-                <div className=" w-full flex">
+                <div className=" w-full ">
                   <div className='flex justify-between px-4'>
-                    <img className="object-cover w-24 h-20 rounded-sm" src={fieldsBannerUpdate && fieldsBannerUpdate.imageUserLink ? fieldsBannerUpdate.imageUserLink : null} alt="not found" />
+                    <img className="object-cover w-24 h-20 rounded-sm" src={fieldsBannerUpdate && fieldsBannerUpdate.imageUserLinks ? fieldsBannerUpdate.imageUserLinks : null} alt="not found" />
                   </div>
                   {/* <div className="grid grid-cols-2 gap-2">
                     {Array.isArray(fieldsBannerUpdate.imageUserLinks) &&

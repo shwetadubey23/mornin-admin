@@ -473,7 +473,7 @@ class Image extends Component {
 
                                       <td className="px-6 py-3 text-sm justify-start flex items-center text-gray-600 whitespace-nowrap">
                                         <div className='flex justify-center'>
-                                          <img className="object-cover h-10 rounded-sm w-14" src={element && element.imageUserLinks  ? element.imageUserLinks
+                                          <img className="object-cover h-10 rounded-sm w-14" src={element && element.imageUserLinksThumb  ? element.imageUserLinksThumb
                                             : "/images/morning.png"} alt="" />
                                         </div>
                                         {/* {element.imageUserLinks[0]} */}
