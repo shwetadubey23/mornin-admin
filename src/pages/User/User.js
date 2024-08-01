@@ -252,26 +252,7 @@ class AdminList extends React.Component {
 
   }
 
-  // inputChangeDepositAmt = (e) => {
-  //   e.preventDefault();
-  //   let { name, value } = e.target;
-  //   let dPRowData = this.state.dPRowData;
-
-  //   dPRowData["crntParentAmount"] = (Number(dPRowData["parentAmount"]) - Number(value));
-  //   dPRowData["crntChildAmount"] = (Number(dPRowData["childAmount"]) + Number(value));
-  //   dPRowData["crntChildUplineAmount"] = (Number(dPRowData["childUplineAmount"]) + Number(value));
-
-
-  //   let fieldsUpdateDepositCredit = this.state.fieldsUpdateDepositCredit;
-  //   let errorsUpdateDepositCredit = this.state.errorsUpdateDepositCredit;
-  //   fieldsUpdateDepositCredit[name] = value;
-  //   errorsUpdateDepositCredit[name] = "";
-  //   console.log(name, value);
-
-  //   this.setState({ dPRowData, fieldsUpdateDepositCredit, errorsUpdateDepositCredit });
-
-  // }
-
+  
   inputChangeDepositAmt = (e) => {
     e.preventDefault();
     let { name, value } = e.target;
@@ -304,24 +285,6 @@ class AdminList extends React.Component {
 
 
 
-  // inputChangeCreditAmt = (e) => {
-  //   e.preventDefault();
-  //   let { name, value } = e.target;
-  //   let wHRowData = this.state.wHRowData;
-
-  //   wHRowData["crntParentAmount"] = (Number(wHRowData["parentAmount"]) + Number(value));
-  //   wHRowData["crntChildAmount"] = (Number(wHRowData["childAmount"]) - Number(value));
-  //   wHRowData["crntChildUplineAmount"] = (Number(wHRowData["childUplineAmount"]) - Number(value));
-
-  //   let fieldsCreditWithdraw = this.state.fieldsCreditWithdraw;
-  //   let errorsCreditWithdraw = this.state.errorsCreditWithdraw;
-  //   fieldsCreditWithdraw[name] = value;
-  //   errorsCreditWithdraw[name] = "";
-  //   console.log(name, value);
-
-  //   this.setState({ wHRowData, fieldsCreditWithdraw, errorsCreditWithdraw });
-
-  // }
 
   inputChangeCreditAmt = (e) => {
     e.preventDefault();
@@ -721,26 +684,6 @@ class AdminList extends React.Component {
 
 
 
-  // inputCreditDepositAmt = (e) => {
-  //   e.preventDefault();
-  //   let { name, value } = e.target;
-  //   let creditDepositRowData = this.state.creditDepositRowData;
-
-  //   creditDepositRowData["crntParentAmount"] = (Number(creditDepositRowData["parentAmount"]) - Number(value));
-  //   creditDepositRowData["crntChildAmount"] = (Number(creditDepositRowData["childAmount"]) + Number(value));
-  //   creditDepositRowData["crntChildUplineAmount"] = (Number(creditDepositRowData["childUplineAmount"]) + Number(value));
-
-
-  //   let fieldsCreditActivity = this.state.fieldsCreditActivity;
-  //   let errorsCreditActivity = this.state.errorsCreditActivity;
-  //   fieldsCreditActivity[name] = value;
-  //   errorsCreditActivity[name] = "";
-  //   console.log(name, value);
-
-  //   this.setState({ creditDepositRowData, fieldsCreditActivity, errorsCreditActivity });
-
-  // }
-
   inputCreditDepositAmt = (e) => {
     e.preventDefault();
     let { name, value } = e.target;
@@ -772,24 +715,6 @@ class AdminList extends React.Component {
   }
 
 
-  // inputCreditWithdrawAmt = (e) => {
-  //   e.preventDefault();
-  //   let { name, value } = e.target;
-  //   let creditWithdrawRowData = this.state.creditWithdrawRowData;
-
-  //   creditWithdrawRowData["crntParentAmount"] = (Number(creditWithdrawRowData["parentAmount"]) + Number(value));
-  //   creditWithdrawRowData["crntChildAmount"] = (Number(creditWithdrawRowData["childAmount"]) - Number(value));
-  //   creditWithdrawRowData["crntChildUplineAmount"] = (Number(creditWithdrawRowData["childUplineAmount"]) - Number(value));
-
-  //   let fieldsCreditActivity = this.state.fieldsCreditActivity;
-  //   let errorsCreditActivity = this.state.errorsCreditActivity;
-  //   fieldsCreditActivity[name] = value;
-  //   errorsCreditActivity[name] = "";
-  //   console.log(name, value);
-
-  //   this.setState({ creditWithdrawRowData, fieldsCreditActivity, errorsCreditActivity });
-
-  // }
 
   inputCreditWithdrawAmt = (e) => {
     e.preventDefault();
